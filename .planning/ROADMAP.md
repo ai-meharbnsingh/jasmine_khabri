@@ -42,12 +42,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The JSON schemas for `seen.json`, `config.json`, and `keywords.json` are defined and validated by a schema fixture
   4. A `pytest` run with zero test implementations exits with 0 failures and no import errors
   5. The repo contains a `.gitignore` excluding secrets, `.env`, and large model files
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Repo layout, uv workspace, dependency lockfile, and Python package structure
-- [ ] 01-02: JSON data schema definitions and schema validation fixtures
-- [ ] 01-03: Dev tooling configuration (pytest, ruff, pre-commit hooks)
+- [ ] 01-01-PLAN.md — Repo layout, pyproject.toml with hatchling, src/pipeline package structure, uv lockfile, .gitignore
+- [ ] 01-02-PLAN.md — Pydantic v2 schema models, loader utilities, data files (config.yaml, keywords.yaml, seen.json, history.json)
+- [ ] 01-03-PLAN.md — Schema validation tests, pre-commit hooks, full scaffold verification
 
 ### Phase 2: Scheduling Infrastructure
 **Goal**: GitHub Actions workflows are deployed, cron schedules are wired to correct IST times, a keepalive workflow is active, and the pipeline can be triggered manually and commits state back to the repo
@@ -222,7 +222,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold | 0/3 | Not started | - |
+| 1. Project Scaffold | 0/3 | Planned | - |
 | 2. Scheduling Infrastructure | 0/2 | Not started | - |
 | 3. News Fetching | 0/3 | Not started | - |
 | 4. Filtering and Deduplication | 0/3 | Not started | - |
