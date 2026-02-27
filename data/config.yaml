@@ -1,0 +1,18 @@
+# Khabri Pipeline Configuration
+# Schedule times are in IST — UTC conversion handled in code (Phase 2)
+
+schedule:
+  morning_ist: "07:00"    # MUST be quoted — YAML parses unquoted 07:00 as integer 420
+  evening_ist: "16:00"    # MUST be quoted — same reason
+
+telegram:
+  bot_token: ""           # Set via TELEGRAM_BOT_TOKEN env var — never commit secrets
+  chat_ids: []            # Set via env var or bot registration — both users
+  breaking_news_enabled: true
+
+email:
+  enabled: true
+  recipients: []          # Set via env var — Gmail addresses for both users
+
+delivery:
+  max_stories: 15

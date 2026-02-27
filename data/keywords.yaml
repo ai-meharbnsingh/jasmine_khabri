@@ -1,0 +1,127 @@
+# Khabri Keyword Library
+# Categories can be toggled active/inactive via Telegram bot (Phase 9)
+# Source: AUTOMATED_NEWS_SYSTEM_BLUEPRINT.md
+
+categories:
+  infrastructure:
+    active: true
+    keywords:
+      # Metro & Rail
+      - metro
+      - metro rail
+      - metro line
+      - metro phase
+      - metro corridor
+      - rapid transit
+      - DMRC
+      - MMRC
+      - KMRL
+      - BMRCL
+      - metro station
+      - metro extension
+      # Highways & Roads
+      - highway
+      - expressway
+      - national highway
+      - NH-
+      - NHAI
+      - road project
+      - elevated corridor
+      - flyover
+      - expressway corridor
+      - greenfield highway
+      - access controlled highway
+      # Airports & Aviation
+      - airport
+      - international airport
+      - domestic airport
+      - AAI
+      - airport terminal
+      - runway
+      - aviation infrastructure
+      - airport expansion
+      - airport city
+      - aerocity
+      # Smart City & Urban Development
+      - smart city
+      - smart cities mission
+      - urban development
+      - urban infrastructure
+      - municipal corporation
+      - smart infrastructure
+      - IoT city
+      - integrated city
+
+  regulatory:
+    active: true
+    keywords:
+      # RERA
+      - RERA
+      - real estate regulatory authority
+      - real estate regulation
+      - MahaRERA
+      - UP-RERA
+      - HRERA
+      - KRERA
+      - RERA compliance
+      - RERA registered
+      - RERA violation
+      # PMAY
+      - PMAY
+      - Pradhan Mantri Awas Yojana
+      - affordable housing
+      - housing for all
+      - affordable homes
+      - EWS housing
+      - LIG housing
+      - subsidized housing
+      # Other Authorities
+      - MoHUA
+      - ministry of housing
+      - urban affairs
+      - development authority
+      - CIDCO
+      - MMRDA
+      - DDA
+      - BDA
+
+  celebrity:
+    active: false
+    keywords:
+      - Amitabh Bachchan
+      - Shah Rukh Khan
+      - Akshay Kumar
+      - Salman Khan
+      - Aamir Khan
+      - Virat Kohli
+      - MS Dhoni
+      - Sachin Tendulkar
+      - Mukesh Ambani
+      - Gautam Adani
+      - Ratan Tata
+      - Azim Premji
+      - Kumar Mangalam Birla
+
+  transaction:
+    active: false
+    keywords:
+      - property purchase
+      - property sale
+      - property buy
+      - real estate investment
+      - luxury property
+      - luxury apartment
+      - penthouse
+      - villa
+      - farmhouse
+      - sea-facing
+      - beachfront property
+      - property deal
+      - property transaction
+
+exclusions:
+  - obituary
+  - scandal
+  - gossip
+  - horoscope
+  - rumor
