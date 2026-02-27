@@ -45,7 +45,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Repo layout, pyproject.toml with hatchling, src/pipeline package structure, uv lockfile, .gitignore
+- [x] 01-01-PLAN.md — Repo layout, pyproject.toml with hatchling, src/pipeline package structure, uv lockfile, .gitignore
 - [ ] 01-02-PLAN.md — Pydantic v2 schema models, loader utilities, data files (config.yaml, keywords.yaml, seen.json, history.json)
 - [ ] 01-03-PLAN.md — Schema validation tests, pre-commit hooks, full scaffold verification
 
@@ -222,7 +222,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold | 0/3 | Planned | - |
+| 1. Project Scaffold | 1/3 | In Progress | - |
 | 2. Scheduling Infrastructure | 0/2 | Not started | - |
 | 3. News Fetching | 0/3 | Not started | - |
 | 4. Filtering and Deduplication | 0/3 | Not started | - |

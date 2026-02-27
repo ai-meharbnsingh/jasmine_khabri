@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-26)
 ## Current Position
 
 Phase: 1 of 11 (Project Scaffold)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-02-26 — Roadmap created (11 phases, 37 requirements mapped)
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-02-27 — Plan 01-01 complete (repository scaffold, uv sync, package imports verified)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 3%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: — min
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 2 min
+- Total execution time: 0.03 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-project-scaffold | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (2 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -46,6 +46,9 @@ Recent decisions affecting current work:
 - GitHub repo as data store: free, version-controlled, no DB needed — seen.json, config.json, keywords.json
 - Claude primary, Gemini fallback: better analysis quality, fallback for reliability
 - google-genai (not google-generativeai): deprecated EOL Nov 2025
+- hatchling build backend: uv default, zero-config for src-layout, enables editable install via uv sync
+- src-layout chosen: prevents working-directory import trap; from pipeline.X import Y works from any cwd
+- data/history.json not gitignored: INFRA-02 requires state files committed to repo
 
 ### Pending Todos
 
@@ -59,6 +62,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-26
-Stopped at: Roadmap created and written to .planning/ROADMAP.md
+Last session: 2026-02-27
+Stopped at: Completed 01-project-scaffold/01-01-PLAN.md (repository scaffold)
 Resume file: None

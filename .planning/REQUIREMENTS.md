@@ -57,7 +57,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **INFRA-03**: System includes keepalive workflow to prevent GitHub's 60-day inactivity cron disable
 - [ ] **INFRA-04**: Telegram bot runs as persistent Python process on Railway (polling mode, no webhook needed) — handles commands instantly, dispatches heavy processing to GitHub Actions via repository_dispatch
 - [ ] **INFRA-05**: System auto-purges article history older than 7 days
-- [ ] **INFRA-06**: System operates within free tier limits (Railway $5/month credit for bot, $0 GitHub Actions, <$5/month AI API)
+- [x] **INFRA-06**: System operates within free tier limits (Railway $5/month credit for bot, $0 GitHub Actions, <$5/month AI API)
 
 ## v2 Requirements
 
@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-03 | Phase 2 | Pending |
 | INFRA-04 | Phase 8 | Pending |
 | INFRA-05 | Phase 2 | Pending |
-| INFRA-06 | Phase 11 | Pending |
+| INFRA-06 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 37 total
@@ -150,4 +150,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-26*
-*Last updated: 2026-02-26 after roadmap creation*
+*Last updated: 2026-02-27 after 01-01 execution (INFRA-06 complete)*
