@@ -37,3 +37,9 @@ def load_seen(path: str | Path = "data/seen.json") -> SeenStore:
         return SeenStore()
     raw = json.loads(text)
     return SeenStore.model_validate(raw)
+
+
+def save_seen(store: SeenStore, path: str | Path = "data/seen.json") -> None:
+    """Save SeenStore to JSON file."""
+    path = Path(path)
+    path.write_text(store.model_dump_json(indent=2) + "\n")
