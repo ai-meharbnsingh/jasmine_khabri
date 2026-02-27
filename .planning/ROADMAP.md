@@ -18,7 +18,7 @@ content writers.
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Project Scaffold** - Repo structure, dependency management, data schemas, and dev environment
+- [x] **Phase 1: Project Scaffold** - Repo structure, dependency management, data schemas, and dev environment (completed 2026-02-27)
 - [ ] **Phase 2: Scheduling Infrastructure** - GitHub Actions cron wiring, keepalive workflow, and JSON state management
 - [ ] **Phase 3: News Fetching** - RSS feed ingestion and GNews.io API integration with error handling
 - [ ] **Phase 4: Filtering and Deduplication** - Keyword filtering, geo-tier scoring, and title-hash dedup history
@@ -222,7 +222,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold | 2/3 | In Progress|  |
+| 1. Project Scaffold | 3/3 | Complete   | 2026-02-27 |
 | 2. Scheduling Infrastructure | 0/2 | Not started | - |
 | 3. News Fetching | 0/3 | Not started | - |
 | 4. Filtering and Deduplication | 0/3 | Not started | - |
