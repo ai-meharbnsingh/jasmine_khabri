@@ -224,7 +224,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold | 3/3 | Complete   | 2026-02-27 |
 | 2. Scheduling Infrastructure | 2/2 | Complete   | 2026-02-27 |
-| 3. News Fetching | 1/3 | In Progress|  |
+| 3. News Fetching | 2/3 | In Progress|  |
 | 4. Filtering and Deduplication | 0/3 | Not started | - |
 | 5. AI Analysis Pipeline | 0/3 | Not started | - |
 | 6. Telegram Delivery | 0/3 | Not started | - |
