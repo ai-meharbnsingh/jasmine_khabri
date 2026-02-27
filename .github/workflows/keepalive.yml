@@ -1,0 +1,19 @@
+name: Keepalive
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"    # Weekly on Sunday at 00:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  actions: write             # Required for API mode
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
+        with:
+          use_api: true      # API touch, no dummy commit — clean history
+          time_elapsed: 45   # Trigger only if 45+ days since last activity
