@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T15:32:13Z"
+last_updated: "2026-02-27T15:36:35Z"
 progress:
   total_phases: 11
   completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-26)
 
 ## Current Position
 
-Phase: 2 of 11 (Scheduling Infrastructure) — IN PROGRESS
-Plan: 1 of 2 in current phase (02-01 complete)
-Status: Phase 2 Plan 1 Complete — Ready for 02-02
-Last activity: 2026-02-27 — Plan 02-01 complete (pipeline entrypoint, deliver.yml, keepalive.yml)
+Phase: 2 of 11 (Scheduling Infrastructure) — COMPLETE
+Plan: 2 of 2 in current phase (02-02 complete)
+Status: Phase 2 Complete — Ready for Phase 3 (RSS Fetchers)
+Last activity: 2026-02-27 — Plan 02-02 complete (purge utility, save_seen helper, pipeline lifecycle wiring)
 
-Progress: [██░░░░░░░░] 11%
+Progress: [██░░░░░░░░] 18%
 
 ## Performance Metrics
 
@@ -41,10 +41,10 @@ Progress: [██░░░░░░░░] 11%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-project-scaffold | 3 | 5 min | 1.7 min |
-| 02-scheduling-infrastructure | 1 | 2 min | 2.0 min |
+| 02-scheduling-infrastructure | 2 | 4 min | 2.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (2 min), 02-01 (2 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (2 min), 02-01 (2 min), 02-02 (2 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -73,6 +73,10 @@ Recent decisions affecting current work:
 - [Phase 02-01]: EndBug add uses explicit JSON array paths (not '.') — prevents accidental secret commit
 - [Phase 02-01]: keepalive time_elapsed: 45 days — fires only approaching 60-day window, not every run
 - [Phase 02-01]: Secrets commented out in deliver.yml (not absent) — self-documents future phase requirements
+- [Phase 02-02]: Malformed seen_at entries kept not dropped — fail-safe over fail-silent, log warning and preserve
+- [Phase 02-02]: Naive timestamps assumed UTC — consistent with ISO 8601 pipeline convention
+- [Phase 02-02]: purge_old_entries returns new SeenStore (not mutated) — functional style, safe re-assignment
+- [Phase 02-02]: save_seen added to loader.py (not separate file) — all disk I/O for data files in one module
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 02-scheduling-infrastructure/02-01-PLAN.md (pipeline entrypoint, deliver.yml, keepalive.yml)
+Stopped at: Completed 02-scheduling-infrastructure/02-02-PLAN.md (purge utility, save_seen, pipeline lifecycle)
 Resume file: None
-Next: Phase 2 Plan 2 — IST/UTC conversion utility and dynamic schedule resolution
+Next: Phase 3 — RSS Fetchers
