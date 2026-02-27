@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T17:05:52.293Z"
+last_updated: "2026-02-27T17:09:15.672Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 3 — News Fetching
+**Current focus:** Phase 4 — Deduplication
 
 ## Current Position
 
-Phase: 3 of 11 (News Fetching) — In Progress
-Plan: 2 of 3 in current phase (03-01, 03-02 complete)
-Status: Phase 3 In Progress — 03-01 (Article schema, RSS fetcher) and 03-02 (GNews fetcher) done; 03-03 remaining
-Last activity: 2026-02-27 — Plan 03-02 complete (GNews API client with quota tracking, TDD 16 tests)
+Phase: 3 of 11 (News Fetching) — Complete
+Plan: 3 of 3 in current phase (03-01, 03-02, 03-03 all complete)
+Status: Phase 3 Complete — RSS+GNews fetchers wired into pipeline, 8 RSS feeds in config.yaml, 73 tests passing
+Last activity: 2026-02-27 — Plan 03-03 complete (pipeline wiring + integration tests, 73 total tests)
 
-Progress: [████░░░░░░] 25%
+Progress: [████░░░░░░] 30%
 
 ## Performance Metrics
 
@@ -42,13 +42,14 @@ Progress: [████░░░░░░] 25%
 |-------|-------|-------|----------|
 | 01-project-scaffold | 3 | 5 min | 1.7 min |
 | 02-scheduling-infrastructure | 2 | 4 min | 2.0 min |
-| 03-news-fetching | 2 | 8 min | 4.0 min |
+| 03-news-fetching | 3 | 14 min | 4.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (2 min), 02-01 (2 min), 02-02 (2 min), 03-01 (3 min), 03-02 (5 min)
+- Last 5 plans: 02-01 (2 min), 02-02 (2 min), 03-01 (3 min), 03-02 (5 min), 03-03 (6 min)
 - Trend: stable
 
 *Updated after each plan completion*
+| Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,8 @@ Recent decisions affecting current work:
 - [Phase 03-news-fetching]: Pre-built static OR queries per category (not dynamic from keyword list) — 3 fixed queries stay within 25-call/day budget
 - [Phase 03-news-fetching]: GNewsQuota.model_copy(update=...) for all mutations — immutable functional style, quota always returned even on failure paths
 - [Phase 03-news-fetching]: gnews_quota.json seeded with 1970-01-01 — auto-resets on first run, no manual init; added to deliver.yml EndBug commit-back
+- [Phase 03-03]: Health summary logged inline in main.py (not separate function) — sufficient for Phase 3; Phase 5 can refactor
+- [Phase 03-03]: GNews guard uses empty-string falsy check on os.environ.get — explicit and consistent with Phase 3 env pattern
 
 ### Pending Todos
 
@@ -98,6 +101,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 03-news-fetching/03-02-PLAN.md (GNews fetcher with quota tracking, 16 TDD tests)
+Stopped at: Completed 03-news-fetching/03-03-PLAN.md (pipeline wiring, integration tests, 73 total tests)
 Resume file: None
-Next: Phase 3 Plan 03 — Deduplication layer
+Next: Phase 4 — Deduplication (seen.json URL dedup layer)
