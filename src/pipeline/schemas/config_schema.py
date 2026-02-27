@@ -24,8 +24,15 @@ class DeliveryConfig(BaseModel):
     max_stories: int = Field(default=15, ge=1, le=50)
 
 
+class RssFeedConfig(BaseModel):
+    name: str
+    url: str
+    enabled: bool = True
+
+
 class AppConfig(BaseModel):
     schedule: ScheduleConfig = Field(default_factory=ScheduleConfig)
     telegram: TelegramConfig = Field(default_factory=TelegramConfig)
     email: EmailConfig = Field(default_factory=EmailConfig)
     delivery: DeliveryConfig = Field(default_factory=DeliveryConfig)
+    rss_feeds: list[RssFeedConfig] = Field(default_factory=list)

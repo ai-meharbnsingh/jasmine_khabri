@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Automated infrastructure and real estate news pipeline"
 requires-python = ">=3.12"
 dependencies = [
+    "feedparser>=6.0.12",
+    "httpx>=0.28.1",
     "pydantic>=2.5",
     "PyYAML>=6.0",
 ]
@@ -21,6 +23,7 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.9",
     "pre-commit>=3.0",
+    "respx>=0.22.0",
 ]
 
 [tool.pytest.ini_options]
