@@ -11,6 +11,8 @@ dist/
 build/
 .eggs/
 *.egg
+
+# Virtual environments
 venv/
 .venv/
 
@@ -24,11 +26,6 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Data files (generated at runtime)
-data/sent_news.json
-data/history.json
-data/events.json
-
 # Test artifacts
 screenshots/
 traces/
@@ -36,5 +33,14 @@ traces/
 htmlcov/
 .coverage
 
-# Node (for Vercel functions)
+# Large model files
+*.onnx
+*.bin
+*.pt
+*.safetensors
+
+# Linter cache
+.ruff_cache/
+
+# Node (for any future JS tooling)
 node_modules/
