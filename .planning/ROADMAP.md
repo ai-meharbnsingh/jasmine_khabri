@@ -75,12 +75,12 @@ Plans:
   3. When a single RSS feed returns a timeout, malformed XML, or HTTP error, the pipeline continues fetching from all other feeds and logs the failure without raising an uncaught exception
   4. All fetched articles are normalized to the unified schema (title, url, source, published_at, summary) and serializable to JSON
   5. A daily GNews quota tracker is updated in state JSON after each run
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: RSS fetcher with feedparser + httpx, bozo flag checking, per-source timeout and error handling
-- [ ] 03-02: GNews.io API client with Boolean-grouped queries and daily quota tracker
-- [ ] 03-03: Article normalizer to unified schema and pipeline integration tests with mocked sources
+- [ ] 03-01-PLAN.md — Article/GNewsQuota/RssFeedConfig schemas, RSS fetcher with httpx+feedparser (TDD), error isolation and bozo handling
+- [ ] 03-02-PLAN.md — GNews.io API client with Boolean-grouped queries, daily quota tracker, auth/rate-limit handling (TDD)
+- [ ] 03-03-PLAN.md — Pipeline integration: wire fetchers into main.py, RSS feed config in config.yaml, integration tests
 
 ### Phase 4: Filtering and Deduplication
 **Goal**: Fetched articles are filtered by keyword relevance and exclusion rules, scored by geographic tier, and deduplicated against a 7-day rolling history using title-hash fast-path — so only novel, relevant articles reach the AI pipeline
