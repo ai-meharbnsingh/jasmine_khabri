@@ -59,11 +59,11 @@ Plans:
   3. A `workflow_dispatch` manual trigger runs the pipeline without errors and produces a log showing pipeline entry and exit
   4. After each pipeline run, updated JSON state files are committed back to the repo via `EndBug/add-and-commit`
   5. Article history older than 7 days is purged automatically on each run
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: GitHub Actions workflow YAML files (deliver.yml, keepalive.yml) with correct UTC cron expressions
-- [ ] 02-02: State commit-back step using EndBug/add-and-commit and 7-day history purge logic
+- [ ] 02-01-PLAN.md — Pipeline entrypoint (main.py), deliver.yml (cron + dispatch + commit-back), keepalive.yml
+- [ ] 02-02-PLAN.md — 7-day history purge utility (TDD), save_seen helper, wire purge into main.py
 
 ### Phase 3: News Fetching
 **Goal**: The pipeline reliably fetches articles from all curated RSS feeds and GNews.io API, normalizes them to a unified schema, and logs per-source health without failing the entire run on individual source errors
@@ -223,7 +223,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold | 3/3 | Complete   | 2026-02-27 |
-| 2. Scheduling Infrastructure | 0/2 | Not started | - |
+| 2. Scheduling Infrastructure | 0/2 | Planned | - |
 | 3. News Fetching | 0/3 | Not started | - |
 | 4. Filtering and Deduplication | 0/3 | Not started | - |
 | 5. AI Analysis Pipeline | 0/3 | Not started | - |
