@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T15:41:26.600Z"
+last_updated: "2026-02-27T17:01:14.090Z"
 progress:
-  total_phases: 2
+  total_phases: 3
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 8
+  completed_plans: 6
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 2 — Scheduling Infrastructure
+**Current focus:** Phase 3 — News Fetching
 
 ## Current Position
 
-Phase: 2 of 11 (Scheduling Infrastructure) — COMPLETE
-Plan: 2 of 2 in current phase (02-02 complete)
-Status: Phase 2 Complete — Ready for Phase 3 (RSS Fetchers)
-Last activity: 2026-02-27 — Plan 02-02 complete (purge utility, save_seen helper, pipeline lifecycle wiring)
+Phase: 3 of 11 (News Fetching) — In Progress
+Plan: 1 of 3 in current phase (03-01 complete)
+Status: Phase 3 In Progress — 03-01 done (Article schema, RSS fetcher), 03-02 and 03-03 remaining
+Last activity: 2026-02-27 — Plan 03-01 complete (Article/GNewsQuota/RssFeedConfig schemas, RSS fetcher with TDD)
 
-Progress: [██░░░░░░░░] 18%
+Progress: [███░░░░░░░] 21%
 
 ## Performance Metrics
 
@@ -42,9 +42,10 @@ Progress: [██░░░░░░░░] 18%
 |-------|-------|-------|----------|
 | 01-project-scaffold | 3 | 5 min | 1.7 min |
 | 02-scheduling-infrastructure | 2 | 4 min | 2.0 min |
+| 03-news-fetching | 1 | 3 min | 3.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (1 min), 01-03 (2 min), 02-01 (2 min), 02-02 (2 min)
+- Last 5 plans: 01-03 (2 min), 02-01 (2 min), 02-02 (2 min), 03-01 (3 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -77,6 +78,9 @@ Recent decisions affecting current work:
 - [Phase 02-02]: Naive timestamps assumed UTC — consistent with ISO 8601 pipeline convention
 - [Phase 02-02]: purge_old_entries returns new SeenStore (not mutated) — functional style, safe re-assignment
 - [Phase 02-02]: save_seen added to loader.py (not separate file) — all disk I/O for data files in one module
+- [Phase 03-news-fetching]: Article standalone (not extending SeenEntry): different lifecycles — transient fetch output vs durable dedup state
+- [Phase 03-news-fetching]: calendar.timegm() not time.mktime(): mktime uses local TZ causing wrong UTC conversion for feedparser struct_time
+- [Phase 03-news-fetching]: fetch-then-parse pattern: feedparser URL mode bypasses httpx timeout+redirect, never used
 
 ### Pending Todos
 
@@ -91,6 +95,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 02-scheduling-infrastructure/02-02-PLAN.md (purge utility, save_seen, pipeline lifecycle)
+Stopped at: Completed 03-news-fetching/03-01-PLAN.md (Article schema, GNewsQuota, RssFeedConfig, RSS fetcher with TDD)
 Resume file: None
-Next: Phase 3 — RSS Fetchers
+Next: Phase 3 Plan 02 — GNews API fetcher
