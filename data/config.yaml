@@ -16,3 +16,29 @@ email:
 
 delivery:
   max_stories: 15
+
+rss_feeds:
+  - name: "MOHUA"
+    url: "https://mohua.gov.in/rss.xml"
+    enabled: true
+  - name: "NHAI"
+    url: "https://nhai.gov.in/rss-feed"
+    enabled: true
+  - name: "AAI"
+    url: "https://www.aai.aero/en/rss"
+    enabled: true
+  - name: "Smart Cities"
+    url: "https://smartcities.gov.in/rss"
+    enabled: true
+  - name: "ET Realty"
+    url: "https://economictimes.indiatimes.com/industry/services/property-/-cstruction/rssfeeds/13357555.cms"
+    enabled: true
+  - name: "TOI Real Estate"
+    url: "https://timesofindia.indiatimes.com/rssfeeds/-2950715.cms"
+    enabled: true
+  - name: "Hindu BL"
+    url: "https://www.thehindubusinessline.com/real-estate/feeder/default.rss"
+    enabled: true
+  - name: "Moneycontrol RE"
+    url: "https://www.moneycontrol.com/rss/realestate.xml"
+    enabled: true

@@ -1,10 +1,18 @@
 """Pipeline entrypoint — invoked by GitHub Actions via `uv run python -m pipeline.main`."""
 
 import logging
+import os
 import sys
 from datetime import UTC, datetime
 
-from pipeline.utils.loader import load_seen, save_seen
+from pipeline.fetchers.gnews_fetcher import (
+    build_gnews_queries,
+    fetch_all_gnews,
+    load_or_reset_quota,
+    save_quota,
+)
+from pipeline.fetchers.rss_fetcher import fetch_all_rss
+from pipeline.utils.loader import load_config, load_keywords, load_seen, save_seen
 from pipeline.utils.purge import purge_old_entries
 
 logging.basicConfig(
@@ -41,8 +49,64 @@ def run() -> None:
             len(history.entries),
         )
 
-        # Phase 3-7: fetch, filter, classify, deliver (not yet implemented)
-        logger.info("Pipeline phases: not yet implemented (Phase 2 scaffold)")
+        # Phase 3: Fetch articles from RSS + GNews
+        config = load_config("data/config.yaml")
+        keywords = load_keywords("data/keywords.yaml")
+
+        # RSS fetching
+        rss_articles, rss_health = fetch_all_rss(config.rss_feeds)
+        logger.info(
+            "RSS fetch complete: %d articles from %d feeds",
+            len(rss_articles),
+            len(config.rss_feeds),
+        )
+
+        # GNews fetching
+        gnews_api_key = os.environ.get("GNEWS_API_KEY", "")
+        gnews_articles: list = []
+        gnews_health: list = []
+        if gnews_api_key:
+            quota = load_or_reset_quota("data/gnews_quota.json")
+            queries = build_gnews_queries(keywords)
+            gnews_articles, quota, gnews_health = fetch_all_gnews(queries, gnews_api_key, quota)
+            save_quota(quota, "data/gnews_quota.json")
+            logger.info(
+                "GNews fetch complete: %d articles from %d queries",
+                len(gnews_articles),
+                len(queries),
+            )
+        else:
+            logger.warning("GNEWS_API_KEY not set — skipping GNews fetch")
+
+        all_articles = rss_articles + gnews_articles
+        logger.info(
+            "Total articles fetched: %d (RSS: %d, GNews: %d)",
+            len(all_articles),
+            len(rss_articles),
+            len(gnews_articles),
+        )
+
+        # Log fetch health summary
+        logger.info("Fetch health summary:")
+        for row in rss_health:
+            logger.info(
+                "  RSS  | %-30s | %-4s | %3d articles | %s",
+                row["source"],
+                row["status"],
+                row["count"],
+                row["error"] or "",
+            )
+        for row in gnews_health:
+            logger.info(
+                "  GNews| %-50s | %-4s | %3d articles | %s",
+                row["query"],
+                row["status"],
+                row["count"],
+                row["error"] or "",
+            )
+
+        # Phase 4-7: filter, classify, deliver (not yet implemented)
+        logger.info("Pipeline phases 4-7: not yet implemented")
     except Exception:  # noqa: BLE001
         logger.exception("Pipeline encountered an unhandled error")
         sys.exit(1)

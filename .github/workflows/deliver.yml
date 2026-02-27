@@ -31,12 +31,12 @@ jobs:
 
       - name: Run pipeline
         run: uv run python -m pipeline.main
-        # env:
-        #   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        #   GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
-        #   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        #   GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        # Secrets commented out — activate in phases that use them
+        env:
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+          # TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          # Remaining secrets activated in later phases
 
       - name: Commit state back to repo
         id: commit
