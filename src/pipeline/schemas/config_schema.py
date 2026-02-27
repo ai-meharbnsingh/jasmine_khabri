@@ -4,7 +4,8 @@ from pydantic import BaseModel, Field
 
 
 class ScheduleConfig(BaseModel):
-    morning_ist: str = "07:00"  # HH:MM in IST — MUST be quoted in YAML to prevent sexagesimal parsing
+    # HH:MM in IST — MUST be quoted in YAML to prevent sexagesimal parsing
+    morning_ist: str = "07:00"
     evening_ist: str = "16:00"  # HH:MM in IST
 
 
