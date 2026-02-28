@@ -92,12 +92,12 @@ Plans:
   3. A Tier 1 city story (Delhi NCR, Mumbai, Bangalore, Hyderabad) always passes geographic filtering; a Tier 3 story is only included if its impact score exceeds 85
   4. An article whose normalized title hash exists in `seen.json` within the last 7 days is marked as a duplicate and not passed to the AI pipeline
   5. An article with 50-80% title similarity to an existing seen article is labeled "UPDATE" with a reference to the original
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: Keyword library integration, relevance scorer, and exclusion keyword filter
-- [ ] 04-02: Geographic tier classifier with Tier 1/2/3 priority rules
-- [ ] 04-03: Title-hash deduplicator with 7-day rolling window and UPDATE detection
+- [ ] 04-01-PLAN.md — Article schema extension, shared hashing utilities, keyword relevance scorer and exclusion filter (TDD)
+- [ ] 04-02-PLAN.md — Geographic tier classifier with Tier 1/2/3 priority rules and national-scope government feed handling (TDD)
+- [ ] 04-03-PLAN.md — Title-hash deduplicator with UPDATE detection, pipeline wiring of all filters into main.py (TDD)
 
 ### Phase 5: AI Analysis Pipeline
 **Goal**: Filtered articles are classified HIGH/MEDIUM/LOW by Claude Sonnet in a single batched API call, enriched with 2-line impact summaries and key entities, with automatic Gemini fallback on Claude failure — all within the $5/month AI cost budget
