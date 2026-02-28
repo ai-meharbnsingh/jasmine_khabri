@@ -12,6 +12,9 @@ from pipeline.fetchers.gnews_fetcher import (
     save_quota,
 )
 from pipeline.fetchers.rss_fetcher import fetch_all_rss
+from pipeline.filters.dedup_filter import filter_duplicates
+from pipeline.filters.geo_filter import filter_by_geo_tier
+from pipeline.filters.relevance_filter import filter_by_relevance
 from pipeline.utils.loader import load_config, load_keywords, load_seen, save_seen
 from pipeline.utils.purge import purge_old_entries
 
@@ -105,8 +108,24 @@ def run() -> None:
                 row["error"] or "",
             )
 
-        # Phase 4-7: filter, classify, deliver (not yet implemented)
-        logger.info("Pipeline phases 4-7: not yet implemented")
+        # Phase 4: Filter and deduplicate
+        relevant_articles = filter_by_relevance(all_articles, keywords)
+        geo_filtered = filter_by_geo_tier(relevant_articles)
+        deduped_articles, seen = filter_duplicates(geo_filtered, seen)
+
+        # Save updated seen store (with new articles added by dedup filter)
+        save_seen(seen, "data/seen.json")
+
+        logger.info(
+            "Filter pipeline: %d fetched -> %d relevant -> %d geo-passed -> %d after dedup",
+            len(all_articles),
+            len(relevant_articles),
+            len(geo_filtered),
+            len(deduped_articles),
+        )
+
+        # Phase 5-7: classify, deliver (not yet implemented)
+        logger.info("Pipeline phases 5-7: not yet implemented")
     except Exception:  # noqa: BLE001
         logger.exception("Pipeline encountered an unhandled error")
         sys.exit(1)
