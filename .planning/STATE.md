@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-27T17:12:23.328Z"
+last_updated: "2026-02-28T08:43:09Z"
 progress:
-  total_phases: 3
+  total_phases: 11
   completed_phases: 3
-  total_plans: 8
-  completed_plans: 8
+  total_plans: 9
+  completed_plans: 9
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-26)
 
 ## Current Position
 
-Phase: 3 of 11 (News Fetching) — Complete
-Plan: 3 of 3 in current phase (03-01, 03-02, 03-03 all complete)
-Status: Phase 3 Complete — RSS+GNews fetchers wired into pipeline, 8 RSS feeds in config.yaml, 73 tests passing
-Last activity: 2026-02-27 — Plan 03-03 complete (pipeline wiring + integration tests, 73 total tests)
+Phase: 4 of 11 (Filtering and Deduplication) — In Progress
+Plan: 1 of 3 in current phase (04-01 complete)
+Status: Phase 4 Plan 1 Complete — Relevance filter with keyword scoring and exclusion gate, 86 tests passing
+Last activity: 2026-02-28 — Plan 04-01 complete (relevance filter, hashing utilities, Article schema extended)
 
-Progress: [████░░░░░░] 30%
+Progress: [████░░░░░░] 32%
 
 ## Performance Metrics
 
@@ -43,13 +43,15 @@ Progress: [████░░░░░░] 30%
 | 01-project-scaffold | 3 | 5 min | 1.7 min |
 | 02-scheduling-infrastructure | 2 | 4 min | 2.0 min |
 | 03-news-fetching | 3 | 14 min | 4.7 min |
+| 04-filtering-and-deduplication | 1 | 13 min | 13.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (2 min), 02-02 (2 min), 03-01 (3 min), 03-02 (5 min), 03-03 (6 min)
-- Trend: stable
+- Last 5 plans: 03-01 (3 min), 03-02 (5 min), 03-03 (6 min), 04-01 (13 min)
+- Trend: increasing (more complex TDD filtering logic)
 
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
+| Phase 04-filtering P01 | 13 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -87,6 +89,11 @@ Recent decisions affecting current work:
 - [Phase 03-news-fetching]: gnews_quota.json seeded with 1970-01-01 — auto-resets on first run, no manual init; added to deliver.yml EndBug commit-back
 - [Phase 03-03]: Health summary logged inline in main.py (not separate function) — sufficient for Phase 3; Phase 5 can refactor
 - [Phase 03-03]: GNews guard uses empty-string falsy check on os.environ.get — explicit and consistent with Phase 3 env pattern
+- [Phase 04-01]: Exclusion check runs before keyword scoring — short-circuits at O(n_exclusions) instead of O(n_keywords)
+- [Phase 04-01]: normalize_title uses NFD decomposition so 'Phase-4' and 'Phase 4' produce identical tokens
+- [Phase 04-01]: score_article returns (bool, int) tuple — caller decides rejection vs logging; no side effects
+- [Phase 04-01]: hashing.py is canonical normalization source — 04-02 dedup MUST import from here, not reinvent
+- [Phase 04-01]: All four Phase 4 filter fields on Article use Python defaults — zero code changes in Phase 3 constructors
 
 ### Pending Todos
 
@@ -100,7 +107,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-27
-Stopped at: Completed 03-news-fetching/03-03-PLAN.md (pipeline wiring, integration tests, 73 total tests)
+Last session: 2026-02-28
+Stopped at: Completed 04-filtering-and-deduplication/04-01-PLAN.md (relevance filter, hashing utilities, 86 tests)
 Resume file: None
-Next: Phase 4 — Deduplication (seen.json URL dedup layer)
+Next: Phase 4 Plan 02 — URL deduplication using seen.json
