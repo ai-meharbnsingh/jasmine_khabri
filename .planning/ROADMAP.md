@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Project Scaffold** - Repo structure, dependency management, data schemas, and dev environment (completed 2026-02-27)
 - [x] **Phase 2: Scheduling Infrastructure** - GitHub Actions cron wiring, keepalive workflow, and JSON state management (completed 2026-02-27)
 - [x] **Phase 3: News Fetching** - RSS feed ingestion and GNews.io API integration with error handling (completed 2026-02-27)
-- [ ] **Phase 4: Filtering and Deduplication** - Keyword filtering, geo-tier scoring, and title-hash dedup history
+- [x] **Phase 4: Filtering and Deduplication** - Keyword filtering, geo-tier scoring, and title-hash dedup history (completed 2026-02-28)
 - [ ] **Phase 5: AI Analysis Pipeline** - Claude classification, entity extraction, Gemini fallback, and cost controls
 - [ ] **Phase 6: Telegram Delivery** - Scheduled Telegram delivery at 7 AM and 4 PM IST to both users
 - [ ] **Phase 7: Email Delivery and Edge Cases** - HTML email digest, overflow notices, slow-day handling
@@ -225,7 +225,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 1. Project Scaffold | 3/3 | Complete   | 2026-02-27 |
 | 2. Scheduling Infrastructure | 2/2 | Complete   | 2026-02-27 |
 | 3. News Fetching | 3/3 | Complete   | 2026-02-27 |
-| 4. Filtering and Deduplication | 2/3 | In Progress|  |
+| 4. Filtering and Deduplication | 3/3 | Complete   | 2026-02-28 |
 | 5. AI Analysis Pipeline | 0/3 | Not started | - |
 | 6. Telegram Delivery | 0/3 | Not started | - |
 | 7. Email Delivery and Edge Cases | 0/3 | Not started | - |

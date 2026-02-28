@@ -20,8 +20,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **AI-01**: System classifies articles as HIGH/MEDIUM/LOW priority using Claude Sonnet with domain-primed prompt (infrastructure, RERA, PMAY, celebrity criteria)
 - [ ] **AI-02**: System generates 2-line AI summary per article explaining real estate/infrastructure impact
-- [ ] **AI-03**: System detects duplicates against 7-day history using two-stage approach (title hash first, then semantic similarity at 0.85+ threshold)
-- [ ] **AI-04**: System detects story updates (50-80% similarity) and labels them as "UPDATE" with reference to original
+- [x] **AI-03**: System detects duplicates against 7-day history using two-stage approach (title hash first, then semantic similarity at 0.85+ threshold)
+- [x] **AI-04**: System detects story updates (50-80% similarity) and labels them as "UPDATE" with reference to original
 - [ ] **AI-05**: System extracts key entities per article (location, project name, budget, authority)
 - [ ] **AI-06**: System uses Gemini as fallback when Claude API fails
 - [ ] **AI-07**: System batches articles per AI call (up to 10-15 per batch) to stay within $5/month budget
@@ -113,8 +113,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FETCH-06 | Phase 3 | Complete |
 | AI-01 | Phase 5 | Pending |
 | AI-02 | Phase 5 | Pending |
-| AI-03 | Phase 4 | Pending |
-| AI-04 | Phase 4 | Pending |
+| AI-03 | Phase 4 | Complete |
+| AI-04 | Phase 4 | Complete |
 | AI-05 | Phase 5 | Pending |
 | AI-06 | Phase 5 | Pending |
 | AI-07 | Phase 5 | Pending |
