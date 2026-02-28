@@ -13,7 +13,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FETCH-02**: System fetches news from GNews.io API using keyword queries (100 req/day budget managed via batched Boolean queries)
 - [x] **FETCH-03**: System filters articles by keyword library matching against title + description (relevance score >40 threshold)
 - [x] **FETCH-04**: System applies exclusion keywords to filter noise (obituary, gossip, scandal, etc.)
-- [ ] **FETCH-05**: System applies geographic tier priority (Tier 1: always include; Tier 2: HIGH only; Tier 3: HIGH + impact >85 only)
+- [x] **FETCH-05**: System applies geographic tier priority (Tier 1: always include; Tier 2: HIGH only; Tier 3: HIGH + impact >85 only)
 - [x] **FETCH-06**: System handles RSS feed failures gracefully (timeout, malformed XML, HTTP errors) without failing entire run
 
 ### AI Analysis
@@ -109,7 +109,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FETCH-02 | Phase 3 | Complete |
 | FETCH-03 | Phase 4 | Complete |
 | FETCH-04 | Phase 4 | Complete |
-| FETCH-05 | Phase 4 | Pending |
+| FETCH-05 | Phase 4 | Complete |
 | FETCH-06 | Phase 3 | Complete |
 | AI-01 | Phase 5 | Pending |
 | AI-02 | Phase 5 | Pending |

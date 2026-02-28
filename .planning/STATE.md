@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-02-28T08:43:09Z"
+last_updated: "2026-02-28T08:54:11Z"
 progress:
   total_phases: 11
   completed_phases: 3
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-26)
 ## Current Position
 
 Phase: 4 of 11 (Filtering and Deduplication) — In Progress
-Plan: 1 of 3 in current phase (04-01 complete)
-Status: Phase 4 Plan 1 Complete — Relevance filter with keyword scoring and exclusion gate, 86 tests passing
-Last activity: 2026-02-28 — Plan 04-01 complete (relevance filter, hashing utilities, Article schema extended)
+Plan: 2 of 3 in current phase (04-02 complete)
+Status: Phase 4 Plan 2 Complete — Geographic tier classifier with city taxonomy and tier-based score thresholds, 106 tests passing
+Last activity: 2026-02-28 — Plan 04-02 complete (geo_filter.py, classify_geo_tier, filter_by_geo_tier, 20 new tests)
 
-Progress: [████░░░░░░] 32%
+Progress: [████░░░░░░] 36%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [████░░░░░░] 32%
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
 | Phase 04-filtering P01 | 13 | 2 tasks | 5 files |
+| Phase 04-filtering P02 | 8 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -94,6 +95,9 @@ Recent decisions affecting current work:
 - [Phase 04-01]: score_article returns (bool, int) tuple — caller decides rejection vs logging; no side effects
 - [Phase 04-01]: hashing.py is canonical normalization source — 04-02 dedup MUST import from here, not reinvent
 - [Phase 04-01]: All four Phase 4 filter fields on Article use Python defaults — zero code changes in Phase 3 constructors
+- [Phase 04-02]: Government sources (MOHUA, NHAI, AAI, Smart Cities) with no city match treated as Tier 1 national-scope — per 04-RESEARCH.md Pitfall 4
+- [Phase 04-02]: Tier 2 threshold 60 and Tier 3 threshold 85 are Phase 4 proxies — Phase 5 AI classification will refine with semantic understanding
+- [Phase 04-02]: frozenset for O(1) city taxonomy lookup — TIER_1_CITIES/TIER_2_CITIES/GOV_SOURCES pattern for all categorical sets in pipeline
 
 ### Pending Todos
 
@@ -108,6 +112,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 04-filtering-and-deduplication/04-01-PLAN.md (relevance filter, hashing utilities, 86 tests)
+Stopped at: Completed 04-filtering-and-deduplication/04-02-PLAN.md (geo tier classifier, 20 new tests, 106 total)
 Resume file: None
-Next: Phase 4 Plan 02 — URL deduplication using seen.json
+Next: Phase 4 Plan 03 — URL deduplication using seen.json
