@@ -39,7 +39,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Telegram Bot
 
 - [ ] **BOT-01**: User can send /help to see available commands and usage
-- [ ] **BOT-02**: User can send /status to see system health (last run, sources active, delivery success rate)
+- [x] **BOT-02**: User can send /status to see system health (last run, sources active, delivery success rate)
 - [ ] **BOT-03**: User can send /pause and /resume to control alert delivery (with duration support: "pause 3 days")
 - [ ] **BOT-04**: User can send /menu to access interactive inline keyboard settings menu
 - [ ] **BOT-05**: User can add/remove keywords via commands ("add keyword: bullet train", "remove celebrity: Salman Khan")
@@ -55,7 +55,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INFRA-01**: System runs on GitHub Actions with UTC cron schedules correctly mapped to IST delivery times
 - [x] **INFRA-02**: System stores mutable state (seen articles, config, keywords) as JSON files committed back to repo
 - [x] **INFRA-03**: System includes keepalive workflow to prevent GitHub's 60-day inactivity cron disable
-- [ ] **INFRA-04**: Telegram bot runs as persistent Python process on Railway (polling mode, no webhook needed) — handles commands instantly, dispatches heavy processing to GitHub Actions via repository_dispatch
+- [x] **INFRA-04**: Telegram bot runs as persistent Python process on Railway (polling mode, no webhook needed) — handles commands instantly, dispatches heavy processing to GitHub Actions via repository_dispatch
 - [x] **INFRA-05**: System auto-purges article history older than 7 days
 - [x] **INFRA-06**: System operates within free tier limits (Railway $5/month credit for bot, $0 GitHub Actions, <$5/month AI API)
 
@@ -126,7 +126,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLVR-06 | Phase 7 | Complete |
 | DLVR-07 | Phase 7 | Complete |
 | BOT-01 | Phase 8 | Pending |
-| BOT-02 | Phase 8 | Pending |
+| BOT-02 | Phase 8 | Complete |
 | BOT-03 | Phase 10 | Pending |
 | BOT-04 | Phase 9 | Pending |
 | BOT-05 | Phase 9 | Pending |
@@ -139,7 +139,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-01 | Phase 2 | Complete |
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 2 | Complete |
-| INFRA-04 | Phase 8 | Pending |
+| INFRA-04 | Phase 8 | Complete |
 | INFRA-05 | Phase 2 | Complete |
 | INFRA-06 | Phase 1 | Complete |
 
