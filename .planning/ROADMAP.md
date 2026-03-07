@@ -23,7 +23,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: News Fetching** - RSS feed ingestion and GNews.io API integration with error handling (completed 2026-02-27)
 - [x] **Phase 4: Filtering and Deduplication** - Keyword filtering, geo-tier scoring, and title-hash dedup history (completed 2026-02-28)
 - [ ] **Phase 5: AI Analysis Pipeline** - Claude classification, entity extraction, Gemini fallback, and cost controls
-- [ ] **Phase 6: Telegram Delivery** - Scheduled Telegram delivery at 7 AM and 4 PM IST to both users
+- [x] **Phase 6: Telegram Delivery** - Scheduled Telegram delivery at 7 AM and 4 PM IST to both users
 - [ ] **Phase 7: Email Delivery and Edge Cases** - HTML email digest, overflow notices, slow-day handling
 - [ ] **Phase 8: Railway Bot Foundation** - Persistent bot process on Railway with basic commands and auth guard
 - [ ] **Phase 9: Keyword and Menu Management** - Keyword CRUD commands and interactive inline keyboard menu
@@ -127,8 +127,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Priority-based article selector and Telegram HTML message formatter with chunking
-- [ ] 06-02-PLAN.md — Telegram API sender with retry, pipeline wiring into main.py, deliver.yml secrets
+- [x] 06-01-PLAN.md — Priority-based article selector and Telegram HTML message formatter with chunking
+- [x] 06-02-PLAN.md — Telegram API sender with retry, pipeline wiring into main.py, deliver.yml secrets
 
 ### Phase 7: Email Delivery and Edge Cases
 **Goal**: Delivery is complete with HTML email digests sent via Gmail SMTP alongside Telegram, plus all edge cases handled gracefully — no-news days, slow-news days, and overflow HIGH stories all produce appropriate user-facing responses
@@ -224,8 +224,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 2. Scheduling Infrastructure | 2/2 | Complete   | 2026-02-27 |
 | 3. News Fetching | 3/3 | Complete   | 2026-02-27 |
 | 4. Filtering and Deduplication | 3/3 | Complete   | 2026-02-28 |
-| 5. AI Analysis Pipeline | 0/2 | Not started | - |
-| 6. Telegram Delivery | 0/2 | Not started | - |
+| 5. AI Analysis Pipeline | 2/2 | Complete | 2026-03-07 |
+| 6. Telegram Delivery | 2/2 | Complete | 2026-03-07 |
 | 7. Email Delivery and Edge Cases | 0/3 | Not started | - |
 | 8. Railway Bot Foundation | 0/3 | Not started | - |
 | 9. Keyword and Menu Management | 0/3 | Not started | - |
