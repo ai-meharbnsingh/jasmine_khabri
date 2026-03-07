@@ -133,18 +133,18 @@ Plans:
 ### Phase 7: Email Delivery and Edge Cases
 **Goal**: Delivery is complete with HTML email digests sent via Gmail SMTP alongside Telegram, plus all edge cases handled gracefully — no-news days, slow-news days, and overflow HIGH stories all produce appropriate user-facing responses
 **Depends on**: Phase 6
-**Requirements**: DLVR-03, DLVR-05, DLVR-06, DLVR-07
+**Requirements**: DLVR-03, DLVR-06, DLVR-07
 **Success Criteria** (what must be TRUE):
   1. A pipeline run sends an HTML email to the configured Gmail recipients with priority-colored article cards and source links rendered correctly
   2. When zero articles pass filtering, the pipeline sends a "no news today" message to Telegram (not a blank message or silence)
   3. When fewer than 15 articles are available, the pipeline sends all available articles and logs the slow-news condition without errors
   4. When more than 8 HIGH-priority stories are available, the delivery message includes a prompt "reply 'more' to see additional stories" referencing the overflow count
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: Jinja2 HTML email template and Gmail SMTP sender with retry logic
-- [ ] 07-02: Slow-news and no-news fallback handlers
-- [ ] 07-03: HIGH story overflow detection and overflow notice in delivery message
+- [ ] 07-01-PLAN.md — Gmail SMTP email sender with HTML card formatting, pipeline wiring, deliver.yml secrets
+- [ ] 07-02-PLAN.md — Edge case handling: no-news, slow-news, HIGH overflow detection for both channels
+
 
 ### Phase 8: Railway Bot Foundation
 **Goal**: A persistent Telegram bot process runs on Railway in polling mode, accepts commands only from authorized user IDs, responds to /help and /status, and dispatches heavy processing to GitHub Actions via repository_dispatch — with zero cold-start delays for command responses
@@ -226,7 +226,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 4. Filtering and Deduplication | 3/3 | Complete   | 2026-02-28 |
 | 5. AI Analysis Pipeline | 2/2 | Complete | 2026-03-07 |
 | 6. Telegram Delivery | 2/2 | Complete | 2026-03-07 |
-| 7. Email Delivery and Edge Cases | 0/3 | Not started | - |
+| 7. Email Delivery and Edge Cases | 0/2 | Not started | - |
 | 8. Railway Bot Foundation | 0/3 | Not started | - |
 | 9. Keyword and Menu Management | 0/3 | Not started | - |
 | 10. Advanced Bot Controls | 0/4 | Not started | - |
