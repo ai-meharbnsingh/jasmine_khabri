@@ -18,12 +18,14 @@ from pipeline.fetchers.rss_fetcher import fetch_all_rss
 from pipeline.filters.dedup_filter import filter_duplicates
 from pipeline.filters.geo_filter import filter_by_geo_tier
 from pipeline.filters.relevance_filter import filter_by_relevance
+from pipeline.schemas import PipelineStatus
 from pipeline.utils.loader import (
     load_ai_cost,
     load_config,
     load_keywords,
     load_seen,
     save_ai_cost,
+    save_pipeline_status,
     save_seen,
 )
 from pipeline.utils.purge import purge_old_entries
@@ -159,6 +161,24 @@ def run() -> None:
         # Phase 7: Email delivery
         email_count = deliver_email(classified_articles, config)
         logger.info("Email delivery: %d emails sent", email_count)
+
+        # Phase 8: Save pipeline status for bot /status command
+        status = PipelineStatus(
+            last_run_utc=start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            articles_fetched=len(all_articles),
+            articles_delivered=delivered + email_count,
+            telegram_success=delivered,
+            telegram_failures=0,
+            email_success=email_count,
+            sources_active=len(config.rss_feeds) + (1 if gnews_api_key else 0),
+            run_duration_seconds=round((datetime.now(UTC) - start).total_seconds(), 1),
+        )
+        save_pipeline_status(status, "data/pipeline_status.json")
+        logger.info(
+            "Pipeline status saved: %d fetched, %d delivered",
+            status.articles_fetched,
+            status.articles_delivered,
+        )
     except Exception:  # noqa: BLE001
         logger.exception("Pipeline encountered an unhandled error")
         sys.exit(1)
