@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-07T09:38:49.848Z"
-last_activity: 2026-03-07 — Plan 05-02 complete (AI classifier, pipeline wiring, 14 new tests, 169 total)
+status: Selector and formatter implemented with TDD, 203 tests passing
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-07T10:03:24.822Z"
+last_activity: 2026-03-07 — Plan 06-01 complete (selector + telegram formatter, 34 new tests, 203 total)
 progress:
   total_phases: 11
   completed_phases: 5
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_plans: 15
+  completed_plans: 14
+  percent: 93
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 5 complete — ready for Phase 6 (Telegram Delivery)
+**Current focus:** Phase 6 in progress — Telegram Delivery (selector + formatter done, API integration next)
 
 ## Current Position
 
-Phase: 5 of 11 (AI Analysis Pipeline)
-Plan: 2 of 2 in current phase (05-02 complete)
-Status: Phase 5 complete — AI classifier with Claude/Gemini fallback, budget gates, pipeline wired, 169 tests passing
-Last activity: 2026-03-07 — Plan 05-02 complete (AI classifier, pipeline wiring, 14 new tests, 169 total)
+Phase: 6 of 11 (Telegram Delivery)
+Plan: 1 of 2 in current phase (06-01 complete)
+Status: Selector and formatter implemented with TDD, 203 tests passing
+Last activity: 2026-03-07 — Plan 06-01 complete (selector + telegram formatter, 34 new tests, 203 total)
 
-Progress: [██████████] 100%
+Progress: [█████████░] 93%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 2.0 min
-- Total execution time: 0.17 hours
+- Total plans completed: 14
+- Average duration: 5.3 min
+- Total execution time: 1.23 hours
 
 **By Phase:**
 
@@ -48,9 +48,10 @@ Progress: [██████████] 100%
 | 03-news-fetching | 3 | 14 min | 4.7 min |
 | 04-filtering-and-deduplication | 1 | 13 min | 13.0 min |
 | 05-ai-analysis-pipeline | 2 | 9 min | 4.5 min |
+| 06-telegram-delivery | 1 | 4 min | 4.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-03 (6 min), 04-01 (13 min), 05-01 (4 min), 05-02 (5 min)
+- Last 5 plans: 04-01 (13 min), 05-01 (4 min), 05-02 (5 min), 06-01 (4 min)
 - Trend: stabilizing
 
 *Updated after each plan completion*
@@ -60,6 +61,7 @@ Progress: [██████████] 100%
 | Phase 04-filtering P03 | 5 | 2 tasks | 3 files |
 | Phase 05-ai-analysis P01 | 4 | 2 tasks | 11 files |
 | Phase 05-ai-analysis P02 | 5 | 2 tasks | 4 files |
+| Phase 06-telegram-delivery P01 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -118,6 +120,11 @@ Recent decisions affecting current work:
 - [Phase 05-02]: Budget exceeded ($4.75) degrades to keyword-only: relevance_score >=80 HIGH, >=60 MEDIUM, else LOW
 - [Phase 05-02]: Both-providers-fail assigns MEDIUM priority with empty summary/entities -- pipeline never crashes
 - [Phase 05-02]: GOOGLE_API_KEY env var (not GEMINI_API_KEY) matches deliver.yml naming convention
+- [Phase 06-01]: HIGH cap at 8 is hard limit (no backfill beyond cap) -- prevents HIGH flooding
+- [Phase 06-01]: Backfill order: MEDIUM surplus then LOW surplus (never exceeds HIGH cap)
+- [Phase 06-01]: Pipe separator (|) for source-location and entity metadata instead of asterisk
+- [Phase 06-01]: Section headers use color circle emojis (red/yellow/green) for visual priority distinction
+- [Phase 06-01]: Empty priority articles silently excluded (no crash, no log noise)
 
 ### Pending Todos
 
@@ -131,7 +138,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T09:38:49.846Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-telegram-delivery/06-CONTEXT.md
-Next: Phase 6 — Telegram Delivery
+Last session: 2026-03-07T10:03:24.820Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: None
+Next: Plan 06-02 — Telegram API integration
