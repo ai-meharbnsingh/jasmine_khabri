@@ -6,6 +6,7 @@ import sys
 from datetime import UTC, datetime
 
 from pipeline.analyzers.classifier import classify_articles
+from pipeline.deliverers.telegram_sender import deliver_articles
 from pipeline.fetchers.gnews_fetcher import (
     build_gnews_queries,
     fetch_all_gnews,
@@ -150,8 +151,12 @@ def run() -> None:
             ai_cost.call_count,
         )
 
-        # Phase 6-7: deliver (not yet implemented)
-        logger.info("Pipeline phases 6-7: not yet implemented")
+        # Phase 6: Telegram delivery
+        delivered = deliver_articles(classified_articles, config)
+        logger.info("Telegram delivery complete: %d successful sends", delivered)
+
+        # Phase 7: email delivery (not yet implemented)
+        logger.info("Pipeline phase 7: not yet implemented")
     except Exception:  # noqa: BLE001
         logger.exception("Pipeline encountered an unhandled error")
         sys.exit(1)
