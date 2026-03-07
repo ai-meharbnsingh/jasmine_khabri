@@ -156,12 +156,12 @@ Plans:
   3. Sending any command from an unauthorized Telegram user ID receives an "unauthorized" response and the command is not processed
   4. The Railway deployment stays running continuously across 24 hours without process restarts visible in the Railway logs
   5. The bot dispatches a `run_now` event to GitHub Actions via `repository_dispatch` and the triggered pipeline run is visible in GitHub Actions UI
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 08-01: Railway project setup, Procfile, environment variables, and polling bot entrypoint
-- [ ] 08-02: Authorization guard (whitelist of Telegram user IDs), /help command, and /status command reading from state JSON
-- [ ] 08-03: repository_dispatch integration so the bot can trigger GitHub Actions pipeline runs on demand
+- [ ] 08-01-PLAN.md — PipelineStatus schema, loader/saver, railway.json, python-telegram-bot dependency, deliver.yml updates
+- [ ] 08-02-PLAN.md — Authorization guard, /help and /status command handlers, GitHub Contents API status reader, bot entrypoint
+- [ ] 08-03-PLAN.md — Repository dispatch trigger for on-demand pipeline runs via /run command
 
 ### Phase 9: Keyword and Menu Management
 **Goal**: Users can view, add, and remove keywords by category via Telegram commands, and can access all settings through an interactive inline keyboard menu — with changes persisted to the JSON keyword library and immediately applied to the next pipeline run
@@ -216,7 +216,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
