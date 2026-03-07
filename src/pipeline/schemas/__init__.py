@@ -13,6 +13,7 @@ from pipeline.schemas.config_schema import (
 )
 from pipeline.schemas.gnews_quota_schema import GNewsQuota
 from pipeline.schemas.keywords_schema import KeywordCategory, KeywordsConfig
+from pipeline.schemas.pipeline_status_schema import PipelineStatus
 from pipeline.schemas.seen_schema import SeenEntry, SeenStore
 
 __all__ = [
@@ -24,6 +25,7 @@ __all__ = [
     "DeliveryConfig",
     "EmailConfig",
     "GNewsQuota",
+    "PipelineStatus",
     "KeywordCategory",
     "KeywordsConfig",
     "RssFeedConfig",

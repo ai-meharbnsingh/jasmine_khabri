@@ -9,6 +9,7 @@ import yaml
 from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.config_schema import AppConfig
 from pipeline.schemas.keywords_schema import KeywordsConfig
+from pipeline.schemas.pipeline_status_schema import PipelineStatus
 from pipeline.schemas.seen_schema import SeenStore
 
 
@@ -77,3 +78,28 @@ def save_ai_cost(cost: AICost, path: str | Path = "data/ai_cost.json") -> None:
     """Save AICost to JSON file."""
     path = Path(path)
     path.write_text(cost.model_dump_json(indent=2) + "\n")
+
+
+def load_pipeline_status(path: str | Path = "data/pipeline_status.json") -> PipelineStatus:
+    """Load and validate pipeline status from JSON.
+
+    Returns PipelineStatus with defaults if file doesn't exist or is empty.
+    """
+    path = Path(path)
+    if not path.exists():
+        return PipelineStatus()
+
+    text = path.read_text().strip()
+    if not text:
+        return PipelineStatus()
+
+    raw = json.loads(text)
+    return PipelineStatus.model_validate(raw)
+
+
+def save_pipeline_status(
+    status: PipelineStatus, path: str | Path = "data/pipeline_status.json"
+) -> None:
+    """Save PipelineStatus to JSON file."""
+    path = Path(path)
+    path.write_text(status.model_dump_json(indent=2) + "\n")
