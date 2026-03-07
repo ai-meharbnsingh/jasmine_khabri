@@ -24,7 +24,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **AI-04**: System detects story updates (50-80% similarity) and labels them as "UPDATE" with reference to original
 - [ ] **AI-05**: System extracts key entities per article (location, project name, budget, authority)
 - [ ] **AI-06**: System uses Gemini as fallback when Claude API fails
-- [ ] **AI-07**: System batches articles per AI call (up to 10-15 per batch) to stay within $5/month budget
+- [x] **AI-07**: System batches articles per AI call (up to 10-15 per batch) to stay within $5/month budget
 
 ### Delivery
 
@@ -117,7 +117,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AI-04 | Phase 4 | Complete |
 | AI-05 | Phase 5 | Pending |
 | AI-06 | Phase 5 | Pending |
-| AI-07 | Phase 5 | Pending |
+| AI-07 | Phase 5 | Complete |
 | DLVR-01 | Phase 6 | Pending |
 | DLVR-02 | Phase 6 | Pending |
 | DLVR-03 | Phase 7 | Pending |
