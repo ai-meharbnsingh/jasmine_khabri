@@ -33,8 +33,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DLVR-03**: System delivers HTML email digest via Gmail SMTP with styled template (priority-colored sections, article cards)
 - [x] **DLVR-04**: System selects max 15 stories per delivery with priority-based allocation (all HIGH up to 8, fill MEDIUM min 4, fill LOW min 2)
 - [ ] **DLVR-05**: System sends breaking news alerts for critical HIGH-priority stories between scheduled deliveries
-- [ ] **DLVR-06**: System handles slow news days gracefully (sends all available if <15, sends "no news" message if zero)
-- [ ] **DLVR-07**: System notifies users when overflow HIGH stories exist (>8 HIGH, "reply 'more' to see them")
+- [x] **DLVR-06**: System handles slow news days gracefully (sends all available if <15, sends "no news" message if zero)
+- [x] **DLVR-07**: System notifies users when overflow HIGH stories exist (>8 HIGH, "reply 'more' to see them")
 
 ### Telegram Bot
 
@@ -123,8 +123,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLVR-03 | Phase 7 | Complete |
 | DLVR-04 | Phase 6 | Complete |
 | DLVR-05 | Phase 11 | Pending |
-| DLVR-06 | Phase 7 | Pending |
-| DLVR-07 | Phase 7 | Pending |
+| DLVR-06 | Phase 7 | Complete |
+| DLVR-07 | Phase 7 | Complete |
 | BOT-01 | Phase 8 | Pending |
 | BOT-02 | Phase 8 | Pending |
 | BOT-03 | Phase 10 | Pending |
