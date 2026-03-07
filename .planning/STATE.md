@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Selector and formatter implemented with TDD, 203 tests passing
-stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-03-07T10:03:24.822Z"
-last_activity: 2026-03-07 — Plan 06-01 complete (selector + telegram formatter, 34 new tests, 203 total)
+status: Phase 6 complete — Telegram delivery end-to-end, 222 tests passing
+stopped_at: Completed 06-02-PLAN.md
+last_updated: "2026-03-07T10:08:16Z"
+last_activity: 2026-03-07 — Plan 06-02 complete (Telegram API sender + pipeline integration, 19 new tests, 222 total)
 progress:
   total_phases: 11
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 15
-  completed_plans: 14
-  percent: 93
+  completed_plans: 15
+  percent: 100
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 6 in progress — Telegram Delivery (selector + formatter done, API integration next)
+**Current focus:** Phase 6 complete — Telegram Delivery end-to-end. Phase 7 next (Email Delivery)
 
 ## Current Position
 
-Phase: 6 of 11 (Telegram Delivery)
-Plan: 1 of 2 in current phase (06-01 complete)
-Status: Selector and formatter implemented with TDD, 203 tests passing
-Last activity: 2026-03-07 — Plan 06-01 complete (selector + telegram formatter, 34 new tests, 203 total)
+Phase: 6 of 11 (Telegram Delivery) -- COMPLETE
+Plan: 2 of 2 in current phase (06-02 complete)
+Status: Phase 6 complete -- Telegram delivery end-to-end, 222 tests passing
+Last activity: 2026-03-07 -- Plan 06-02 complete (Telegram API sender + pipeline integration, 19 new tests, 222 total)
 
-Progress: [█████████░] 93%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 5.3 min
-- Total execution time: 1.23 hours
+- Total plans completed: 15
+- Average duration: 5.1 min
+- Total execution time: 1.28 hours
 
 **By Phase:**
 
@@ -48,11 +48,11 @@ Progress: [█████████░] 93%
 | 03-news-fetching | 3 | 14 min | 4.7 min |
 | 04-filtering-and-deduplication | 1 | 13 min | 13.0 min |
 | 05-ai-analysis-pipeline | 2 | 9 min | 4.5 min |
-| 06-telegram-delivery | 1 | 4 min | 4.0 min |
+| 06-telegram-delivery | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (13 min), 05-01 (4 min), 05-02 (5 min), 06-01 (4 min)
-- Trend: stabilizing
+- Last 5 plans: 05-01 (4 min), 05-02 (5 min), 06-01 (4 min), 06-02 (3 min)
+- Trend: stabilizing/improving
 
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
@@ -62,6 +62,7 @@ Progress: [█████████░] 93%
 | Phase 05-ai-analysis P01 | 4 | 2 tasks | 11 files |
 | Phase 05-ai-analysis P02 | 5 | 2 tasks | 4 files |
 | Phase 06-telegram-delivery P01 | 4 | 2 tasks | 4 files |
+| Phase 06-telegram-delivery P02 | 3 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -125,6 +126,11 @@ Recent decisions affecting current work:
 - [Phase 06-01]: Pipe separator (|) for source-location and entity metadata instead of asterisk
 - [Phase 06-01]: Section headers use color circle emojis (red/yellow/green) for visual priority distinction
 - [Phase 06-01]: Empty priority articles silently excluded (no crash, no log noise)
+- [Phase 06-02]: Env var TELEGRAM_BOT_TOKEN takes precedence over config.telegram.bot_token -- secrets stay in GitHub, not YAML
+- [Phase 06-02]: TELEGRAM_CHAT_IDS comma-separated in single env var -- simpler than multiple secrets
+- [Phase 06-02]: Single retry on 429/network errors with 2s delay -- Telegram API is fast, exponential backoff unnecessary
+- [Phase 06-02]: link_preview_options.is_disabled=True -- prevents cluttered previews in delivery messages
+- [Phase 06-02]: 0.5s inter-send delay -- respects Telegram 30 msg/sec rate limit without being slow
 
 ### Pending Todos
 
@@ -138,7 +144,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T10:03:24.820Z
-Stopped at: Completed 06-01-PLAN.md
+Last session: 2026-03-07T10:08:16Z
+Stopped at: Completed 06-02-PLAN.md
 Resume file: None
-Next: Plan 06-02 — Telegram API integration
+Next: Phase 7 -- Email Delivery and Edge Cases
