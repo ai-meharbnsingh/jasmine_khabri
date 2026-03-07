@@ -1,7 +1,8 @@
 """Tests for bot entrypoint — Application builder and polling setup.
 
-TDD Phase 8 Plan 02 — tests for main() in entrypoint.py.
+TDD Phase 8 Plan 02 + Phase 9 Plan 02 — tests for main() in entrypoint.py.
 Mocks ApplicationBuilder to avoid real Telegram polling in tests.
+Phase 9 additions: keyword/menu handlers, CallbackQueryHandler, allowed_updates.
 """
 
 from unittest.mock import MagicMock, patch
@@ -81,6 +82,71 @@ class TestMainApplicationConstruction:
         mock_app.run_polling.assert_called_once()
         kwargs = mock_app.run_polling.call_args[1]
         assert kwargs.get("drop_pending_updates") is True
+
+
+class TestMainPhase9Handlers:
+    """Tests for Phase 9 handler registrations — keywords, menu, callbacks."""
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_registers_at_least_7_handlers_in_group_0(self, mock_builder_cls, monkeypatch):
+        """main() registers at least 7 handlers in default group (0).
+
+        Phase 8: help, status, start, run (4)
+        Phase 9: keywords, menu, add_msg, remove_msg, callback (5)
+        Total group 0: at least 9
+        """
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        # Group 0 calls = those without group kwarg or group=0
+        group_0_calls = [
+            c for c in mock_app.add_handler.call_args_list if c[1].get("group", 0) == 0
+        ]
+        assert len(group_0_calls) >= 7
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_allowed_updates_includes_callback_query(self, mock_builder_cls, monkeypatch):
+        """run_polling allowed_updates must include 'callback_query'."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        kwargs = mock_app.run_polling.call_args[1]
+        allowed = kwargs.get("allowed_updates", [])
+        assert "callback_query" in allowed
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_allowed_updates_includes_message(self, mock_builder_cls, monkeypatch):
+        """run_polling allowed_updates must still include 'message'."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        kwargs = mock_app.run_polling.call_args[1]
+        allowed = kwargs.get("allowed_updates", [])
+        assert "message" in allowed
 
 
 class TestMainUnauthorizedHandler:

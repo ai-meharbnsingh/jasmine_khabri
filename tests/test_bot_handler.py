@@ -47,6 +47,28 @@ class TestHelpCommand:
         asyncio.run(help_command(update, context))
         update.message.reply_text.assert_called_once()
 
+    def test_reply_contains_keywords_command(self):
+        """/help reply includes /keywords in the command list."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/keywords" in reply_text
+
+    def test_reply_contains_menu_command(self):
+        """/help reply includes /menu in the command list."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/menu" in reply_text
+
+    def test_reply_contains_add_remove_syntax(self):
+        """/help reply includes keyword add/remove syntax."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "add" in reply_text.lower()
+        assert "remove" in reply_text.lower()
+
 
 class TestUnauthorizedHandler:
     """Tests for unauthorized catch-all handler."""
