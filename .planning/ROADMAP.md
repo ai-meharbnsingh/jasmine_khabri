@@ -164,20 +164,19 @@ Plans:
 - [ ] 08-03-PLAN.md — Repository dispatch trigger for on-demand pipeline runs via /run command
 
 ### Phase 9: Keyword and Menu Management
-**Goal**: Users can view, add, and remove keywords by category via Telegram commands, and can access all settings through an interactive inline keyboard menu — with changes persisted to the JSON keyword library and immediately applied to the next pipeline run
+**Goal**: Users can view, add, and remove keywords by category via Telegram commands, and can access all settings through an interactive inline keyboard menu — with changes persisted to the YAML keyword library and immediately applied to the next pipeline run
 **Depends on**: Phase 8
 **Requirements**: BOT-04, BOT-05, BOT-06
 **Success Criteria** (what must be TRUE):
   1. Sending /keywords returns all current keywords organized by category (Infrastructure, Authorities/Regulatory, Celebrity real estate) in a readable format
-  2. Sending "add keyword: bullet train" adds "bullet train" to the Infrastructure category in `keywords.json`, commits the file, and the bot confirms the addition
+  2. Sending "add keyword: bullet train" adds "bullet train" to the Infrastructure category in `keywords.yaml`, commits the file, and the bot confirms the addition
   3. Sending "remove celebrity: Salman Khan" removes the keyword from the Celebrity category, commits the file, and the bot confirms the removal
   4. Sending /menu opens an inline keyboard with buttons for settings, keywords, and stats — tapping a button navigates to that section without the user needing to type a command
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: /keywords command and keyword display formatter by category
-- [ ] 09-02: Keyword add/remove command handlers with keywords.json mutation and Git commit-back via repository_dispatch
-- [ ] 09-03: Interactive inline keyboard menu with ConversationHandler navigation
+- [ ] 09-01-PLAN.md — GitHub file writer, keyword mutation functions, /keywords + add/remove command handlers
+- [ ] 09-02-PLAN.md — Inline keyboard menu with callback handlers, entrypoint wiring, /help text update
 
 ### Phase 10: Advanced Bot Controls
 **Goal**: Users can control delivery scheduling in natural language, pause and resume alerts with duration support, create event-based one-off schedules, view 7-day delivery statistics, and receive updates from dynamically modified schedules — all through the Telegram bot
@@ -228,6 +227,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 6. Telegram Delivery | 2/2 | Complete | 2026-03-07 |
 | 7. Email Delivery and Edge Cases | 0/2 | Not started | - |
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
-| 9. Keyword and Menu Management | 0/3 | Not started | - |
+| 9. Keyword and Menu Management | 0/2 | Not started | - |
 | 10. Advanced Bot Controls | 0/4 | Not started | - |
 | 11. Breaking News and Production Hardening | 0/3 | Not started | - |
