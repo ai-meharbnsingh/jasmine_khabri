@@ -30,7 +30,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **DLVR-01**: System delivers curated news brief via Telegram to both users at 7 AM IST (formatted with priority sections, summaries, metadata, links)
 - [x] **DLVR-02**: System delivers curated news brief via Telegram to both users at 4 PM IST
-- [ ] **DLVR-03**: System delivers HTML email digest via Gmail SMTP with styled template (priority-colored sections, article cards)
+- [x] **DLVR-03**: System delivers HTML email digest via Gmail SMTP with styled template (priority-colored sections, article cards)
 - [x] **DLVR-04**: System selects max 15 stories per delivery with priority-based allocation (all HIGH up to 8, fill MEDIUM min 4, fill LOW min 2)
 - [ ] **DLVR-05**: System sends breaking news alerts for critical HIGH-priority stories between scheduled deliveries
 - [ ] **DLVR-06**: System handles slow news days gracefully (sends all available if <15, sends "no news" message if zero)
@@ -120,7 +120,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AI-07 | Phase 5 | Complete |
 | DLVR-01 | Phase 6 | Complete |
 | DLVR-02 | Phase 6 | Complete |
-| DLVR-03 | Phase 7 | Pending |
+| DLVR-03 | Phase 7 | Complete |
 | DLVR-04 | Phase 6 | Complete |
 | DLVR-05 | Phase 11 | Pending |
 | DLVR-06 | Phase 7 | Pending |
