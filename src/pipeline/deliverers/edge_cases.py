@@ -2,14 +2,34 @@
 
 Detects no-news, slow-news, and HIGH story overflow conditions.
 Provides formatted messages for both Telegram (HTML) and email (HTML) channels.
+
+Note: _IST, _escape_html, get_delivery_period are defined locally to avoid
+circular imports with telegram_sender.py (which imports from this module).
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from pydantic import BaseModel
 
-from pipeline.deliverers.telegram_sender import _IST, _escape_html, get_delivery_period
 from pipeline.schemas.article_schema import Article
+
+# IST timezone offset (UTC+5:30) — duplicated from telegram_sender to avoid circular import
+_IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def _escape_html(text: str) -> str:
+    """Escape &, <, > for Telegram HTML mode."""
+    text = text.replace("&", "&amp;")
+    text = text.replace("<", "&lt;")
+    text = text.replace(">", "&gt;")
+    return text
+
+
+def get_delivery_period() -> str:
+    """Return 'Morning' if current IST hour < 12, else 'Evening'."""
+    now_ist = datetime.now(tz=_IST)
+    return "Morning" if now_ist.hour < 12 else "Evening"
+
 
 # Default caps (mirrored from selector.py)
 _HIGH_CAP = 8

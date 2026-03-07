@@ -13,6 +13,12 @@ import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from pipeline.deliverers.edge_cases import (
+    check_edge_cases,
+    format_no_news_email,
+    format_overflow_notice_email,
+    format_slow_news_log,
+)
 from pipeline.deliverers.selector import select_articles
 from pipeline.deliverers.telegram_sender import (
     _IST,
@@ -331,6 +337,30 @@ def deliver_email(articles: list[Article], config: AppConfig) -> int:
         logger.warning("No email recipients configured -- skipping email delivery")
         return 0
 
+    # Check for edge cases before selecting
+    edge = check_edge_cases(articles, max_stories=config.delivery.max_stories)
+
+    if edge.is_no_news:
+        # Send no-news email to all recipients
+        no_news_html = format_no_news_email()
+        no_news_text = "No relevant infrastructure or real estate news found this cycle."
+        period = get_delivery_period()
+        subject = f"Khabri {period} Brief -- No news today"
+        success_count = 0
+        for recipient in recipients:
+            ok, err = send_email(
+                gmail_user, gmail_password, [recipient], subject, no_news_html, no_news_text
+            )
+            if ok:
+                success_count += 1
+            else:
+                logger.warning("No-news email to %s failed: %s", recipient, err)
+        logger.info("Sent no-news email to %d/%d recipients", success_count, len(recipients))
+        return 0
+
+    if edge.is_slow_news:
+        logger.info(format_slow_news_log(edge.total_available, config.delivery.max_stories))
+
     # Select articles by priority
     high, medium, low = select_articles(articles, config.delivery.max_stories)
 
@@ -341,6 +371,18 @@ def deliver_email(articles: list[Article], config: AppConfig) -> int:
 
     # Format email content
     html_body = format_email_html(high, medium, low, config)
+
+    # Append overflow notice to HTML body before closing tags if applicable
+    if edge.has_overflow:
+        overflow_html = format_overflow_notice_email(edge.overflow_count)
+        # Insert overflow notice before the footer </table></td></tr> in content section
+        html_body = html_body.replace(
+            "</table></td></tr>"
+            '<tr><td style="padding:20px;border-top:1px solid #e2e8f0;text-align:center;">',
+            f"{overflow_html}</table></td></tr>"
+            '<tr><td style="padding:20px;border-top:1px solid #e2e8f0;text-align:center;">',
+        )
+
     text_body = build_plain_text(high, medium, low)
     subject = build_subject(len(high), total_selected)
 

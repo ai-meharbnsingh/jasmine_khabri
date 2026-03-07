@@ -12,6 +12,12 @@ from datetime import datetime, timedelta, timezone
 
 import httpx
 
+from pipeline.deliverers.edge_cases import (
+    check_edge_cases,
+    format_no_news_telegram,
+    format_overflow_notice_telegram,
+    format_slow_news_log,
+)
 from pipeline.deliverers.selector import select_articles
 from pipeline.schemas.article_schema import Article
 from pipeline.schemas.config_schema import AppConfig
@@ -333,6 +339,25 @@ def deliver_articles(articles: list[Article], config: AppConfig) -> int:
         logger.warning("No Telegram chat IDs configured -- skipping delivery")
         return 0
 
+    # Check for edge cases before selecting
+    edge = check_edge_cases(articles, max_stories=config.delivery.max_stories)
+
+    if edge.is_no_news:
+        # Send no-news message to all chat IDs
+        no_news_msg = format_no_news_telegram()
+        success_count = 0
+        for cid in chat_ids:
+            ok, err = send_telegram_message(token, cid, no_news_msg)
+            if ok:
+                success_count += 1
+            else:
+                logger.warning("Failed to send no-news message to chat_id=%s: %s", cid, err)
+        logger.info("Sent no-news message to %d/%d users", success_count, len(chat_ids))
+        return 0
+
+    if edge.is_slow_news:
+        logger.info(format_slow_news_log(edge.total_available, config.delivery.max_stories))
+
     # Select articles by priority
     high, medium, low = select_articles(articles, config.delivery.max_stories)
 
@@ -344,6 +369,12 @@ def deliver_articles(articles: list[Article], config: AppConfig) -> int:
     # Format messages
     period = get_delivery_period()
     chunks = format_delivery_message(high, medium, low, period)
+
+    # Append overflow notice to the last chunk if applicable
+    if edge.has_overflow:
+        overflow_notice = format_overflow_notice_telegram(edge.overflow_count)
+        # Insert before the footer in the last chunk
+        chunks[-1] = chunks[-1] + overflow_notice
 
     # Send to each chat_id
     success_count = 0
