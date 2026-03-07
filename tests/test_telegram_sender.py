@@ -1,15 +1,22 @@
-"""Tests for Telegram HTML message formatter and chunking."""
+"""Tests for Telegram message delivery — HTML formatting, chunking, API sender, and orchestrator."""
 
+import logging
 from unittest.mock import patch
+
+import httpx
+import respx
 
 from pipeline.deliverers.telegram_sender import (
     _escape_html,
     chunk_message,
+    deliver_articles,
     format_article_html,
     format_delivery_message,
     get_delivery_period,
+    send_telegram_message,
 )
 from pipeline.schemas.article_schema import Article
+from pipeline.schemas.config_schema import AppConfig
 
 
 def _make_article(
@@ -277,3 +284,261 @@ class TestChunkMessage:
         assert "FOOTER_MARKER" in chunks[-1]
         for chunk in chunks[:-1]:
             assert "FOOTER_MARKER" not in chunk
+
+
+# ---------------------------------------------------------------------------
+# Telegram API send_telegram_message tests
+# ---------------------------------------------------------------------------
+
+_TELEGRAM_SEND_URL = "https://api.telegram.org/bot{token}/sendMessage"
+
+
+class TestSendTelegramMessage:
+    """Tests for send_telegram_message HTTP calls."""
+
+    @respx.mock
+    def test_success_returns_true(self):
+        """HTTP 200 with {"ok": true} returns (True, None)."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            return_value=httpx.Response(200, json={"ok": True, "result": {}})
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is True
+        assert err is None
+
+    @respx.mock
+    def test_success_ok_false_returns_error(self):
+        """HTTP 200 with ok=false returns (False, description)."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            return_value=httpx.Response(
+                200, json={"ok": False, "description": "Bad Request: chat not found"}
+            )
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is False
+        assert "Bad Request" in err
+
+    @respx.mock
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_429_retries_once_then_succeeds(self, mock_sleep):
+        """429 triggers single retry; success on retry returns (True, None)."""
+        route = respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage")
+        route.side_effect = [
+            httpx.Response(429, json={"ok": False, "description": "Too Many Requests"}),
+            httpx.Response(200, json={"ok": True, "result": {}}),
+        ]
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is True
+        assert err is None
+        assert mock_sleep.call_count == 1
+        mock_sleep.assert_called_with(2)
+
+    @respx.mock
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_429_retries_once_then_fails(self, mock_sleep):
+        """429 on both attempts returns (False, 'rate limited (429)')."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            return_value=httpx.Response(429, json={"ok": False, "description": "Too Many Requests"})
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is False
+        assert "429" in err
+        assert mock_sleep.call_count == 1
+
+    @respx.mock
+    def test_http_400_returns_error(self):
+        """HTTP 400 returns (False, 'HTTP 400')."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            return_value=httpx.Response(400, json={"ok": False, "description": "Bad Request"})
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is False
+        assert "400" in err
+
+    @respx.mock
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_network_error_retries_once_then_succeeds(self, mock_sleep):
+        """Network error triggers single retry; success on retry."""
+        route = respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage")
+        route.side_effect = [
+            httpx.ConnectError("Connection refused"),
+            httpx.Response(200, json={"ok": True, "result": {}}),
+        ]
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is True
+        assert err is None
+        assert mock_sleep.call_count == 1
+
+    @respx.mock
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_network_error_retries_once_then_fails(self, mock_sleep):
+        """Network error on both attempts returns (False, error message)."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            side_effect=httpx.ConnectError("Connection refused")
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is False
+        assert err is not None
+        assert mock_sleep.call_count == 1
+
+    @respx.mock
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_timeout_error_retries_once(self, mock_sleep):
+        """Timeout triggers retry like other network errors."""
+        respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            side_effect=httpx.TimeoutException("Request timed out")
+        )
+        ok, err = send_telegram_message("TEST_TOKEN", "12345", "Hello")
+        assert ok is False
+        assert err is not None
+        assert mock_sleep.call_count == 1
+
+    @respx.mock
+    def test_sends_html_parse_mode(self):
+        """Request payload includes parse_mode=HTML and link preview disabled."""
+        route = respx.post("https://api.telegram.org/botTEST_TOKEN/sendMessage").mock(
+            return_value=httpx.Response(200, json={"ok": True, "result": {}})
+        )
+        send_telegram_message("TEST_TOKEN", "12345", "<b>bold</b>")
+        assert route.called
+        request = route.calls[0].request
+        import json
+
+        body = json.loads(request.content)
+        assert body["parse_mode"] == "HTML"
+        assert body["link_preview_options"]["is_disabled"] is True
+        assert body["chat_id"] == "12345"
+        assert body["text"] == "<b>bold</b>"
+
+
+# ---------------------------------------------------------------------------
+# deliver_articles orchestrator tests
+# ---------------------------------------------------------------------------
+
+
+class TestDeliverArticles:
+    """Tests for deliver_articles orchestrator."""
+
+    def _make_config(self) -> AppConfig:
+        """Create a minimal AppConfig for tests."""
+        return AppConfig()
+
+    @patch.dict("os.environ", {"TELEGRAM_BOT_TOKEN": "", "TELEGRAM_CHAT_IDS": ""}, clear=False)
+    def test_empty_token_skips_delivery(self, caplog):
+        """Empty TELEGRAM_BOT_TOKEN logs warning and returns 0."""
+        config = self._make_config()
+        articles = [_make_article()]
+        with caplog.at_level(logging.WARNING):
+            result = deliver_articles(articles, config)
+        assert result == 0
+        assert "TELEGRAM_BOT_TOKEN not set" in caplog.text
+
+    @patch.dict("os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": ""}, clear=False)
+    def test_empty_chat_ids_skips_delivery(self, caplog):
+        """Empty TELEGRAM_CHAT_IDS logs warning and returns 0."""
+        config = self._make_config()
+        articles = [_make_article()]
+        with caplog.at_level(logging.WARNING):
+            result = deliver_articles(articles, config)
+        assert result == 0
+        assert "No Telegram chat IDs configured" in caplog.text
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111,222"}, clear=False
+    )
+    @patch("pipeline.deliverers.telegram_sender.send_telegram_message")
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_delivers_to_all_chat_ids(self, mock_sleep, mock_send):
+        """deliver_articles sends messages to each chat_id."""
+        mock_send.return_value = (True, None)
+        config = self._make_config()
+        articles = [_make_article(priority="HIGH", dedup_status="NEW")]
+        result = deliver_articles(articles, config)
+        # Should have sent to 2 chat ids
+        chat_ids_called = [call.args[1] for call in mock_send.call_args_list]
+        assert "111" in chat_ids_called
+        assert "222" in chat_ids_called
+        assert result > 0
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111"}, clear=False
+    )
+    @patch("pipeline.deliverers.telegram_sender.send_telegram_message")
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_returns_successful_send_count(self, mock_sleep, mock_send):
+        """deliver_articles returns the count of successful sends."""
+        mock_send.return_value = (True, None)
+        config = self._make_config()
+        articles = [_make_article(priority="HIGH", dedup_status="NEW")]
+        result = deliver_articles(articles, config)
+        assert result == mock_send.call_count
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111"}, clear=False
+    )
+    @patch("pipeline.deliverers.telegram_sender.send_telegram_message")
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_failed_send_counted_correctly(self, mock_sleep, mock_send):
+        """Failed sends are not counted in the return value."""
+        mock_send.return_value = (False, "HTTP 400")
+        config = self._make_config()
+        articles = [_make_article(priority="HIGH", dedup_status="NEW")]
+        result = deliver_articles(articles, config)
+        assert result == 0
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111"}, clear=False
+    )
+    @patch("pipeline.deliverers.telegram_sender.send_telegram_message")
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_calls_select_articles(self, mock_sleep, mock_send):
+        """deliver_articles calls select_articles for priority allocation."""
+        mock_send.return_value = (True, None)
+        config = self._make_config()
+        articles = [_make_article(priority="HIGH", dedup_status="NEW")]
+        with patch("pipeline.deliverers.telegram_sender.select_articles") as mock_select:
+            mock_select.return_value = (articles, [], [])
+            deliver_articles(articles, config)
+            mock_select.assert_called_once()
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111"}, clear=False
+    )
+    def test_no_articles_returns_zero(self, caplog):
+        """Empty article list results in 0 sends."""
+        config = self._make_config()
+        with caplog.at_level(logging.INFO):
+            result = deliver_articles([], config)
+        assert result == 0
+
+    @patch.dict(
+        "os.environ", {"TELEGRAM_BOT_TOKEN": "TOK", "TELEGRAM_CHAT_IDS": "111"}, clear=False
+    )
+    @patch("pipeline.deliverers.telegram_sender.send_telegram_message")
+    @patch("pipeline.deliverers.telegram_sender.time.sleep")
+    def test_logs_delivery_summary(self, mock_sleep, mock_send, caplog):
+        """deliver_articles logs a summary with articles, messages, users, and failures."""
+        mock_send.return_value = (True, None)
+        config = self._make_config()
+        articles = [_make_article(priority="HIGH", dedup_status="NEW")]
+        with caplog.at_level(logging.INFO):
+            deliver_articles(articles, config)
+        assert "Delivered" in caplog.text
+
+    @patch.dict("os.environ", {}, clear=False)
+    def test_config_token_used_when_env_not_set(self, caplog):
+        """Falls back to config.telegram.bot_token when env var not set."""
+        config = AppConfig()
+        config.telegram.bot_token = ""
+        # Remove env var entirely if present
+        import os
+
+        env_backup = os.environ.pop("TELEGRAM_BOT_TOKEN", None)
+        try:
+            with caplog.at_level(logging.WARNING):
+                result = deliver_articles([_make_article()], config)
+            assert result == 0
+            assert "TELEGRAM_BOT_TOKEN not set" in caplog.text
+        finally:
+            if env_backup is not None:
+                os.environ["TELEGRAM_BOT_TOKEN"] = env_backup
