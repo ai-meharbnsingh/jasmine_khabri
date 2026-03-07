@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 08-03-PLAN.md
-last_updated: "2026-03-07T12:02:19.239Z"
-last_activity: 2026-03-07 -- Plan 08-03 complete (/run command, dispatcher, 15 new tests, 343 total)
+status: in-progress
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-07T23:39:04Z"
+last_activity: 2026-03-07 -- Plan 09-01 complete (GitHub writer, keyword CRUD, 38 new tests, 381 total)
 progress:
   total_phases: 11
   completed_phases: 8
-  total_plans: 20
-  completed_plans: 20
-  percent: 73
+  total_plans: 22
+  completed_plans: 21
+  percent: 77
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 8 complete — Railway Bot Foundation (3 of 3 plans complete). Next: Phase 9
+**Current focus:** Phase 9 in progress — Keyword and Menu Management (1 of 2 plans complete). Next: 09-02
 
 ## Current Position
 
-Phase: 8 of 11 (Railway Bot Foundation) -- COMPLETE
-Plan: 3 of 3 in current phase (08-03 complete)
-Status: Phase 8 complete -- full bot: auth guard, /help, /status, /run, Railway config, 343 tests passing
-Last activity: 2026-03-07 -- Plan 08-03 complete (/run command, dispatcher, 15 new tests, 343 total)
+Phase: 9 of 11 (Keyword and Menu Management) -- IN PROGRESS
+Plan: 1 of 2 in current phase (09-01 complete)
+Status: GitHub writer + keyword CRUD commands complete, 381 tests passing
+Last activity: 2026-03-07 -- Plan 09-01 complete (GitHub writer, keyword CRUD, 38 new tests, 381 total)
 
-Progress: [███████▒░░] 73%
+Progress: [████████░░] 77%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
-- Average duration: 4.7 min
-- Total execution time: 1.52 hours
+- Total plans completed: 21
+- Average duration: 4.6 min
+- Total execution time: 1.59 hours
 
 **By Phase:**
 
@@ -51,10 +51,11 @@ Progress: [███████▒░░] 73%
 | 06-telegram-delivery | 2 | 7 min | 3.5 min |
 | 07-email-delivery | 2 | 8 min | 4.0 min |
 | 08-railway-bot-foundation | 3 | 10 min | 3.3 min |
+| 09-keyword-and-menu-management | 1 | 4 min | 4.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-02 (4 min), 08-01 (3 min), 08-02 (4 min), 08-03 (3 min)
-- Trend: stabilizing/improving
+- Last 5 plans: 08-01 (3 min), 08-02 (4 min), 08-03 (3 min), 09-01 (4 min)
+- Trend: stable at ~3-4 min/plan
 
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
@@ -70,6 +71,7 @@ Progress: [███████▒░░] 73%
 | Phase 08-railway-bot P01 | 3 | 2 tasks | 10 files |
 | Phase 08-railway-bot P02 | 4 | 2 tasks | 8 files |
 | Phase 08-railway-bot P03 | 3 | 1 task | 4 files |
+| Phase 09-keyword-mgmt P01 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -159,6 +161,11 @@ Recent decisions affecting current work:
 - [Phase 08-03]: httpx.AsyncClient(timeout=15.0) for dispatch -- longer timeout than status reads since dispatch is write operation
 - [Phase 08-03]: Immediate 'Triggering...' feedback before API call -- responsive UX even if GitHub API is slow
 - [Phase 08-03]: trigger_pipeline returns bool (not raises) -- handler decides on user messaging, dispatcher stays pure
+- [Phase 09-01]: JSON mode (not raw) for read_github_file_with_sha -- need SHA for PUT update operations
+- [Phase 09-01]: write_github_file returns bool (never raises) -- matches dispatcher.py error handling pattern
+- [Phase 09-01]: Case-insensitive category lookup and duplicate detection -- user-friendly bot interaction
+- [Phase 09-01]: Default 'add keyword: X' maps to infrastructure category -- most common use case
+- [Phase 09-01]: format_keywords_display as pure function (no I/O) -- easy testing without mocks
 
 ### Pending Todos
 
@@ -172,7 +179,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T11:56:33Z
-Stopped at: Completed 08-03-PLAN.md
-Resume file: .planning/phases/08-railway-bot-foundation/08-03-SUMMARY.md
-Next: Phase 9 -- Keyword and Menu Management
+Last session: 2026-03-07T23:39:04Z
+Stopped at: Completed 09-01-PLAN.md
+Resume file: .planning/phases/09-keyword-and-menu-management/09-01-SUMMARY.md
+Next: Plan 09-02 -- Inline Menu and Category Toggle
