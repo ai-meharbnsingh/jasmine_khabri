@@ -38,7 +38,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Telegram Bot
 
-- [ ] **BOT-01**: User can send /help to see available commands and usage
+- [x] **BOT-01**: User can send /help to see available commands and usage
 - [x] **BOT-02**: User can send /status to see system health (last run, sources active, delivery success rate)
 - [ ] **BOT-03**: User can send /pause and /resume to control alert delivery (with duration support: "pause 3 days")
 - [ ] **BOT-04**: User can send /menu to access interactive inline keyboard settings menu
@@ -48,7 +48,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **BOT-08**: User can create event-based scheduling ("Budget on Feb 1, updates every 30 min from 10 AM to 3 PM")
 - [ ] **BOT-09**: User can modify delivery schedule ("change morning alert to 6:30 AM")
 - [ ] **BOT-10**: User can view delivery statistics (/stats — last 7 days: article counts, top topics, duplicates prevented)
-- [ ] **BOT-11**: Bot restricts commands to authorized Telegram user IDs only
+- [x] **BOT-11**: Bot restricts commands to authorized Telegram user IDs only
 
 ### Infrastructure
 
@@ -125,7 +125,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLVR-05 | Phase 11 | Pending |
 | DLVR-06 | Phase 7 | Complete |
 | DLVR-07 | Phase 7 | Complete |
-| BOT-01 | Phase 8 | Pending |
+| BOT-01 | Phase 8 | Complete |
 | BOT-02 | Phase 8 | Complete |
 | BOT-03 | Phase 10 | Pending |
 | BOT-04 | Phase 9 | Pending |
@@ -135,7 +135,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BOT-08 | Phase 10 | Pending |
 | BOT-09 | Phase 10 | Pending |
 | BOT-10 | Phase 10 | Pending |
-| BOT-11 | Phase 8 | Pending |
+| BOT-11 | Phase 8 | Complete |
 | INFRA-01 | Phase 2 | Complete |
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 2 | Complete |

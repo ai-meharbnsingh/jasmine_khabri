@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-07T11:42:28Z"
-last_activity: 2026-03-07 -- Plan 08-01 complete (PipelineStatus schema, railway.json, python-telegram-bot, 7 new tests, 301 total)
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-03-07T11:50:09Z"
+last_activity: 2026-03-07 -- Plan 08-02 complete (auth guard, /help, /status, entrypoint, 27 new tests, 328 total)
 progress:
   total_phases: 11
   completed_phases: 7
   total_plans: 20
-  completed_plans: 18
-  percent: 66
+  completed_plans: 19
+  percent: 70
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 8 in progress — Railway Bot Foundation (1 of 3 plans complete)
+**Current focus:** Phase 8 in progress — Railway Bot Foundation (2 of 3 plans complete)
 
 ## Current Position
 
 Phase: 8 of 11 (Railway Bot Foundation)
-Plan: 1 of 3 in current phase (08-01 complete)
-Status: Phase 8 plan 01 complete -- PipelineStatus schema, railway.json, python-telegram-bot, 301 tests passing
-Last activity: 2026-03-07 -- Plan 08-01 complete (PipelineStatus schema, railway.json, python-telegram-bot, 7 new tests, 301 total)
+Plan: 2 of 3 in current phase (08-02 complete)
+Status: Phase 8 plan 02 complete -- auth guard, /help, /status, entrypoint, 328 tests passing
+Last activity: 2026-03-07 -- Plan 08-02 complete (auth guard, /help, /status, entrypoint, 27 new tests, 328 total)
 
-Progress: [██████░░░░] 66%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
@@ -50,10 +50,10 @@ Progress: [██████░░░░] 66%
 | 05-ai-analysis-pipeline | 2 | 9 min | 4.5 min |
 | 06-telegram-delivery | 2 | 7 min | 3.5 min |
 | 07-email-delivery | 2 | 8 min | 4.0 min |
-| 08-railway-bot-foundation | 1 | 3 min | 3.0 min |
+| 08-railway-bot-foundation | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 06-02 (3 min), 07-01 (4 min), 07-02 (4 min), 08-01 (3 min)
+- Last 5 plans: 07-01 (4 min), 07-02 (4 min), 08-01 (3 min), 08-02 (4 min)
 - Trend: stabilizing/improving
 
 *Updated after each plan completion*
@@ -68,6 +68,7 @@ Progress: [██████░░░░] 66%
 | Phase 07-email-delivery P01 | 4 | 2 tasks | 4 files |
 | Phase 07 P02 | 4 | 2 tasks | 4 files |
 | Phase 08-railway-bot P01 | 3 | 2 tasks | 10 files |
+| Phase 08-railway-bot P02 | 4 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -150,6 +151,10 @@ Recent decisions affecting current work:
 - [Phase 08-01]: PipelineStatus follows AICost Pydantic pattern: simple model with defaults, no complex validators
 - [Phase 08-01]: No monthly reset for pipeline_status unlike AICost -- status always reflects most recent run
 - [Phase 08-01]: repository_dispatch added to deliver.yml now (needed for Plan 03 /runnow) to avoid editing file again
+- [Phase 08-02]: filters.User(user_id=...) not user_ids -- python-telegram-bot v22 uses singular parameter name
+- [Phase 08-02]: asyncio.run() in sync tests for async handlers -- avoids pytest-asyncio dependency, simplest approach
+- [Phase 08-02]: Empty AUTHORIZED_USER_IDS falls back to filters.ALL with warning -- bot still functional for testing
+- [Phase 08-02]: fetch_pipeline_status returns default PipelineStatus on any failure -- never crashes the handler
 
 ### Pending Todos
 
@@ -163,7 +168,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T11:42:28Z
-Stopped at: Completed 08-01-PLAN.md
-Resume file: .planning/phases/08-railway-bot-foundation/08-01-SUMMARY.md
-Next: Plan 08-02 -- Bot Entrypoint and Core Commands
+Last session: 2026-03-07T11:50:09Z
+Stopped at: Completed 08-02-PLAN.md
+Resume file: .planning/phases/08-railway-bot-foundation/08-02-SUMMARY.md
+Next: Plan 08-03 -- /run Command and Deployment Wiring
