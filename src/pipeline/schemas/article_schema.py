@@ -18,3 +18,10 @@ class Article(BaseModel):
     geo_tier: int = 0  # 0=unclassified, 1/2/3 after geo filter
     dedup_status: Literal["NEW", "DUPLICATE", "UPDATE", ""] = ""
     dedup_ref: str = ""  # Original title if UPDATE, else empty
+
+    # Phase 5 AI analysis results — populated by AI classifier
+    priority: Literal["HIGH", "MEDIUM", "LOW", ""] = ""
+    location: str = ""
+    project_name: str = ""
+    budget_amount: str = ""  # Named budget_amount to avoid collision with BaseModel internals
+    authority: str = ""

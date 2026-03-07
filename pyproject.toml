@@ -8,7 +8,9 @@ version = "0.1.0"
 description = "Automated infrastructure and real estate news pipeline"
 requires-python = ">=3.12"
 dependencies = [
+    "anthropic>=0.84.0",
     "feedparser>=6.0.12",
+    "google-genai>=1.66.0",
     "httpx>=0.28.1",
     "pydantic>=2.5",
     "PyYAML>=6.0",
