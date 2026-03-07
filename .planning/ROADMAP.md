@@ -100,7 +100,7 @@ Plans:
 - [ ] 04-03-PLAN.md — Title-hash deduplicator with UPDATE detection, pipeline wiring of all filters into main.py (TDD)
 
 ### Phase 5: AI Analysis Pipeline
-**Goal**: Filtered articles are classified HIGH/MEDIUM/LOW by Claude Sonnet in a single batched API call, enriched with 2-line impact summaries and key entities, with automatic Gemini fallback on Claude failure — all within the $5/month AI cost budget
+**Goal**: Filtered articles are classified HIGH/MEDIUM/LOW by Claude Haiku 4.5 in a single batched API call, enriched with 2-line writer-focused impact summaries and structured entity extraction, with automatic Gemini fallback on Claude failure — all within the $5/month AI cost budget
 **Depends on**: Phase 4
 **Requirements**: AI-01, AI-02, AI-05, AI-06, AI-07
 **Success Criteria** (what must be TRUE):
@@ -109,12 +109,11 @@ Plans:
   3. Each article has extracted entities (location, project name, budget, authority) stored in its normalized schema
   4. When Claude API is unavailable (simulated by setting an invalid API key), the pipeline automatically retries with Gemini and completes classification without manual intervention
   5. Monthly AI spend tracked in state JSON does not exceed the $5 budget based on token estimates logged per run
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: Claude Sonnet batch classifier with domain-primed system prompt, input truncation, and prompt caching
-- [ ] 05-02: Gemini fallback handler and per-run cost tracker
-- [ ] 05-03: Semantic deduplication using sentence-transformers (0.85-0.90 similarity threshold) to catch wire-service republications
+- [ ] 05-01-PLAN.md — AI response schemas, AICost schema, Article extensions, cost tracker module with budget gates, SDK dependencies
+- [ ] 05-02-PLAN.md — Claude batch classifier with domain-primed prompt, Gemini fallback, pipeline wiring, deliver.yml update
 
 ### Phase 6: Telegram Delivery
 **Goal**: Classified articles are selected, formatted, and delivered to both Telegram users at 7 AM and 4 PM IST with priority-labelled sections, AI summaries, and source links — with the pipeline integrated into the GitHub Actions scheduled workflow
@@ -226,7 +225,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 2. Scheduling Infrastructure | 2/2 | Complete   | 2026-02-27 |
 | 3. News Fetching | 3/3 | Complete   | 2026-02-27 |
 | 4. Filtering and Deduplication | 3/3 | Complete   | 2026-02-28 |
-| 5. AI Analysis Pipeline | 0/3 | Not started | - |
+| 5. AI Analysis Pipeline | 0/2 | Not started | - |
 | 6. Telegram Delivery | 0/3 | Not started | - |
 | 7. Email Delivery and Edge Cases | 0/3 | Not started | - |
 | 8. Railway Bot Foundation | 0/3 | Not started | - |
