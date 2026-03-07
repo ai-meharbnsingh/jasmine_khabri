@@ -1,10 +1,12 @@
 """Data file loaders. All data access MUST go through these functions."""
 
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 
 import yaml
 
+from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.config_schema import AppConfig
 from pipeline.schemas.keywords_schema import KeywordsConfig
 from pipeline.schemas.seen_schema import SeenStore
@@ -43,3 +45,35 @@ def save_seen(store: SeenStore, path: str | Path = "data/seen.json") -> None:
     """Save SeenStore to JSON file."""
     path = Path(path)
     path.write_text(store.model_dump_json(indent=2) + "\n")
+
+
+def load_ai_cost(path: str | Path = "data/ai_cost.json") -> AICost:
+    """Load and validate AI cost tracking from JSON.
+
+    Returns AICost with current month and zero values if file doesn't exist.
+    Auto-resets to current month if stored month differs (monthly reset).
+    """
+    path = Path(path)
+    current_month = datetime.now(UTC).strftime("%Y-%m")
+
+    if not path.exists():
+        return AICost(month=current_month)
+
+    text = path.read_text().strip()
+    if not text:
+        return AICost(month=current_month)
+
+    raw = json.loads(text)
+    cost = AICost.model_validate(raw)
+
+    # Monthly reset: if stored month differs from current, reset counters
+    if cost.month != current_month:
+        return AICost(month=current_month)
+
+    return cost
+
+
+def save_ai_cost(cost: AICost, path: str | Path = "data/ai_cost.json") -> None:
+    """Save AICost to JSON file."""
+    path = Path(path)
+    path.write_text(cost.model_dump_json(indent=2) + "\n")
