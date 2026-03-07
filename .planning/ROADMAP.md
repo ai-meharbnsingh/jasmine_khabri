@@ -124,12 +124,11 @@ Plans:
   2. Messages longer than 4096 characters are automatically split into sequential Telegram messages without cutting mid-article
   3. The selection algorithm allocates up to 8 HIGH-priority, at least 4 MEDIUM, and at least 2 LOW stories — capped at 15 total — and the selection counts are visible in the log
   4. The GitHub Actions cron triggers delivery at 7 AM IST (01:30 UTC) and 4 PM IST (10:30 UTC), and delivery timestamps visible in Telegram messages confirm correct IST timing
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: Priority-based story selector (max 15, HIGH up to 8, MEDIUM min 4, LOW min 2)
-- [ ] 06-02: Telegram message formatter with priority sections and 4096-char message chunking
-- [ ] 06-03: Telegram outbound sender integrated into the GitHub Actions pipeline
+- [ ] 06-01-PLAN.md — Priority-based article selector and Telegram HTML message formatter with chunking
+- [ ] 06-02-PLAN.md — Telegram API sender with retry, pipeline wiring into main.py, deliver.yml secrets
 
 ### Phase 7: Email Delivery and Edge Cases
 **Goal**: Delivery is complete with HTML email digests sent via Gmail SMTP alongside Telegram, plus all edge cases handled gracefully — no-news days, slow-news days, and overflow HIGH stories all produce appropriate user-facing responses
@@ -226,7 +225,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 3. News Fetching | 3/3 | Complete   | 2026-02-27 |
 | 4. Filtering and Deduplication | 3/3 | Complete   | 2026-02-28 |
 | 5. AI Analysis Pipeline | 0/2 | Not started | - |
-| 6. Telegram Delivery | 0/3 | Not started | - |
+| 6. Telegram Delivery | 0/2 | Not started | - |
 | 7. Email Delivery and Edge Cases | 0/3 | Not started | - |
 | 8. Railway Bot Foundation | 0/3 | Not started | - |
 | 9. Keyword and Menu Management | 0/3 | Not started | - |
