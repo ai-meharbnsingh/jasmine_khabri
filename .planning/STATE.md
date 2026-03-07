@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 05-01-PLAN.md
+stopped_at: Completed 05-02-PLAN.md
 last_updated: "2026-03-07T07:10:11.939Z"
-last_activity: 2026-03-07 — Plan 05-01 complete (AI schemas, cost tracker, Article extensions, 35 new tests, 155 total)
+last_activity: 2026-03-07 — Plan 05-02 complete (AI classifier, pipeline wiring, 14 new tests, 169 total)
 progress:
   total_phases: 11
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 13
-  completed_plans: 12
-  percent: 92
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 5 — AI Analysis Pipeline
+**Current focus:** Phase 5 complete — ready for Phase 6 (Telegram Delivery)
 
 ## Current Position
 
 Phase: 5 of 11 (AI Analysis Pipeline)
-Plan: 1 of 2 in current phase (05-01 complete)
-Status: Plan 05-01 complete — AI schemas, cost tracker with budget gates, Article extensions, 155 tests passing
-Last activity: 2026-03-07 — Plan 05-01 complete (AI schemas, cost tracker, Article extensions, 35 new tests, 155 total)
+Plan: 2 of 2 in current phase (05-02 complete)
+Status: Phase 5 complete — AI classifier with Claude/Gemini fallback, budget gates, pipeline wired, 169 tests passing
+Last activity: 2026-03-07 — Plan 05-02 complete (AI classifier, pipeline wiring, 14 new tests, 169 total)
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 1.75 min
-- Total execution time: 0.12 hours
+- Total plans completed: 5
+- Average duration: 2.0 min
+- Total execution time: 0.17 hours
 
 **By Phase:**
 
@@ -47,10 +47,10 @@ Progress: [█████████░] 92%
 | 02-scheduling-infrastructure | 2 | 4 min | 2.0 min |
 | 03-news-fetching | 3 | 14 min | 4.7 min |
 | 04-filtering-and-deduplication | 1 | 13 min | 13.0 min |
-| 05-ai-analysis-pipeline | 1 | 4 min | 4.0 min |
+| 05-ai-analysis-pipeline | 2 | 9 min | 4.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-02 (5 min), 03-03 (6 min), 04-01 (13 min), 05-01 (4 min)
+- Last 5 plans: 03-03 (6 min), 04-01 (13 min), 05-01 (4 min), 05-02 (5 min)
 - Trend: stabilizing
 
 *Updated after each plan completion*
@@ -59,6 +59,7 @@ Progress: [█████████░] 92%
 | Phase 04-filtering P02 | 8 | 2 tasks | 2 files |
 | Phase 04-filtering P03 | 5 | 2 tasks | 3 files |
 | Phase 05-ai-analysis P01 | 4 | 2 tasks | 11 files |
+| Phase 05-ai-analysis P02 | 5 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -112,6 +113,11 @@ Recent decisions affecting current work:
 - [Phase 05-01]: budget_amount field name avoids collision with Pydantic BaseModel internals
 - [Phase 05-01]: Functional style record_cost via model_copy matches GNewsQuota immutability pattern
 - [Phase 05-01]: Plain Pydantic models for AI response schemas (no custom validators) for Anthropic .parse() compatibility
+- [Phase 05-02]: Claude Haiku 4.5 as primary model ($1/$5 MTok) -- 3x cheaper than Sonnet, sufficient for classification
+- [Phase 05-02]: Domain-primed system prompt with Indian infra/real estate classification criteria from CONTEXT.md
+- [Phase 05-02]: Budget exceeded ($4.75) degrades to keyword-only: relevance_score >=80 HIGH, >=60 MEDIUM, else LOW
+- [Phase 05-02]: Both-providers-fail assigns MEDIUM priority with empty summary/entities -- pipeline never crashes
+- [Phase 05-02]: GOOGLE_API_KEY env var (not GEMINI_API_KEY) matches deliver.yml naming convention
 
 ### Pending Todos
 
@@ -125,7 +131,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T07:10:11.937Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-03-07T07:16:25Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None
-Next: Plan 05-02 — AI Classifier Implementation
+Next: Phase 6 — Telegram Delivery
