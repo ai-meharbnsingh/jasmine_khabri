@@ -1,13 +1,20 @@
-"""Telegram message delivery — HTML formatting, chunking, IST time helpers.
+"""Telegram message delivery — HTML formatting, chunking, API sender, orchestrator.
 
 Formats articles into Telegram-compatible HTML messages with priority
 section headers, continuous numbering, and 4096-character chunking.
+Sends messages via the Telegram Bot API with single-retry on 429/network errors.
 """
 
 import logging
+import os
+import time
 from datetime import datetime, timedelta, timezone
 
+import httpx
+
+from pipeline.deliverers.selector import select_articles
 from pipeline.schemas.article_schema import Article
+from pipeline.schemas.config_schema import AppConfig
 
 logger = logging.getLogger(__name__)
 
@@ -229,3 +236,135 @@ def chunk_message(
         chunks.append(f"{header}\n\n{footer}")
 
     return chunks
+
+
+# ---------------------------------------------------------------------------
+# Telegram Bot API sender
+# ---------------------------------------------------------------------------
+
+_TELEGRAM_API = "https://api.telegram.org/bot{token}/sendMessage"
+
+
+def send_telegram_message(
+    token: str,
+    chat_id: str,
+    text: str,
+) -> tuple[bool, str | None]:
+    """Send a single message via the Telegram Bot API.
+
+    Args:
+        token: Telegram bot token from BotFather.
+        chat_id: Target chat/user ID.
+        text: HTML-formatted message text.
+
+    Returns:
+        (True, None) on success, (False, error_description) on failure.
+        Retries once on HTTP 429 or network error with a 2-second delay.
+    """
+    url = _TELEGRAM_API.format(token=token)
+    payload = {
+        "chat_id": chat_id,
+        "text": text,
+        "parse_mode": "HTML",
+        "link_preview_options": {"is_disabled": True},
+    }
+
+    for attempt in range(2):
+        try:
+            with httpx.Client(timeout=15.0) as client:
+                resp = client.post(url, json=payload)
+
+            if resp.status_code == 429:
+                if attempt == 0:
+                    time.sleep(2)
+                    continue
+                return False, "rate limited (429)"
+
+            if resp.status_code != 200:
+                return False, f"HTTP {resp.status_code}"
+
+            body = resp.json()
+            if body.get("ok"):
+                return True, None
+            return False, body.get("description", "unknown error")
+
+        except (httpx.ConnectError, httpx.TimeoutException) as exc:
+            if attempt == 0:
+                time.sleep(2)
+                continue
+            return False, str(exc)
+
+    # Should not reach here, but safety net
+    return False, "max retries exceeded"
+
+
+# ---------------------------------------------------------------------------
+# Delivery orchestrator
+# ---------------------------------------------------------------------------
+
+
+def deliver_articles(articles: list[Article], config: AppConfig) -> int:
+    """Deliver classified articles to Telegram users.
+
+    Orchestrates: select_articles -> format_delivery_message ->
+    send_telegram_message for each chunk to each chat_id.
+
+    Args:
+        articles: All classified articles from the pipeline.
+        config: Application config with delivery and telegram settings.
+
+    Returns:
+        Total number of successful message sends.
+    """
+    # Resolve token: env var takes precedence over config
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "") or config.telegram.bot_token
+    if not token:
+        logger.warning("TELEGRAM_BOT_TOKEN not set -- skipping delivery")
+        return 0
+
+    # Resolve chat IDs: env var takes precedence over config
+    chat_ids_env = os.environ.get("TELEGRAM_CHAT_IDS", "")
+    if chat_ids_env:
+        chat_ids = [cid.strip() for cid in chat_ids_env.split(",") if cid.strip()]
+    else:
+        chat_ids = list(config.telegram.chat_ids)
+
+    if not chat_ids:
+        logger.warning("No Telegram chat IDs configured -- skipping delivery")
+        return 0
+
+    # Select articles by priority
+    high, medium, low = select_articles(articles, config.delivery.max_stories)
+
+    total_selected = len(high) + len(medium) + len(low)
+    if total_selected == 0:
+        logger.info("No articles to deliver")
+        return 0
+
+    # Format messages
+    period = get_delivery_period()
+    chunks = format_delivery_message(high, medium, low, period)
+
+    # Send to each chat_id
+    success_count = 0
+    failure_count = 0
+
+    for cid in chat_ids:
+        for chunk in chunks:
+            ok, err = send_telegram_message(token, cid, chunk)
+            if ok:
+                success_count += 1
+            else:
+                failure_count += 1
+                logger.warning("Failed to send message to chat_id=%s: %s", cid, err)
+            time.sleep(0.5)
+
+    logger.info(
+        "Delivered %d articles in %d messages to %d users (%d failures)",
+        total_selected,
+        success_count,
+        len(chat_ids),
+        failure_count,
+    )
+
+    return success_count
