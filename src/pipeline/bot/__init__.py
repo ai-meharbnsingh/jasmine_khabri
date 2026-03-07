@@ -1,1 +1,1 @@
-"""Telegram bot command handlers."""
+"""Telegram bot — persistent polling process for Railway deployment."""
