@@ -13,7 +13,7 @@ import os
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 
 from pipeline.bot.auth import load_authorized_users
-from pipeline.bot.handler import help_command, status_command, unauthorized_handler
+from pipeline.bot.handler import help_command, run_now_command, status_command, unauthorized_handler
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,6 +53,7 @@ def main() -> None:
     app.add_handler(CommandHandler("help", help_command, filters=auth_filter))
     app.add_handler(CommandHandler("status", status_command, filters=auth_filter))
     app.add_handler(CommandHandler("start", help_command, filters=auth_filter))
+    app.add_handler(CommandHandler("run", run_now_command, filters=auth_filter))
 
     # Unauthorized catch-all (lower priority group)
     app.add_handler(

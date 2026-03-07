@@ -1,14 +1,16 @@
 """Telegram bot command handlers.
 
-Provides /help, /status, and unauthorized catch-all handler callbacks
+Provides /help, /status, /run, and unauthorized catch-all handler callbacks
 for the python-telegram-bot Application.
 """
 
 import logging
+import os
 
 from telegram import Update
 from telegram.ext import ContextTypes
 
+from pipeline.bot.dispatcher import trigger_pipeline
 from pipeline.bot.status import fetch_pipeline_status
 
 logger = logging.getLogger(__name__)
@@ -48,6 +50,33 @@ async def status_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         f"Run duration: {status.run_duration_seconds:.1f}s\n"
     )
     await update.message.reply_text(text)
+
+
+async def run_now_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle /run command -- trigger an on-demand pipeline run via GitHub Actions.
+
+    Reads GITHUB_PAT, GITHUB_OWNER, GITHUB_REPO from env vars.
+    Sends immediate feedback, dispatches the run, and reports result.
+    """
+    token = os.environ.get("GITHUB_PAT", "")
+    owner = os.environ.get("GITHUB_OWNER", "")
+    repo = os.environ.get("GITHUB_REPO", "")
+
+    if not token or not owner or not repo:
+        await update.message.reply_text(
+            "GitHub integration not configured. Set GITHUB_PAT, GITHUB_OWNER, GITHUB_REPO env vars."
+        )
+        return
+
+    await update.message.reply_text("Triggering pipeline run...")
+
+    success = await trigger_pipeline(token, owner, repo)
+    if success:
+        await update.message.reply_text(
+            "Pipeline run dispatched. Check GitHub Actions for progress."
+        )
+    else:
+        await update.message.reply_text("Failed to dispatch pipeline run. Check bot logs.")
 
 
 async def unauthorized_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
