@@ -1,0 +1,125 @@
+"""Tests for bot entrypoint — Application builder and polling setup.
+
+TDD Phase 8 Plan 02 — tests for main() in entrypoint.py.
+Mocks ApplicationBuilder to avoid real Telegram polling in tests.
+"""
+
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from pipeline.bot.entrypoint import main
+
+
+class TestMainTokenValidation:
+    """Tests for TELEGRAM_BOT_TOKEN validation in main()."""
+
+    def test_raises_when_token_unset(self, monkeypatch):
+        """main() raises RuntimeError when TELEGRAM_BOT_TOKEN is not set."""
+        monkeypatch.delenv("TELEGRAM_BOT_TOKEN", raising=False)
+        with pytest.raises(RuntimeError, match="TELEGRAM_BOT_TOKEN"):
+            main()
+
+    def test_raises_when_token_empty(self, monkeypatch):
+        """main() raises RuntimeError when TELEGRAM_BOT_TOKEN is empty string."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "")
+        with pytest.raises(RuntimeError, match="TELEGRAM_BOT_TOKEN"):
+            main()
+
+
+class TestMainApplicationConstruction:
+    """Tests for Application builder setup in main()."""
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_passes_token_to_builder(self, mock_builder_cls, monkeypatch):
+        """main() passes TELEGRAM_BOT_TOKEN to ApplicationBuilder().token()."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        mock_builder.token.assert_called_once_with("test-token-123")
+        mock_builder.build.assert_called_once()
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_registers_help_and_status_handlers(self, mock_builder_cls, monkeypatch):
+        """main() registers at least help and status command handlers."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        # Should have called add_handler multiple times (help, status, start, unauthorized)
+        assert mock_app.add_handler.call_count >= 3
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_calls_run_polling_with_drop_pending(self, mock_builder_cls, monkeypatch):
+        """main() calls run_polling with drop_pending_updates=True."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        mock_app.run_polling.assert_called_once()
+        kwargs = mock_app.run_polling.call_args[1]
+        assert kwargs.get("drop_pending_updates") is True
+
+
+class TestMainUnauthorizedHandler:
+    """Tests for unauthorized catch-all handler registration."""
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_registers_unauthorized_in_group_1(self, mock_builder_cls, monkeypatch):
+        """main() registers unauthorized handler in group=1."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        # Find the add_handler call with group=1
+        group_1_calls = [c for c in mock_app.add_handler.call_args_list if c[1].get("group") == 1]
+        assert len(group_1_calls) >= 1, "Expected at least one handler registered in group=1"
+
+
+class TestMainEmptyAuthorizedUsers:
+    """Tests for behavior when AUTHORIZED_USER_IDS is empty."""
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_runs_without_crashing_when_no_users(self, mock_builder_cls, monkeypatch):
+        """main() still starts when AUTHORIZED_USER_IDS is not set (allows all)."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.delenv("AUTHORIZED_USER_IDS", raising=False)
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        mock_app.run_polling.assert_called_once()
