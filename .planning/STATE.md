@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 09-01-PLAN.md
-last_updated: "2026-03-07T23:39:04Z"
-last_activity: 2026-03-07 -- Plan 09-01 complete (GitHub writer, keyword CRUD, 38 new tests, 381 total)
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-07T23:47:19Z"
+last_activity: 2026-03-07 -- Plan 09-02 complete (inline menu, callback handler, entrypoint wiring, 22 new tests, 403 total)
 progress:
   total_phases: 11
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 22
-  completed_plans: 21
-  percent: 77
+  completed_plans: 22
+  percent: 82
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 9 in progress — Keyword and Menu Management (1 of 2 plans complete). Next: 09-02
+**Current focus:** Phase 9 complete — Keyword and Menu Management (2 of 2 plans complete). Next: Phase 10
 
 ## Current Position
 
-Phase: 9 of 11 (Keyword and Menu Management) -- IN PROGRESS
-Plan: 1 of 2 in current phase (09-01 complete)
-Status: GitHub writer + keyword CRUD commands complete, 381 tests passing
-Last activity: 2026-03-07 -- Plan 09-01 complete (GitHub writer, keyword CRUD, 38 new tests, 381 total)
+Phase: 9 of 11 (Keyword and Menu Management) -- COMPLETE
+Plan: 2 of 2 in current phase (09-02 complete)
+Status: Inline keyboard menu + all Phase 9 handlers wired, 403 tests passing
+Last activity: 2026-03-07 -- Plan 09-02 complete (inline menu, callback handler, entrypoint wiring, 22 new tests, 403 total)
 
-Progress: [████████░░] 77%
+Progress: [████████░░] 82%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
-- Average duration: 4.6 min
-- Total execution time: 1.59 hours
+- Total plans completed: 22
+- Average duration: 4.5 min
+- Total execution time: 1.68 hours
 
 **By Phase:**
 
@@ -51,11 +51,11 @@ Progress: [████████░░] 77%
 | 06-telegram-delivery | 2 | 7 min | 3.5 min |
 | 07-email-delivery | 2 | 8 min | 4.0 min |
 | 08-railway-bot-foundation | 3 | 10 min | 3.3 min |
-| 09-keyword-and-menu-management | 1 | 4 min | 4.0 min |
+| 09-keyword-and-menu-management | 2 | 9 min | 4.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 08-01 (3 min), 08-02 (4 min), 08-03 (3 min), 09-01 (4 min)
-- Trend: stable at ~3-4 min/plan
+- Last 5 plans: 08-02 (4 min), 08-03 (3 min), 09-01 (4 min), 09-02 (5 min)
+- Trend: stable at ~3-5 min/plan
 
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
@@ -72,6 +72,7 @@ Progress: [████████░░] 77%
 | Phase 08-railway-bot P02 | 4 | 2 tasks | 8 files |
 | Phase 08-railway-bot P03 | 3 | 1 task | 4 files |
 | Phase 09-keyword-mgmt P01 | 4 | 2 tasks | 4 files |
+| Phase 09-keyword-mgmt P02 | 5 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -166,6 +167,10 @@ Recent decisions affecting current work:
 - [Phase 09-01]: Case-insensitive category lookup and duplicate detection -- user-friendly bot interaction
 - [Phase 09-01]: Default 'add keyword: X' maps to infrastructure category -- most common use case
 - [Phase 09-01]: format_keywords_display as pure function (no I/O) -- easy testing without mocks
+- [Phase 09-02]: InlineKeyboardMarkup 2-row layout: [Keywords, Status] and [Help] for clean menu
+- [Phase 09-02]: Defense-in-depth auth in callback handler via load_authorized_users() re-check
+- [Phase 09-02]: CallbackQueryHandler registered without auth_filter (check inside handler instead)
+- [Phase 09-02]: Status text duplicated in menu_callback (not shared function) for module isolation
 
 ### Pending Todos
 
@@ -179,7 +184,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07T23:39:04Z
-Stopped at: Completed 09-01-PLAN.md
-Resume file: .planning/phases/09-keyword-and-menu-management/09-01-SUMMARY.md
-Next: Plan 09-02 -- Inline Menu and Category Toggle
+Last session: 2026-03-07T23:47:19Z
+Stopped at: Completed 09-02-PLAN.md
+Resume file: .planning/phases/09-keyword-and-menu-management/09-02-SUMMARY.md
+Next: Phase 10 -- Advanced Bot Controls
