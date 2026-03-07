@@ -24,6 +24,13 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "/help - Show this command list\n"
         "/status - Pipeline health summary\n"
         "/run - Trigger a pipeline run now\n"
+        "/keywords - View keywords by category\n"
+        "/menu - Interactive settings menu\n"
+        "\n"
+        "Keyword management:\n"
+        "  add keyword: <term> - Add to Infrastructure\n"
+        "  add <category>: <term> - Add to specific category\n"
+        "  remove <category>: <term> - Remove from category\n"
     )
     await update.message.reply_text(text)
 

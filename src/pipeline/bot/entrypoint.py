@@ -10,10 +10,24 @@ Usage:
 import logging
 import os
 
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
+from telegram.ext import (
+    ApplicationBuilder,
+    CallbackQueryHandler,
+    CommandHandler,
+    MessageHandler,
+    filters,
+)
 
 from pipeline.bot.auth import load_authorized_users
 from pipeline.bot.handler import help_command, run_now_command, status_command, unauthorized_handler
+from pipeline.bot.keywords import (
+    ADD_PATTERN,
+    REMOVE_PATTERN,
+    add_keyword_handler,
+    keywords_command,
+    remove_keyword_handler,
+)
+from pipeline.bot.menu import menu_callback, menu_command
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,9 +41,10 @@ def main() -> None:
 
     Reads TELEGRAM_BOT_TOKEN from env (required).
     Loads authorized user IDs from AUTHORIZED_USER_IDS env var.
-    Registers /help, /status, /start handlers with auth filter.
+    Registers /help, /status, /start, /run, /keywords, /menu handlers with auth filter.
+    Registers add/remove keyword message handlers and inline keyboard callback handler.
     Registers unauthorized catch-all in group 1.
-    Starts polling with drop_pending_updates=True.
+    Starts polling with drop_pending_updates=True, allowed_updates includes callback_query.
 
     Raises:
         RuntimeError: If TELEGRAM_BOT_TOKEN is not set or empty.
@@ -49,11 +64,20 @@ def main() -> None:
 
     app = ApplicationBuilder().token(token).build()
 
-    # Authorized command handlers
+    # Authorized command handlers (Phase 8)
     app.add_handler(CommandHandler("help", help_command, filters=auth_filter))
     app.add_handler(CommandHandler("status", status_command, filters=auth_filter))
     app.add_handler(CommandHandler("start", help_command, filters=auth_filter))
     app.add_handler(CommandHandler("run", run_now_command, filters=auth_filter))
+
+    # Phase 9: keyword and menu handlers
+    app.add_handler(CommandHandler("keywords", keywords_command, filters=auth_filter))
+    app.add_handler(CommandHandler("menu", menu_command, filters=auth_filter))
+    app.add_handler(MessageHandler(auth_filter & filters.Regex(ADD_PATTERN), add_keyword_handler))
+    app.add_handler(
+        MessageHandler(auth_filter & filters.Regex(REMOVE_PATTERN), remove_keyword_handler)
+    )
+    app.add_handler(CallbackQueryHandler(menu_callback, pattern="^menu_"))
 
     # Unauthorized catch-all (lower priority group)
     app.add_handler(
@@ -64,7 +88,7 @@ def main() -> None:
     logger.info("Starting bot polling...")
     app.run_polling(
         drop_pending_updates=True,
-        allowed_updates=["message"],
+        allowed_updates=["message", "callback_query"],
     )
 
 
