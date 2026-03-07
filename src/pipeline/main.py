@@ -5,6 +5,7 @@ import os
 import sys
 from datetime import UTC, datetime
 
+from pipeline.analyzers.classifier import classify_articles
 from pipeline.fetchers.gnews_fetcher import (
     build_gnews_queries,
     fetch_all_gnews,
@@ -15,7 +16,14 @@ from pipeline.fetchers.rss_fetcher import fetch_all_rss
 from pipeline.filters.dedup_filter import filter_duplicates
 from pipeline.filters.geo_filter import filter_by_geo_tier
 from pipeline.filters.relevance_filter import filter_by_relevance
-from pipeline.utils.loader import load_config, load_keywords, load_seen, save_seen
+from pipeline.utils.loader import (
+    load_ai_cost,
+    load_config,
+    load_keywords,
+    load_seen,
+    save_ai_cost,
+    save_seen,
+)
 from pipeline.utils.purge import purge_old_entries
 
 logging.basicConfig(
@@ -124,8 +132,26 @@ def run() -> None:
             len(deduped_articles),
         )
 
-        # Phase 5-7: classify, deliver (not yet implemented)
-        logger.info("Pipeline phases 5-7: not yet implemented")
+        # Phase 5: AI classification
+        if not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("GOOGLE_API_KEY"):
+            logger.warning(
+                "Neither ANTHROPIC_API_KEY nor GOOGLE_API_KEY set "
+                "-- AI classification will use fallback defaults"
+            )
+
+        ai_cost = load_ai_cost("data/ai_cost.json")
+        classified_articles, ai_cost = classify_articles(deduped_articles, ai_cost)
+        save_ai_cost(ai_cost, "data/ai_cost.json")
+
+        logger.info(
+            "AI classification complete: %d articles classified (cost: $%.4f this month, %d calls)",
+            len(classified_articles),
+            ai_cost.total_cost_usd,
+            ai_cost.call_count,
+        )
+
+        # Phase 6-7: deliver (not yet implemented)
+        logger.info("Pipeline phases 6-7: not yet implemented")
     except Exception:  # noqa: BLE001
         logger.exception("Pipeline encountered an unhandled error")
         sys.exit(1)
