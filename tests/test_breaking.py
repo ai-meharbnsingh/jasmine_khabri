@@ -10,7 +10,7 @@ from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.article_schema import Article
 from pipeline.schemas.bot_state_schema import BotState, PauseState
 from pipeline.schemas.config_schema import AppConfig, RssFeedConfig, TelegramConfig
-from pipeline.schemas.keywords_schema import KeywordsConfig
+from pipeline.schemas.keywords_schema import KeywordCategory, KeywordsConfig
 from pipeline.schemas.seen_schema import SeenEntry, SeenStore
 
 # IST timezone for time window tests
@@ -38,9 +38,9 @@ def _make_keywords(
     active: list[str] | None = None, exclusions: list[str] | None = None
 ) -> KeywordsConfig:
     """Helper to create keyword config for testing."""
-    categories = {}
+    categories: dict[str, KeywordCategory] = {}
     if active:
-        categories["test"] = active
+        categories["test"] = KeywordCategory(active=True, keywords=active)
     return KeywordsConfig(
         categories=categories,
         exclusions=exclusions or [],
