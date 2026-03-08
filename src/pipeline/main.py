@@ -3,7 +3,7 @@
 import logging
 import os
 import sys
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from pipeline.analyzers.classifier import classify_articles
 from pipeline.deliverers.email_sender import deliver_email
@@ -97,12 +97,17 @@ def run() -> None:
         else:
             logger.warning("GNEWS_API_KEY not set — skipping GNews fetch")
 
-        all_articles = rss_articles + gnews_articles
+        all_articles_raw = rss_articles + gnews_articles
+
+        # Filter to articles published within the last 24 hours
+        cutoff = (datetime.now(UTC) - timedelta(hours=24)).isoformat()
+        all_articles = [a for a in all_articles_raw if a.published_at >= cutoff]
         logger.info(
-            "Total articles fetched: %d (RSS: %d, GNews: %d)",
-            len(all_articles),
+            "Total articles fetched: %d (RSS: %d, GNews: %d), after 24h filter: %d",
+            len(all_articles_raw),
             len(rss_articles),
             len(gnews_articles),
+            len(all_articles),
         )
 
         # Log fetch health summary

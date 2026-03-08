@@ -268,8 +268,16 @@ def run_breaking() -> None:
         return
 
     # Fetch RSS only (no GNews -- preserve quota for scheduled runs)
-    rss_articles, _ = fetch_all_rss(config.rss_feeds)
-    logger.info("Breaking: fetched %d RSS articles", len(rss_articles))
+    rss_articles_raw, _ = fetch_all_rss(config.rss_feeds)
+
+    # Filter to articles published within the last 24 hours
+    cutoff = (datetime.now(UTC) - timedelta(hours=24)).isoformat()
+    rss_articles = [a for a in rss_articles_raw if a.published_at >= cutoff]
+    logger.info(
+        "Breaking: fetched %d RSS articles, %d within 24h",
+        len(rss_articles_raw),
+        len(rss_articles),
+    )
 
     if not rss_articles:
         logger.info("No RSS articles fetched -- nothing to check")

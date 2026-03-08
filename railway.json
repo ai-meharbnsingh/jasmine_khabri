@@ -2,8 +2,9 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": { "builder": "NIXPACKS" },
   "deploy": {
-    "startCommand": "uv run python -m pipeline.bot.entrypoint",
+    "startCommand": "sleep 5 && uv run python -m pipeline.bot.entrypoint",
     "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 10
+    "restartPolicyMaxRetries": 3,
+    "numReplicas": 1
   }
 }
