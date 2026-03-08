@@ -6,7 +6,7 @@ name: Breaking News
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Every 60 minutes
+    - cron: "*/30 * * * *"  # Every 30 minutes
   workflow_dispatch: {}   # Manual trigger for testing
 
 permissions:
