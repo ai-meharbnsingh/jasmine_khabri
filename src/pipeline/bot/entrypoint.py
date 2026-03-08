@@ -19,7 +19,12 @@ from telegram.ext import (
 )
 
 from pipeline.bot.auth import load_authorized_users
-from pipeline.bot.handler import help_command, run_now_command, status_command, unauthorized_handler
+from pipeline.bot.handler import (
+    help_command,
+    run_now_command,
+    status_command,
+    unauthorized_handler,
+)
 from pipeline.bot.keywords import (
     ADD_PATTERN,
     REMOVE_PATTERN,
@@ -28,6 +33,10 @@ from pipeline.bot.keywords import (
     remove_keyword_handler,
 )
 from pipeline.bot.menu import menu_callback, menu_command
+from pipeline.bot.nlp import nl_command_handler
+from pipeline.bot.pause import pause_command, resume_command
+from pipeline.bot.schedule import schedule_command
+from pipeline.bot.stats import stats_command
 
 logging.basicConfig(
     level=logging.INFO,
@@ -79,10 +88,25 @@ def main() -> None:
     )
     app.add_handler(CallbackQueryHandler(menu_callback, pattern="^menu_"))
 
+    # Phase 10: Advanced bot controls
+    app.add_handler(CommandHandler("pause", pause_command, filters=auth_filter))
+    app.add_handler(CommandHandler("resume", resume_command, filters=auth_filter))
+    app.add_handler(CommandHandler("stats", stats_command, filters=auth_filter))
+    app.add_handler(CommandHandler("schedule", schedule_command, filters=auth_filter))
+
     # Unauthorized catch-all (lower priority group)
     app.add_handler(
         MessageHandler(filters.COMMAND & ~auth_filter, unauthorized_handler),
         group=1,
+    )
+
+    # Group 2: NL catch-all for non-command text (lowest priority)
+    app.add_handler(
+        MessageHandler(
+            auth_filter & filters.TEXT & ~filters.COMMAND,
+            nl_command_handler,
+        ),
+        group=2,
     )
 
     logger.info("Starting bot polling...")

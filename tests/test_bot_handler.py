@@ -69,6 +69,41 @@ class TestHelpCommand:
         assert "add" in reply_text.lower()
         assert "remove" in reply_text.lower()
 
+    def test_reply_contains_pause_command(self):
+        """/help reply includes /pause."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/pause" in reply_text
+
+    def test_reply_contains_resume_command(self):
+        """/help reply includes /resume."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/resume" in reply_text
+
+    def test_reply_contains_stats_command(self):
+        """/help reply includes /stats."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/stats" in reply_text
+
+    def test_reply_contains_schedule_command(self):
+        """/help reply includes /schedule."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "/schedule" in reply_text
+
+    def test_reply_mentions_natural_language(self):
+        """/help reply mentions natural language support."""
+        update, context = _make_update_context()
+        asyncio.run(help_command(update, context))
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "natural" in reply_text.lower()
+
 
 class TestUnauthorizedHandler:
     """Tests for unauthorized catch-all handler."""

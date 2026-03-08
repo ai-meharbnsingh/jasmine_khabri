@@ -85,15 +85,16 @@ class TestMainApplicationConstruction:
 
 
 class TestMainPhase9Handlers:
-    """Tests for Phase 9 handler registrations — keywords, menu, callbacks."""
+    """Tests for Phase 9+10 handler registrations."""
 
     @patch("pipeline.bot.entrypoint.ApplicationBuilder")
-    def test_registers_at_least_7_handlers_in_group_0(self, mock_builder_cls, monkeypatch):
-        """main() registers at least 7 handlers in default group (0).
+    def test_registers_at_least_13_handlers_in_group_0(self, mock_builder_cls, monkeypatch):
+        """main() registers at least 13 handlers in default group (0).
 
         Phase 8: help, status, start, run (4)
         Phase 9: keywords, menu, add_msg, remove_msg, callback (5)
-        Total group 0: at least 9
+        Phase 10: pause, resume, stats, schedule (4)
+        Total group 0: at least 13
         """
         monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
         monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
@@ -110,7 +111,7 @@ class TestMainPhase9Handlers:
         group_0_calls = [
             c for c in mock_app.add_handler.call_args_list if c[1].get("group", 0) == 0
         ]
-        assert len(group_0_calls) >= 7
+        assert len(group_0_calls) >= 13
 
     @patch("pipeline.bot.entrypoint.ApplicationBuilder")
     def test_allowed_updates_includes_callback_query(self, mock_builder_cls, monkeypatch):
@@ -169,6 +170,27 @@ class TestMainUnauthorizedHandler:
         # Find the add_handler call with group=1
         group_1_calls = [c for c in mock_app.add_handler.call_args_list if c[1].get("group") == 1]
         assert len(group_1_calls) >= 1, "Expected at least one handler registered in group=1"
+
+
+class TestMainPhase10NLHandler:
+    """Tests for Phase 10 NL catch-all handler in group 2."""
+
+    @patch("pipeline.bot.entrypoint.ApplicationBuilder")
+    def test_registers_nl_handler_in_group_2(self, mock_builder_cls, monkeypatch):
+        """main() registers NL catch-all MessageHandler in group=2."""
+        monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token-123")
+        monkeypatch.setenv("AUTHORIZED_USER_IDS", "111,222")
+
+        mock_builder = MagicMock()
+        mock_builder_cls.return_value = mock_builder
+        mock_builder.token.return_value = mock_builder
+        mock_app = MagicMock()
+        mock_builder.build.return_value = mock_app
+
+        main()
+
+        group_2_calls = [c for c in mock_app.add_handler.call_args_list if c[1].get("group") == 2]
+        assert len(group_2_calls) >= 1, "Expected at least one handler in group=2 for NL catch-all"
 
 
 class TestMainEmptyAuthorizedUsers:

@@ -26,11 +26,18 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "/run - Trigger a pipeline run now\n"
         "/keywords - View keywords by category\n"
         "/menu - Interactive settings menu\n"
+        "/pause [duration] - Pause deliveries (e.g. /pause 3 days)\n"
+        "/resume - Resume paused deliveries\n"
+        "/stats - View 7-day delivery statistics\n"
+        "/schedule [time] - View or change delivery schedule\n"
         "\n"
         "Keyword management:\n"
         "  add keyword: <term> - Add to Infrastructure\n"
         "  add <category>: <term> - Add to specific category\n"
         "  remove <category>: <term> - Remove from category\n"
+        "\n"
+        "Natural language:\n"
+        '  Just type naturally! e.g. "stop evening alerts for a week"\n'
     )
     await update.message.reply_text(text)
 
