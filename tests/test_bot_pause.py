@@ -5,10 +5,12 @@ Task 1: Schema, loader, and duration parser tests.
 Task 2: Pause/resume command handler tests.
 """
 
+import asyncio
 import json
 from datetime import timedelta
+from unittest.mock import AsyncMock, MagicMock, patch
 
-from pipeline.bot.pause import parse_duration
+from pipeline.bot.pause import parse_duration, pause_command, resume_command
 from pipeline.schemas.bot_state_schema import (
     BotState,
     CustomSchedule,
@@ -129,3 +131,221 @@ class TestLoadBotState:
         state = load_bot_state(str(p))
         assert state.pause.paused_until == ""
         assert state.events == []
+
+
+# --- Helpers for handler tests ---
+
+_DEFAULT_STATE_JSON = json.dumps(
+    {
+        "pause": {"paused_until": "", "paused_slots": []},
+        "events": [],
+        "custom_schedule": {"morning_ist": "", "evening_ist": ""},
+    }
+)
+
+_PAUSED_STATE_JSON = json.dumps(
+    {
+        "pause": {"paused_until": "2026-03-11T00:00:00Z", "paused_slots": ["all"]},
+        "events": [],
+        "custom_schedule": {"morning_ist": "", "evening_ist": ""},
+    }
+)
+
+_ENV = {
+    "GITHUB_PAT": "fake-token",
+    "GITHUB_OWNER": "test-owner",
+    "GITHUB_REPO": "test-repo",
+}
+
+
+def _make_update(text: str) -> MagicMock:
+    """Create a mock Telegram Update with message text."""
+    update = MagicMock()
+    update.message.text = text
+    update.message.reply_text = AsyncMock()
+    return update
+
+
+class TestPauseCommand:
+    """Tests for pause_command handler."""
+
+    def test_pause_with_duration(self):
+        """pause_command with '3 days' sets paused_until and writes to GitHub."""
+        update = _make_update("/pause 3 days")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_DEFAULT_STATE_JSON, "sha123"),
+            ),
+            patch(
+                "pipeline.bot.pause.write_github_file",
+                new_callable=AsyncMock,
+                return_value=True,
+            ) as mock_write,
+        ):
+            asyncio.run(pause_command(update, ctx))
+
+        mock_write.assert_called_once()
+        # Verify the written JSON has paused_until set
+        written_content = mock_write.call_args.kwargs["content"]
+        written_json = json.loads(written_content)
+        assert written_json["pause"]["paused_until"] != ""
+        assert written_json["pause"]["paused_slots"] == ["all"]
+        # Reply should mention "paused"
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "paused" in reply_text.lower() or "Paused" in reply_text
+
+    def test_pause_without_duration(self):
+        """pause_command with no args sets indefinite pause."""
+        update = _make_update("/pause")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_DEFAULT_STATE_JSON, "sha123"),
+            ),
+            patch(
+                "pipeline.bot.pause.write_github_file",
+                new_callable=AsyncMock,
+                return_value=True,
+            ) as mock_write,
+        ):
+            asyncio.run(pause_command(update, ctx))
+
+        written_content = mock_write.call_args.kwargs["content"]
+        written_json = json.loads(written_content)
+        assert written_json["pause"]["paused_until"] == ""
+        assert written_json["pause"]["paused_slots"] == ["all"]
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "indefinitely" in reply_text.lower()
+
+    def test_pause_unparseable_duration(self):
+        """pause_command with garbage text replies with help message."""
+        update = _make_update("/pause garbage")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_DEFAULT_STATE_JSON, "sha123"),
+            ),
+        ):
+            asyncio.run(pause_command(update, ctx))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "could not parse" in reply_text.lower()
+
+    def test_pause_github_write_failure(self):
+        """pause_command replies with error when GitHub write fails."""
+        update = _make_update("/pause 3 days")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_DEFAULT_STATE_JSON, "sha123"),
+            ),
+            patch(
+                "pipeline.bot.pause.write_github_file",
+                new_callable=AsyncMock,
+                return_value=False,
+            ),
+        ):
+            asyncio.run(pause_command(update, ctx))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "error" in reply_text.lower() or "failed" in reply_text.lower()
+
+    def test_pause_missing_env_vars(self):
+        """pause_command replies with error when env vars missing."""
+        update = _make_update("/pause 3 days")
+        ctx = MagicMock()
+
+        with patch.dict("os.environ", {}, clear=True):
+            asyncio.run(pause_command(update, ctx))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "error" in reply_text.lower() or "not configured" in reply_text.lower()
+
+
+class TestResumeCommand:
+    """Tests for resume_command handler."""
+
+    def test_resume_when_paused(self):
+        """resume_command clears pause state and writes to GitHub."""
+        update = _make_update("/resume")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_PAUSED_STATE_JSON, "sha456"),
+            ),
+            patch(
+                "pipeline.bot.pause.write_github_file",
+                new_callable=AsyncMock,
+                return_value=True,
+            ) as mock_write,
+        ):
+            asyncio.run(resume_command(update, ctx))
+
+        written_content = mock_write.call_args.kwargs["content"]
+        written_json = json.loads(written_content)
+        assert written_json["pause"]["paused_until"] == ""
+        assert written_json["pause"]["paused_slots"] == []
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "resumed" in reply_text.lower()
+
+    def test_resume_when_not_paused(self):
+        """resume_command when not paused replies accordingly."""
+        update = _make_update("/resume")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_DEFAULT_STATE_JSON, "sha789"),
+            ),
+        ):
+            asyncio.run(resume_command(update, ctx))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "not paused" in reply_text.lower()
+
+    def test_resume_github_write_failure(self):
+        """resume_command replies with error when GitHub write fails."""
+        update = _make_update("/resume")
+        ctx = MagicMock()
+
+        with (
+            patch.dict("os.environ", _ENV),
+            patch(
+                "pipeline.bot.pause.read_github_file_with_sha",
+                new_callable=AsyncMock,
+                return_value=(_PAUSED_STATE_JSON, "sha456"),
+            ),
+            patch(
+                "pipeline.bot.pause.write_github_file",
+                new_callable=AsyncMock,
+                return_value=False,
+            ),
+        ):
+            asyncio.run(resume_command(update, ctx))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "error" in reply_text.lower() or "failed" in reply_text.lower()
