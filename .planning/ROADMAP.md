@@ -207,7 +207,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 11-01-PLAN.md — Breaking news entrypoint (breaking.py) with keyword fast-path filter, AI confirmation gate, pause/time-window guards, Telegram alert delivery, breaking.yml workflow
+- [x] 11-01-PLAN.md — Breaking news entrypoint (breaking.py) with keyword fast-path filter, AI confirmation gate, pause/time-window guards, Telegram alert delivery, breaking.yml workflow
 - [ ] 11-02-PLAN.md — Free-tier usage tracking in PipelineStatus schema, monthly reset, run counter increments in main.py and breaking.py, /status usage display
 
 ## Progress
@@ -227,4 +227,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
 | 9. Keyword and Menu Management | 1/2 | In Progress|  |
 | 10. Advanced Bot Controls | 3/3 | Complete    | 2026-03-08 |
-| 11. Breaking News and Production Hardening | 0/2 | Not started | - |
+| 11. Breaking News and Production Hardening | 1/2 | In Progress | - |

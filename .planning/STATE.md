@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 10-03-PLAN.md
-last_updated: "2026-03-08T00:35:21.936Z"
-last_activity: 2026-03-08 -- Plan 10-03 complete (NL intent parser, schedule handlers, entrypoint wiring, 47 new tests, 489 total)
+status: in-progress
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-03-08T06:27:38Z"
+last_activity: 2026-03-08 -- Plan 11-01 complete (breaking news pipeline, two-stage filter, hourly workflow, 30 new tests, 519 total)
 progress:
   total_phases: 11
   completed_phases: 10
-  total_plans: 25
-  completed_plans: 25
-  percent: 100
+  total_plans: 27
+  completed_plans: 26
+  percent: 96
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 10 complete — Advanced Bot Controls (3 of 3 plans done). Next: Phase 11 (Breaking News and Production Hardening)
+**Current focus:** Phase 11 in progress — Breaking News and Production Hardening (1 of 2 plans done)
 
 ## Current Position
 
-Phase: 10 of 11 (Advanced Bot Controls) -- COMPLETE
-Plan: 3 of 3 in current phase (all complete)
-Status: Phase 10 complete — NL parser, schedule handlers, all bot controls wired, 489 tests passing
-Last activity: 2026-03-08 -- Plan 10-03 complete (NL intent parser, schedule handlers, entrypoint wiring, 47 new tests, 489 total)
+Phase: 11 of 11 (Breaking News and Production Hardening)
+Plan: 1 of 2 in current phase (11-01 complete)
+Status: Breaking news pipeline complete — two-stage filter, hourly workflow, 519 tests passing
+Last activity: 2026-03-08 -- Plan 11-01 complete (breaking news pipeline, two-stage filter, hourly workflow, 30 new tests, 519 total)
 
-Progress: [██████████] 100%
+Progress: [█████████▌] 96%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
+- Total plans completed: 26
 - Average duration: 4.5 min
-- Total execution time: 1.68 hours
+- Total execution time: 1.77 hours
 
 **By Phase:**
 
@@ -52,9 +52,11 @@ Progress: [██████████] 100%
 | 07-email-delivery | 2 | 8 min | 4.0 min |
 | 08-railway-bot-foundation | 3 | 10 min | 3.3 min |
 | 09-keyword-and-menu-management | 2 | 9 min | 4.5 min |
+| 10-advanced-bot-controls | 3 | 11 min | 3.7 min |
+| 11-breaking-news (in progress) | 1 | 5 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 08-02 (4 min), 08-03 (3 min), 09-01 (4 min), 09-02 (5 min)
+- Last 5 plans: 09-01 (4 min), 09-02 (5 min), 10-01 (4 min), 10-02 (2 min), 11-01 (5 min)
 - Trend: stable at ~3-5 min/plan
 
 *Updated after each plan completion*
@@ -76,6 +78,7 @@ Progress: [██████████] 100%
 | Phase 10 P01 | 4 | 2 tasks | 7 files |
 | Phase 10 P02 | 2 | 2 tasks | 2 files |
 | Phase 10 P03 | 5 | 3 tasks | 8 files |
+| Phase 11 P01 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -184,6 +187,12 @@ Recent decisions affecting current work:
 - [Phase 10-03]: schedule_command_inner extracted as reusable core for /schedule and NL dispatch
 - [Phase 10-03]: IST to UTC conversion uses simple 330-minute offset with modular day wrapping
 - [Phase 10-03]: Keyword NL dispatch provides guidance text, not auto-execution -- keeps add/remove explicit
+- [Phase 11-01]: Keyword score >= 80 threshold for breaking fast-path (matches Phase 5 AI fallback HIGH)
+- [Phase 11-01]: AI budget reserve at $3.00 (not $4.75) to preserve $2 for scheduled runs
+- [Phase 11-01]: 30-min delivery window guard around 7 AM and 4 PM IST prevents breaking-vs-scheduled collision
+- [Phase 11-01]: RSS-only fetch in breaking path (no GNews) to preserve daily quota
+- [Phase 11-01]: Same concurrency group (deliver) as deliver.yml prevents git conflicts on seen.json
+- [Phase 11-01]: Hourly cron (not */30) as safe default for private repos within 2000 min/month free tier
 
 ### Pending Todos
 
@@ -197,7 +206,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T00:28:00Z
-Stopped at: Completed 10-03-PLAN.md
-Resume file: .planning/phases/10-advanced-bot-controls/10-03-SUMMARY.md
-Next: Phase 11 -- Breaking News and Production Hardening
+Last session: 2026-03-08T06:27:38Z
+Stopped at: Completed 11-01-PLAN.md
+Resume file: .planning/phases/11-breaking-news-production-hardening/11-01-SUMMARY.md
+Next: Plan 11-02 -- Production Hardening
