@@ -11,7 +11,8 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 from pipeline.bot.dispatcher import trigger_pipeline
-from pipeline.bot.status import fetch_pipeline_status
+from pipeline.bot.status import fetch_ai_cost, fetch_pipeline_status
+from pipeline.schemas.ai_cost_schema import AICost
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 
 async def status_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handle /status command — fetch and display pipeline health."""
+    """Handle /status command — fetch and display pipeline health and usage."""
     try:
         status = await fetch_pipeline_status()
     except Exception:
@@ -51,7 +52,21 @@ async def status_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await update.message.reply_text("Failed to fetch pipeline status. Please try again later.")
         return
 
+    # Fetch AI cost (default to zero on any failure)
+    try:
+        ai_cost = await fetch_ai_cost()
+    except Exception:
+        logger.warning("Failed to fetch AI cost", exc_info=True)
+        ai_cost = AICost(month="")
+
     last_run = status.last_run_utc if status.last_run_utc else "Never"
+
+    # Calculate usage percentages
+    actions_pct = (status.est_actions_minutes / 2000) * 100
+    ai_pct = (ai_cost.total_cost_usd / 5.0) * 100
+
+    usage_month = status.usage_month if status.usage_month else "N/A"
+
     text = (
         f"Pipeline Status\n"
         f"\n"
@@ -62,6 +77,12 @@ async def status_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         f"Email: {status.email_success} sent\n"
         f"Active sources: {status.sources_active}\n"
         f"Run duration: {status.run_duration_seconds:.1f}s\n"
+        f"\n"
+        f"Free Tier Usage ({usage_month})\n"
+        f"Actions: ~{status.est_actions_minutes:.0f}/2000 min ({actions_pct:.0f}%)\n"
+        f"AI spend: ${ai_cost.total_cost_usd:.2f}/$5.00 ({ai_pct:.0f}%)\n"
+        f"Runs: {status.monthly_deliver_runs} delivers, {status.monthly_breaking_runs} checks\n"
+        f"Breaking alerts: {status.monthly_breaking_alerts}\n"
     )
     await update.message.reply_text(text)
 

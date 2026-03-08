@@ -2,6 +2,7 @@
 
 TDD Phase 8 Plan 02 — tests for help_command, status_command, unauthorized_handler.
 Uses asyncio.run() for async handler tests (no pytest-asyncio dependency needed).
+Phase 11-02: /status usage display tests.
 """
 
 import asyncio
@@ -12,6 +13,7 @@ import httpx
 import respx
 
 from pipeline.bot.handler import help_command, status_command, unauthorized_handler
+from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.pipeline_status_schema import PipelineStatus
 
 
@@ -282,3 +284,171 @@ class TestFetchPipelineStatus:
         result = asyncio.run(fetch_pipeline_status())
         assert result.last_run_utc == ""
         assert result.articles_fetched == 0
+
+
+class TestStatusUsage:
+    """/status displays free-tier usage section with Actions and AI spend percentages."""
+
+    def test_status_shows_free_tier_usage_section(self):
+        """/status response includes 'Free Tier Usage' header."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            articles_fetched=20,
+            usage_month="2026-03",
+            monthly_deliver_runs=10,
+            monthly_breaking_runs=50,
+            monthly_breaking_alerts=3,
+            est_actions_minutes=105.0,
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="2026-03", total_cost_usd=1.50)
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "Free Tier Usage" in reply_text
+
+    def test_status_shows_actions_minutes(self):
+        """/status shows estimated Actions minutes and percentage."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            usage_month="2026-03",
+            est_actions_minutes=200.0,
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="2026-03", total_cost_usd=0.0)
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "Actions" in reply_text
+        assert "2000" in reply_text
+        assert "10%" in reply_text  # 200/2000 = 10%
+
+    def test_status_shows_ai_spend(self):
+        """/status shows AI spend and percentage."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            usage_month="2026-03",
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="2026-03", total_cost_usd=2.50)
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "AI spend" in reply_text
+        assert "$2.50" in reply_text
+        assert "$5.00" in reply_text
+        assert "50%" in reply_text  # 2.50/5.00 = 50%
+
+    def test_status_shows_run_counts(self):
+        """/status shows deliver and breaking run counts."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            usage_month="2026-03",
+            monthly_deliver_runs=15,
+            monthly_breaking_runs=60,
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="2026-03")
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "Runs" in reply_text
+        assert "15" in reply_text
+        assert "60" in reply_text
+
+    def test_status_shows_breaking_alerts(self):
+        """/status shows breaking alerts count."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            usage_month="2026-03",
+            monthly_breaking_alerts=7,
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="2026-03")
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "Breaking alerts" in reply_text
+        assert "7" in reply_text
+
+
+class TestStatusUsageNoData:
+    """When pipeline_status has no usage data, zeroes display gracefully."""
+
+    def test_empty_usage_shows_zeroes(self):
+        """/status with empty usage_month still shows usage section with zeroes."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus()  # All defaults
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.return_value = AICost(month="")
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        # Should still have usage section, with graceful zeroes
+        assert "Free Tier Usage" in reply_text
+        assert "0%" in reply_text
+
+
+class TestStatusAICostFetch:
+    """status_command fetches AI cost and falls back gracefully on failure."""
+
+    def test_ai_cost_fetch_failure_shows_zero(self):
+        """When fetch_ai_cost raises, AI spend shows $0.00."""
+        update, context = _make_update_context()
+        mock_status = PipelineStatus(
+            last_run_utc="2026-03-08T10:00:00Z",
+            usage_month="2026-03",
+        )
+        with (
+            patch(
+                "pipeline.bot.handler.fetch_pipeline_status", new_callable=AsyncMock
+            ) as mock_fetch,
+            patch("pipeline.bot.handler.fetch_ai_cost", new_callable=AsyncMock) as mock_ai,
+        ):
+            mock_fetch.return_value = mock_status
+            mock_ai.side_effect = Exception("API error")
+            asyncio.run(status_command(update, context))
+
+        reply_text = update.message.reply_text.call_args[0][0]
+        assert "$0.00" in reply_text
