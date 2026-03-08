@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in-progress
-stopped_at: Completed 11-01-PLAN.md
-last_updated: "2026-03-08T06:27:38Z"
-last_activity: 2026-03-08 -- Plan 11-01 complete (breaking news pipeline, two-stage filter, hourly workflow, 30 new tests, 519 total)
+status: complete
+stopped_at: Completed 11-02-PLAN.md
+last_updated: "2026-03-08T06:39:00Z"
+last_activity: 2026-03-08 -- Plan 11-02 complete (free-tier usage tracking, monthly reset, 21 new tests, 537 total)
 progress:
   total_phases: 11
-  completed_phases: 10
+  completed_phases: 11
   total_plans: 27
-  completed_plans: 26
-  percent: 96
+  completed_plans: 27
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 11 in progress — Breaking News and Production Hardening (1 of 2 plans done)
+**Current focus:** All phases complete -- project v1.0 delivered
 
 ## Current Position
 
-Phase: 11 of 11 (Breaking News and Production Hardening)
-Plan: 1 of 2 in current phase (11-01 complete)
-Status: Breaking news pipeline complete — two-stage filter, hourly workflow, 519 tests passing
-Last activity: 2026-03-08 -- Plan 11-01 complete (breaking news pipeline, two-stage filter, hourly workflow, 30 new tests, 519 total)
+Phase: 11 of 11 (Breaking News and Production Hardening) -- COMPLETE
+Plan: 2 of 2 in current phase (11-02 complete)
+Status: Phase 11 complete -- usage tracking, monthly reset, /status usage display, 537 tests passing
+Last activity: 2026-03-08 -- Plan 11-02 complete (free-tier usage tracking, monthly reset, 21 new tests, 537 total)
 
-Progress: [█████████▌] 96%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -53,11 +53,11 @@ Progress: [█████████▌] 96%
 | 08-railway-bot-foundation | 3 | 10 min | 3.3 min |
 | 09-keyword-and-menu-management | 2 | 9 min | 4.5 min |
 | 10-advanced-bot-controls | 3 | 11 min | 3.7 min |
-| 11-breaking-news (in progress) | 1 | 5 min | 5.0 min |
+| 11-breaking-news | 2 | 12 min | 6.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 09-01 (4 min), 09-02 (5 min), 10-01 (4 min), 10-02 (2 min), 11-01 (5 min)
-- Trend: stable at ~3-5 min/plan
+- Last 5 plans: 09-02 (5 min), 10-01 (4 min), 10-02 (2 min), 11-01 (5 min), 11-02 (7 min)
+- Trend: stable at ~3-7 min/plan
 
 *Updated after each plan completion*
 | Phase 03-news-fetching P03 | 6 | 2 tasks | 4 files |
@@ -79,6 +79,7 @@ Progress: [█████████▌] 96%
 | Phase 10 P02 | 2 | 2 tasks | 2 files |
 | Phase 10 P03 | 5 | 3 tasks | 8 files |
 | Phase 11 P01 | 5 | 2 tasks | 3 files |
+| Phase 11 P02 | 7 | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -193,6 +194,11 @@ Recent decisions affecting current work:
 - [Phase 11-01]: RSS-only fetch in breaking path (no GNews) to preserve daily quota
 - [Phase 11-01]: Same concurrency group (deliver) as deliver.yml prevents git conflicts on seen.json
 - [Phase 11-01]: Hourly cron (not */30) as safe default for private repos within 2000 min/month free tier
+- [Phase 11-02]: Monthly reset in load_pipeline_status via model_copy (consistent with load_ai_cost pattern)
+- [Phase 11-02]: _save_breaking_status helper at all exit points after RSS fetch -- always counts runs, even without alerts
+- [Phase 11-02]: 3.0 min/deliver run and 1.5 min/breaking run for Actions budget estimation
+- [Phase 11-02]: fetch_ai_cost in status.py reuses read_github_file with graceful AICost(month="") fallback
+- [Phase 11-02]: /status usage percentages: Actions against 2000 min free tier, AI against $5.00 budget
 
 ### Pending Todos
 
@@ -206,7 +212,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T06:27:38Z
-Stopped at: Completed 11-01-PLAN.md
-Resume file: .planning/phases/11-breaking-news-production-hardening/11-01-SUMMARY.md
-Next: Plan 11-02 -- Production Hardening
+Last session: 2026-03-08T06:39:00Z
+Stopped at: Completed 11-02-PLAN.md
+Resume file: .planning/phases/11-breaking-news-production-hardening/11-02-SUMMARY.md
+Next: Project complete -- all 11 phases, 27 plans delivered

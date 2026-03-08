@@ -28,7 +28,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 8: Railway Bot Foundation** - Persistent bot process on Railway with basic commands and auth guard
 - [ ] **Phase 9: Keyword and Menu Management** - Keyword CRUD commands and interactive inline keyboard menu
 - [x] **Phase 10: Advanced Bot Controls** - Natural language commands, schedule modification, event-based scheduling, and stats (completed 2026-03-08)
-- [ ] **Phase 11: Breaking News and Production Hardening** - Breaking news watcher, system health monitoring, and free-tier compliance
+- [x] **Phase 11: Breaking News and Production Hardening** - Breaking news watcher, system health monitoring, and free-tier compliance (completed 2026-03-08)
 
 ## Phase Details
 
@@ -227,4 +227,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
 | 9. Keyword and Menu Management | 1/2 | In Progress|  |
 | 10. Advanced Bot Controls | 3/3 | Complete    | 2026-03-08 |
-| 11. Breaking News and Production Hardening | 1/2 | In Progress | - |
+| 11. Breaking News and Production Hardening | 2/2 | Complete   | 2026-03-08 |
