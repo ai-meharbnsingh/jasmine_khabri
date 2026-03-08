@@ -185,16 +185,15 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. Sending "/pause 3 days" pauses all deliveries for exactly 3 days, and sending /resume before that period restores delivery immediately — both confirmed by bot reply
   2. Sending "stop evening alerts for a week" in natural language is parsed correctly and pauses only the 4 PM delivery for 7 days, confirmed by bot reply
-  3. Sending "Budget on Feb 1, updates every 30 min from 10 AM to 3 PM" creates an event-based schedule entry in config.json and the bot confirms the event with start/end times in IST
-  4. Sending "change morning alert to 6:30 AM" updates the 7 AM delivery cron to 6:30 AM IST (01:00 UTC) in config.json and the bot confirms the new time
+  3. Sending "Budget on Feb 1, updates every 30 min from 10 AM to 3 PM" creates an event-based schedule entry in bot_state.json and the bot confirms the event with start/end times in IST
+  4. Sending "change morning alert to 6:30 AM" updates the 7 AM delivery cron to 6:30 AM IST (01:00 UTC) in bot_state.json and the bot confirms the new time
   5. Sending /stats returns a formatted summary showing article counts, top topics, and duplicates prevented for the last 7 days
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 10-01: /pause and /resume commands with duration parsing and config.json state
-- [ ] 10-02: Natural language command parser (Claude/regex hybrid) for schedule and keyword intents
-- [ ] 10-03: Event-based scheduling handler and schedule modification command (/schedule)
-- [ ] 10-04: /stats command reading from delivery history in state JSON
+- [ ] 10-01-PLAN.md — BotState schema, duration parser, /pause and /resume handlers with GitHub persistence
+- [ ] 10-02-PLAN.md — /stats command with 7-day history aggregation and formatted display
+- [ ] 10-03-PLAN.md — NL intent parser (Claude Haiku), schedule modification, event scheduling, entrypoint wiring
 
 ### Phase 11: Breaking News and Production Hardening
 **Goal**: A separate lightweight breaking news watcher fires between scheduled deliveries for critical HIGH-priority stories, the system operates entirely within free-tier limits, and all monitoring surfaces in /status — making the system production-ready and self-sustaining
@@ -228,5 +227,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 7. Email Delivery and Edge Cases | 0/2 | Not started | - |
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
 | 9. Keyword and Menu Management | 1/2 | In Progress|  |
-| 10. Advanced Bot Controls | 0/4 | Not started | - |
+| 10. Advanced Bot Controls | 0/3 | Not started | - |
 | 11. Breaking News and Production Hardening | 0/3 | Not started | - |
