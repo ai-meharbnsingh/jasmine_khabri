@@ -1,8 +1,8 @@
-"""Article priority classifier using Claude/Gemini.
+"""Article priority classifier using Gemini/Claude.
 
-Classifies batched articles as HIGH/MEDIUM/LOW priority using Claude Haiku 4.5
-as primary AI provider, with automatic Gemini 2.5 Flash fallback. Includes
-writer-focused impact summaries and structured entity extraction.
+Classifies batched articles as HIGH/MEDIUM/LOW priority using Gemini 2.5 Flash
+as primary AI provider (free tier), with automatic Claude Haiku 4.5 fallback.
+Includes writer-focused impact summaries and structured entity extraction.
 
 Budget gate at $4.75/month degrades to keyword-only scoring.
 """
@@ -283,15 +283,15 @@ def classify_articles(articles: list[Article], ai_cost: AICost) -> tuple[list[Ar
     # Build prompt text
     articles_text = build_articles_text(articles)
 
-    # Try Claude first
-    provider = "claude"
-    result, usage = _classify_with_claude(articles_text)
+    # Try Gemini first (free tier)
+    provider = "gemini"
+    result, usage = _classify_with_gemini(articles_text)
 
-    # Fallback to Gemini if Claude failed
+    # Fallback to Claude if Gemini failed
     if result is None:
-        logger.info("Claude failed -- attempting Gemini fallback")
-        provider = "gemini"
-        result, usage = _classify_with_gemini(articles_text)
+        logger.info("Gemini failed -- attempting Claude fallback")
+        provider = "claude"
+        result, usage = _classify_with_claude(articles_text)
 
     # Both failed: apply MEDIUM default
     if result is None:

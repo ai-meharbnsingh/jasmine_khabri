@@ -18,27 +18,27 @@ delivery:
   max_stories: 15
 
 rss_feeds:
-  - name: "MOHUA"
-    url: "https://mohua.gov.in/rss.xml"
-    enabled: true
-  - name: "NHAI"
-    url: "https://nhai.gov.in/rss-feed"
-    enabled: true
-  - name: "AAI"
-    url: "https://www.aai.aero/en/rss"
-    enabled: true
-  - name: "Smart Cities"
-    url: "https://smartcities.gov.in/rss"
-    enabled: true
   - name: "ET Realty"
-    url: "https://economictimes.indiatimes.com/industry/services/property-/-cstruction/rssfeeds/13357555.cms"
+    url: "https://realty.economictimes.indiatimes.com/rss/topstories"
     enabled: true
-  - name: "TOI Real Estate"
-    url: "https://timesofindia.indiatimes.com/rssfeeds/-2950715.cms"
+  - name: "ET Infra"
+    url: "https://infra.economictimes.indiatimes.com/rss/topstories"
     enabled: true
-  - name: "Hindu BL"
-    url: "https://www.thehindubusinessline.com/real-estate/feeder/default.rss"
+  - name: "Housing.com"
+    url: "https://housing.com/news/feed/"
     enabled: true
-  - name: "Moneycontrol RE"
-    url: "https://www.moneycontrol.com/rss/realestate.xml"
+  - name: "Magicbricks"
+    url: "https://www.magicbricks.com/blog/feed/"
+    enabled: true
+  - name: "Square Yards"
+    url: "https://www.squareyards.com/blog/feed"
+    enabled: true
+  - name: "India Infrahub"
+    url: "https://www.indiainfrahub.com/feed/"
+    enabled: true
+  - name: "Livemint Industry"
+    url: "https://www.livemint.com/rss/industry"
+    enabled: true
+  - name: "Hindu BL Economy"
+    url: "https://www.thehindubusinessline.com/economy/feeder/default.rss"
     enabled: true

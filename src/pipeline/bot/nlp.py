@@ -1,8 +1,8 @@
-"""Natural language intent parser with Claude Haiku and dispatch.
+"""Natural language intent parser with Gemini/Claude and dispatch.
 
 Provides:
 - NLIntent: Pydantic model for parsed intent with parameters
-- parse_nl_intent: Calls Claude Haiku to classify freeform text into intents
+- parse_nl_intent: Calls Gemini Flash (primary) or Claude Haiku (fallback)
 - nl_command_handler: Telegram MessageHandler that parses and dispatches NL commands
 - _dispatch_* helpers: Route parsed intents to existing bot handlers
 """
@@ -82,18 +82,30 @@ NL_SYSTEM_PROMPT = (  # noqa: E501
 )
 
 
-def parse_nl_intent(text: str) -> NLIntent:
-    """Parse freeform text into a structured NLIntent using Claude Haiku.
+def _parse_with_gemini(text: str) -> NLIntent | None:
+    """Try parsing intent with Gemini Flash (free tier)."""
+    api_key = os.environ.get("GOOGLE_API_KEY", "")
+    if not api_key:
+        return None
 
-    Calls the Anthropic API with a classification prompt. Returns NLIntent
-    with intent="unknown" on any failure (API error, JSON parse error, etc).
+    try:
+        from google import genai
 
-    Args:
-        text: User's freeform message text.
+        client = genai.Client(api_key=api_key)
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=f"{NL_SYSTEM_PROMPT}\n\nUser message: {text}",
+            config={"response_mime_type": "application/json"},
+        )
+        data = json.loads(response.text)
+        return NLIntent(**data)
+    except Exception:
+        logger.warning("Gemini NL parse failed for: %s", text[:50], exc_info=True)
+        return None
 
-    Returns:
-        NLIntent with classified intent and extracted parameters.
-    """
+
+def _parse_with_claude(text: str) -> NLIntent | None:
+    """Try parsing intent with Claude Haiku (fallback)."""
     try:
         client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
         response = client.messages.create(
@@ -106,8 +118,34 @@ def parse_nl_intent(text: str) -> NLIntent:
         data = json.loads(raw)
         return NLIntent(**data)
     except Exception:
-        logger.warning("NL intent parse failed for: %s", text[:50], exc_info=True)
-        return NLIntent(intent="unknown")
+        logger.warning("Claude NL parse failed for: %s", text[:50], exc_info=True)
+        return None
+
+
+def parse_nl_intent(text: str) -> NLIntent:
+    """Parse freeform text into a structured NLIntent.
+
+    Tries Gemini Flash first (free tier), falls back to Claude Haiku.
+    Returns NLIntent with intent="unknown" if both fail.
+
+    Args:
+        text: User's freeform message text.
+
+    Returns:
+        NLIntent with classified intent and extracted parameters.
+    """
+    # Try Gemini first (free)
+    result = _parse_with_gemini(text)
+    if result is not None:
+        return result
+
+    # Fallback to Claude
+    logger.info("Gemini failed -- attempting Claude fallback for NL parse")
+    result = _parse_with_claude(text)
+    if result is not None:
+        return result
+
+    return NLIntent(intent="unknown")
 
 
 async def _dispatch_pause(update, intent: NLIntent) -> None:
