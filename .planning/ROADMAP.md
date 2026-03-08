@@ -227,5 +227,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 7. Email Delivery and Edge Cases | 0/2 | Not started | - |
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
 | 9. Keyword and Menu Management | 1/2 | In Progress|  |
-| 10. Advanced Bot Controls | 1/3 | In Progress|  |
+| 10. Advanced Bot Controls | 2/3 | In Progress|  |
 | 11. Breaking News and Production Hardening | 0/3 | Not started | - |

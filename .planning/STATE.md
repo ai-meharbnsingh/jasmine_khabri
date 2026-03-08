@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: /stats command with 7-day delivery statistics, 414 tests passing
-stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-08T00:18:30.194Z"
-last_activity: 2026-03-08 -- Plan 10-02 complete (stats aggregation, /stats handler, 11 new tests, 414 total)
+status: Pause/resume commands with BotState schema, 442 tests passing
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-08T00:20:00Z"
+last_activity: 2026-03-08 -- Plan 10-01 complete (BotState schema, pause/resume handlers, 28 new tests, 442 total)
 progress:
   total_phases: 11
   completed_phases: 9
   total_plans: 25
-  completed_plans: 23
-  percent: 92
+  completed_plans: 24
+  percent: 96
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 10 in progress — Advanced Bot Controls (2 of 3 plans complete). Next: 10-03
+**Current focus:** Phase 10 in progress — Advanced Bot Controls (2 of 3 plans complete). Next: 10-03 (NL scheduling)
 
 ## Current Position
 
 Phase: 10 of 11 (Advanced Bot Controls) -- IN PROGRESS
-Plan: 2 of 3 in current phase (10-02 complete)
-Status: /stats command with 7-day delivery statistics, 414 tests passing
-Last activity: 2026-03-08 -- Plan 10-02 complete (stats aggregation, /stats handler, 11 new tests, 414 total)
+Plan: 2 of 3 in current phase (10-01 + 10-02 complete, 10-03 remaining)
+Status: Pause/resume commands with BotState schema, 442 tests passing
+Last activity: 2026-03-08 -- Plan 10-01 complete (BotState schema, pause/resume handlers, 28 new tests, 442 total)
 
-Progress: [█████████░] 92%
+Progress: [█████████░] 96%
 
 ## Performance Metrics
 
@@ -73,6 +73,7 @@ Progress: [█████████░] 92%
 | Phase 08-railway-bot P03 | 3 | 1 task | 4 files |
 | Phase 09-keyword-mgmt P01 | 4 | 2 tasks | 4 files |
 | Phase 09-keyword-mgmt P02 | 5 | 2 tasks | 6 files |
+| Phase 10 P01 | 4 | 2 tasks | 7 files |
 | Phase 10 P02 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
@@ -173,6 +174,9 @@ Recent decisions affecting current work:
 - [Phase 09-02]: CallbackQueryHandler registered without auth_filter (check inside handler instead)
 - [Phase 09-02]: Status text duplicated in menu_callback (not shared function) for module isolation
 - [Phase 10]: ISO string comparison for date cutoff in stats -- lexicographic compare on ISO 8601 strings
+- [Phase 10-01]: Indefinite pause uses paused_until='' with paused_slots=['all'] -- empty string signals no expiry
+- [Phase 10-01]: Duration regex handles a/an as amount 1, month = 30 days -- natural language friendly
+- [Phase 10-01]: write_github_file called with keyword args -- matches keywords.py pattern
 
 ### Pending Todos
 
@@ -186,7 +190,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T00:18:30.192Z
-Stopped at: Completed 10-02-PLAN.md
-Resume file: None
-Next: Phase 10 -- Advanced Bot Controls
+Last session: 2026-03-08T00:20:00Z
+Stopped at: Completed 10-01-PLAN.md
+Resume file: .planning/phases/10-advanced-bot-controls/10-01-SUMMARY.md
+Next: Phase 10 Plan 03 -- NL Scheduling

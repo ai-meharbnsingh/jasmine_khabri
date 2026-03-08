@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **BOT-01**: User can send /help to see available commands and usage
 - [x] **BOT-02**: User can send /status to see system health (last run, sources active, delivery success rate)
-- [ ] **BOT-03**: User can send /pause and /resume to control alert delivery (with duration support: "pause 3 days")
+- [x] **BOT-03**: User can send /pause and /resume to control alert delivery (with duration support: "pause 3 days")
 - [x] **BOT-04**: User can send /menu to access interactive inline keyboard settings menu
 - [x] **BOT-05**: User can add/remove keywords via commands ("add keyword: bullet train", "remove celebrity: Salman Khan")
 - [x] **BOT-06**: User can view current keywords organized by category (/keywords)
@@ -127,7 +127,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DLVR-07 | Phase 7 | Complete |
 | BOT-01 | Phase 8 | Complete |
 | BOT-02 | Phase 8 | Complete |
-| BOT-03 | Phase 10 | Pending |
+| BOT-03 | Phase 10 | Complete |
 | BOT-04 | Phase 9 | Complete |
 | BOT-05 | Phase 9 | Complete |
 | BOT-06 | Phase 9 | Complete |
