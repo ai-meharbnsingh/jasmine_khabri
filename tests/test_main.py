@@ -11,6 +11,7 @@ import logging
 from unittest.mock import patch
 
 from pipeline.main import run
+from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.pipeline_status_schema import PipelineStatus
 
 
@@ -19,11 +20,23 @@ class TestPipelineMain:
 
     def test_run_exits_zero(self):
         """run() must complete without raising any exception."""
-        run()  # Should not raise
+        with (
+            patch("pipeline.main.fetch_all_rss", return_value=([], [])),
+            patch("pipeline.main.classify_articles", return_value=([], AICost(month="2026-01"))),
+            patch("pipeline.main.deliver_articles", return_value=0),
+            patch("pipeline.main.deliver_email", return_value=0),
+        ):
+            run()  # Should not raise
 
     def test_run_logs_start_and_end(self, caplog):
         """run() must emit START and END log lines at INFO level."""
-        with caplog.at_level(logging.INFO):
+        with (
+            patch("pipeline.main.fetch_all_rss", return_value=([], [])),
+            patch("pipeline.main.classify_articles", return_value=([], AICost(month="2026-01"))),
+            patch("pipeline.main.deliver_articles", return_value=0),
+            patch("pipeline.main.deliver_email", return_value=0),
+            caplog.at_level(logging.INFO),
+        ):
             run()
 
         assert "Khabri pipeline START" in caplog.text
@@ -32,7 +45,10 @@ class TestPipelineMain:
     def test_run_calls_deliver_articles(self, caplog):
         """run() must call deliver_articles after AI classification."""
         with (
+            patch("pipeline.main.fetch_all_rss", return_value=([], [])),
+            patch("pipeline.main.classify_articles", return_value=([], AICost(month="2026-01"))),
             patch("pipeline.main.deliver_articles", return_value=0) as mock_deliver,
+            patch("pipeline.main.deliver_email", return_value=0),
             caplog.at_level(logging.INFO),
         ):
             run()
@@ -65,6 +81,10 @@ class TestRunCounter:
         with (
             patch("pipeline.main.load_pipeline_status") as mock_load,
             patch("pipeline.main.save_pipeline_status") as mock_save,
+            patch("pipeline.main.fetch_all_rss", return_value=([], [])),
+            patch("pipeline.main.classify_articles", return_value=([], AICost(month="2026-01"))),
+            patch("pipeline.main.deliver_articles", return_value=0),
+            patch("pipeline.main.deliver_email", return_value=0),
         ):
             mock_load.return_value = seed
             run()

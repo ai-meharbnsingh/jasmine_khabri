@@ -22,12 +22,16 @@ def keywords_path(data_dir: Path) -> Path:
 
 
 @pytest.fixture
-def seen_path(data_dir: Path) -> Path:
-    """Path to seen.json."""
-    return data_dir / "seen.json"
+def seen_path(tmp_path: Path) -> Path:
+    """Isolated seen.json using tmp_path (not live data)."""
+    p = tmp_path / "seen.json"
+    p.write_text('{"entries": []}')
+    return p
 
 
 @pytest.fixture
-def history_path(data_dir: Path) -> Path:
-    """Path to history.json."""
-    return data_dir / "history.json"
+def history_path(tmp_path: Path) -> Path:
+    """Isolated history.json using tmp_path (not live data)."""
+    p = tmp_path / "history.json"
+    p.write_text('{"entries": []}')
+    return p

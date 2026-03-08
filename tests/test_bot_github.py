@@ -131,3 +131,25 @@ class TestWriteGithubFile:
             assert body["sha"] == "sha789"
             decoded = base64.b64decode(body["content"]).decode()
             assert decoded == "hello world"
+
+    def test_returns_false_on_timeout(self):
+        """Returns False on httpx.TimeoutException."""
+        with respx.mock:
+            respx.put(CONTENTS_URL).mock(side_effect=httpx.TimeoutException("timed out"))
+            result = asyncio.run(
+                write_github_file(
+                    "data/keywords.yaml", "content", "msg", "sha123", "tok", "owner", "repo"
+                )
+            )
+        assert result is False
+
+    def test_returns_false_on_request_error(self):
+        """Returns False on httpx.ReadError (a RequestError subclass)."""
+        with respx.mock:
+            respx.put(CONTENTS_URL).mock(side_effect=httpx.ReadError("read failed"))
+            result = asyncio.run(
+                write_github_file(
+                    "data/keywords.yaml", "content", "msg", "sha123", "tok", "owner", "repo"
+                )
+            )
+        assert result is False

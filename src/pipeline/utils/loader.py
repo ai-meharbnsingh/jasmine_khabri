@@ -1,10 +1,12 @@
 """Data file loaders. All data access MUST go through these functions."""
 
 import json
+import logging
 from datetime import UTC, datetime
 from pathlib import Path
 
 import yaml
+from pydantic import ValidationError
 
 from pipeline.schemas.ai_cost_schema import AICost
 from pipeline.schemas.bot_state_schema import BotState
@@ -12,6 +14,8 @@ from pipeline.schemas.config_schema import AppConfig
 from pipeline.schemas.keywords_schema import KeywordsConfig
 from pipeline.schemas.pipeline_status_schema import PipelineStatus
 from pipeline.schemas.seen_schema import SeenStore
+
+logger = logging.getLogger(__name__)
 
 
 def load_config(path: str | Path = "data/config.yaml") -> AppConfig:
@@ -39,8 +43,12 @@ def load_seen(path: str | Path = "data/seen.json") -> SeenStore:
     text = path.read_text().strip()
     if not text:
         return SeenStore()
-    raw = json.loads(text)
-    return SeenStore.model_validate(raw)
+    try:
+        raw = json.loads(text)
+        return SeenStore.model_validate(raw)
+    except (json.JSONDecodeError, ValidationError):
+        logger.warning("Corrupt seen file at %s — returning empty store", path)
+        return SeenStore()
 
 
 def save_seen(store: SeenStore, path: str | Path = "data/seen.json") -> None:
@@ -65,8 +73,12 @@ def load_ai_cost(path: str | Path = "data/ai_cost.json") -> AICost:
     if not text:
         return AICost(month=current_month)
 
-    raw = json.loads(text)
-    cost = AICost.model_validate(raw)
+    try:
+        raw = json.loads(text)
+        cost = AICost.model_validate(raw)
+    except (json.JSONDecodeError, ValidationError):
+        logger.warning("Corrupt AI cost file at %s — returning defaults", path)
+        return AICost(month=current_month)
 
     # Monthly reset: if stored month differs from current, reset counters
     if cost.month != current_month:
@@ -97,8 +109,12 @@ def load_pipeline_status(path: str | Path = "data/pipeline_status.json") -> Pipe
     if not text:
         return PipelineStatus()
 
-    raw = json.loads(text)
-    status = PipelineStatus.model_validate(raw)
+    try:
+        raw = json.loads(text)
+        status = PipelineStatus.model_validate(raw)
+    except (json.JSONDecodeError, ValidationError):
+        logger.warning("Corrupt pipeline status file at %s — returning defaults", path)
+        return PipelineStatus()
 
     # Monthly reset: if stored month differs from current, reset usage counters
     if status.usage_month != current_month:
@@ -136,5 +152,9 @@ def load_bot_state(path: str | Path = "data/bot_state.json") -> BotState:
     if not text:
         return BotState()
 
-    raw = json.loads(text)
-    return BotState.model_validate(raw)
+    try:
+        raw = json.loads(text)
+        return BotState.model_validate(raw)
+    except (json.JSONDecodeError, ValidationError):
+        logger.warning("Corrupt bot state file at %s — returning defaults", path)
+        return BotState()

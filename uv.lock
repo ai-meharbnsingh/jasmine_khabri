@@ -572,7 +572,7 @@ dev = [
 requires-dist = [
     { name = "anthropic", specifier = ">=0.84.0" },
     { name = "feedparser", specifier = ">=6.0.12" },
-    { name = "google-genai", specifier = ">=1.66.0" },
+    { name = "google-genai", specifier = "==1.66.0" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "pydantic", specifier = ">=2.5" },
     { name = "python-telegram-bot", specifier = ">=22.0" },

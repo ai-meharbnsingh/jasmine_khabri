@@ -90,6 +90,6 @@ async def write_github_file(
         async with httpx.AsyncClient(timeout=15.0) as client:
             resp = await client.put(url, headers=headers, json=payload)
             return resp.status_code in (200, 201)
-    except Exception:
+    except (httpx.TimeoutException, httpx.RequestError, httpx.HTTPStatusError):
         logger.warning("Failed to write file to GitHub: %s", path, exc_info=True)
         return False

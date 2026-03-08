@@ -7,6 +7,7 @@ optional AI confirmation, and Telegram-only delivery.
 
 import logging
 import os
+import sys
 from datetime import UTC, datetime, timedelta, timezone
 
 from pipeline.analyzers.classifier import classify_articles
@@ -246,6 +247,17 @@ def run_breaking() -> None:
     """
     logger.info("=== Breaking news check START ===")
 
+    try:
+        _run_breaking_inner()
+    except Exception:  # noqa: BLE001
+        logger.exception("Breaking pipeline encountered an unhandled error")
+        sys.exit(1)
+    finally:
+        logger.info("=== Breaking news check END ===")
+
+
+def _run_breaking_inner() -> None:
+    """Inner logic for run_breaking, wrapped with error handling."""
     # Load config and check breaking enabled
     config = load_config("data/config.yaml")
     if not config.telegram.breaking_news_enabled:
@@ -365,8 +377,6 @@ def run_breaking() -> None:
     save_seen(seen, "data/seen.json")
     save_ai_cost(ai_cost, "data/ai_cost.json")
     _save_breaking_status(alerts_sent=len(high_articles))
-
-    logger.info("=== Breaking news check END ===")
 
 
 if __name__ == "__main__":

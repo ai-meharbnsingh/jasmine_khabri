@@ -168,6 +168,36 @@ class TestParseNLIntent:
         assert result.intent == "unknown"
 
 
+class TestKeywordStubHonesty:
+    """Keyword add/remove stubs must say 'not yet implemented'."""
+
+    def test_keyword_add_reply_says_not_implemented(self):
+        """keyword_add dispatch reply includes 'not yet implemented'."""
+        from pipeline.bot.nlp import _dispatch_keyword_add
+
+        update = MagicMock()
+        update.message.reply_text = AsyncMock()
+        intent = NLIntent(
+            intent="keyword_add", confidence=0.9, category="celebrity", keyword="test"
+        )
+        asyncio.run(_dispatch_keyword_add(update, intent))
+        reply = update.message.reply_text.call_args[0][0]
+        assert "not yet implemented" in reply
+
+    def test_keyword_remove_reply_says_not_implemented(self):
+        """keyword_remove dispatch reply includes 'not yet implemented'."""
+        from pipeline.bot.nlp import _dispatch_keyword_remove
+
+        update = MagicMock()
+        update.message.reply_text = AsyncMock()
+        intent = NLIntent(
+            intent="keyword_remove", confidence=0.9, category="infrastructure", keyword="NHAI"
+        )
+        asyncio.run(_dispatch_keyword_remove(update, intent))
+        reply = update.message.reply_text.call_args[0][0]
+        assert "not yet implemented" in reply
+
+
 class TestNLCommandHandler:
     """Tests for nl_command_handler — dispatch logic."""
 

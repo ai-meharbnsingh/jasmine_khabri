@@ -297,16 +297,20 @@ async def _dispatch_event_schedule(update, intent: NLIntent) -> None:
 async def _dispatch_keyword_add(update, intent: NLIntent) -> None:
     """Dispatch keyword_add intent — add keyword to category."""
     cat, kw = intent.category, intent.keyword
+    # TODO: Implement actual keyword modification via GitHub Contents API
     await update.message.reply_text(
-        f"Adding '{kw}' to {cat}. Use 'add {cat}: {kw}' for direct command."
+        f"Keyword management via NL is not yet implemented.\n"
+        f"To add '{kw}' to {cat}, use: add {cat}: {kw}"
     )
 
 
 async def _dispatch_keyword_remove(update, intent: NLIntent) -> None:
     """Dispatch keyword_remove intent — remove keyword from category."""
     cat, kw = intent.category, intent.keyword
+    # TODO: Implement actual keyword modification via GitHub Contents API
     await update.message.reply_text(
-        f"Removing '{kw}' from {cat}. Use 'remove {cat}: {kw}' for direct command."
+        f"Keyword management via NL is not yet implemented.\n"
+        f"To remove '{kw}' from {cat}, use: remove {cat}: {kw}"
     )
 
 

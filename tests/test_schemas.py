@@ -5,9 +5,17 @@ Tests cover:
 - Keyword library structure and active/inactive flags
 - Seen/history store loading
 - Package import smoke tests
+- Loader resilience against corrupt JSON files
 """
 
-from pipeline.utils.loader import load_config, load_keywords, load_seen
+from pipeline.utils.loader import (
+    load_ai_cost,
+    load_bot_state,
+    load_config,
+    load_keywords,
+    load_pipeline_status,
+    load_seen,
+)
 
 
 class TestConfigSchema:
@@ -58,10 +66,10 @@ class TestKeywordsSchema:
         kw = load_keywords(str(keywords_path))
         assert kw.categories["regulatory"].active is True
 
-    def test_celebrity_category_inactive(self, keywords_path):
-        """Celebrity category is inactive by default (locked decision)."""
+    def test_celebrity_category_active(self, keywords_path):
+        """Celebrity category is active (activated 2026-03-08)."""
         kw = load_keywords(str(keywords_path))
-        assert kw.categories["celebrity"].active is False
+        assert kw.categories["celebrity"].active is True
 
     def test_transaction_category_inactive(self, keywords_path):
         """Transaction category is inactive by default (locked decision)."""
@@ -69,10 +77,10 @@ class TestKeywordsSchema:
         assert kw.categories["transaction"].active is False
 
     def test_active_keywords_count(self, keywords_path):
-        """Active keywords should be 30+ from Infrastructure + Regulatory."""
+        """Active keywords should be 90+ from Infrastructure + Regulatory + Celebrity."""
         kw = load_keywords(str(keywords_path))
         active = kw.active_keywords()
-        assert len(active) >= 30, f"Expected 30+ active keywords, got {len(active)}"
+        assert len(active) >= 90, f"Expected 90+ active keywords, got {len(active)}"
 
     def test_exclusions_present(self, keywords_path):
         """Exclusion keywords are defined."""
@@ -132,3 +140,42 @@ class TestPackageImports:
         from pipeline import __version__
 
         assert __version__ == "0.1.0"
+
+
+class TestLoaderCorruptFileResilience:
+    """Tests that loaders return safe defaults on corrupt JSON files."""
+
+    def test_load_seen_corrupt_json_returns_empty(self, tmp_path):
+        """Corrupt seen.json returns empty SeenStore instead of crashing."""
+        p = tmp_path / "seen.json"
+        p.write_text("{invalid")
+        store = load_seen(str(p))
+        assert store.entries == []
+
+    def test_load_seen_invalid_schema_returns_empty(self, tmp_path):
+        """Invalid schema in seen.json returns empty SeenStore."""
+        p = tmp_path / "seen.json"
+        p.write_text('{"entries": "not_a_list"}')
+        store = load_seen(str(p))
+        assert store.entries == []
+
+    def test_load_ai_cost_corrupt_json_returns_default(self, tmp_path):
+        """Corrupt ai_cost.json returns default AICost with zero cost."""
+        p = tmp_path / "ai_cost.json"
+        p.write_text("not json at all")
+        cost = load_ai_cost(str(p))
+        assert cost.total_cost_usd == 0.0
+
+    def test_load_pipeline_status_corrupt_json_returns_default(self, tmp_path):
+        """Corrupt pipeline_status.json returns default PipelineStatus."""
+        p = tmp_path / "pipeline_status.json"
+        p.write_text("{{broken}}")
+        status = load_pipeline_status(str(p))
+        assert status.articles_fetched == 0
+
+    def test_load_bot_state_corrupt_json_returns_default(self, tmp_path):
+        """Corrupt bot_state.json returns default BotState."""
+        p = tmp_path / "bot_state.json"
+        p.write_text("[not obj]")
+        state = load_bot_state(str(p))
+        assert state.pause.paused_slots == []

@@ -23,13 +23,14 @@ def _make_article(
     title: str = "Test Article", url: str = "https://example.com/1", **kwargs
 ) -> Article:
     """Helper to create test articles with sensible defaults."""
+    now_iso = datetime.now(UTC).isoformat()
     defaults = {
         "title": title,
         "url": url,
         "source": "Test Source",
-        "published_at": "2026-01-01T00:00:00+00:00",
+        "published_at": now_iso,
         "summary": "",
-        "fetched_at": "2026-01-01T00:00:00+00:00",
+        "fetched_at": now_iso,
         "relevance_score": 0,
     }
     defaults.update(kwargs)
@@ -582,6 +583,21 @@ class TestRunBreaking:
 
             run_breaking()
             mock_save_ai_cost.assert_called_once()
+
+
+class TestBreakingExitCode:
+    """run_breaking exits with code 1 on unhandled crash."""
+
+    def test_run_breaking_exits_1_on_crash(self):
+        """When load_config raises, run_breaking calls sys.exit(1)."""
+        import pytest
+
+        from pipeline.breaking import run_breaking
+
+        with patch("pipeline.breaking.load_config", side_effect=RuntimeError("boom")):
+            with pytest.raises(SystemExit) as exc_info:
+                run_breaking()
+            assert exc_info.value.code == 1
 
 
 class TestBreakingRunCounter:
