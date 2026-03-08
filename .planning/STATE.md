@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Pause/resume commands with BotState schema, 442 tests passing
-stopped_at: Completed 10-01-PLAN.md
-last_updated: "2026-03-08T00:20:00Z"
-last_activity: 2026-03-08 -- Plan 10-01 complete (BotState schema, pause/resume handlers, 28 new tests, 442 total)
+status: Phase 10 complete — NL parser, schedule handlers, all bot controls wired, 489 tests passing
+stopped_at: Completed 10-03-PLAN.md
+last_updated: "2026-03-08T00:28:00Z"
+last_activity: 2026-03-08 -- Plan 10-03 complete (NL intent parser, schedule handlers, entrypoint wiring, 47 new tests, 489 total)
 progress:
   total_phases: 11
-  completed_phases: 9
+  completed_phases: 10
   total_plans: 25
-  completed_plans: 24
-  percent: 96
+  completed_plans: 25
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-26)
 
 **Core value:** Deliver the right infrastructure and real estate news at the right time — so the user never misses critical developments and saves 2+ hours of daily manual research.
-**Current focus:** Phase 10 in progress — Advanced Bot Controls (2 of 3 plans complete). Next: 10-03 (NL scheduling)
+**Current focus:** Phase 10 complete — Advanced Bot Controls (3 of 3 plans done). Next: Phase 11 (Breaking News and Production Hardening)
 
 ## Current Position
 
-Phase: 10 of 11 (Advanced Bot Controls) -- IN PROGRESS
-Plan: 2 of 3 in current phase (10-01 + 10-02 complete, 10-03 remaining)
-Status: Pause/resume commands with BotState schema, 442 tests passing
-Last activity: 2026-03-08 -- Plan 10-01 complete (BotState schema, pause/resume handlers, 28 new tests, 442 total)
+Phase: 10 of 11 (Advanced Bot Controls) -- COMPLETE
+Plan: 3 of 3 in current phase (all complete)
+Status: Phase 10 complete — NL parser, schedule handlers, all bot controls wired, 489 tests passing
+Last activity: 2026-03-08 -- Plan 10-03 complete (NL intent parser, schedule handlers, entrypoint wiring, 47 new tests, 489 total)
 
-Progress: [█████████░] 96%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -75,6 +75,7 @@ Progress: [█████████░] 96%
 | Phase 09-keyword-mgmt P02 | 5 | 2 tasks | 6 files |
 | Phase 10 P01 | 4 | 2 tasks | 7 files |
 | Phase 10 P02 | 2 | 2 tasks | 2 files |
+| Phase 10 P03 | 5 | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -177,6 +178,12 @@ Recent decisions affecting current work:
 - [Phase 10-01]: Indefinite pause uses paused_until='' with paused_slots=['all'] -- empty string signals no expiry
 - [Phase 10-01]: Duration regex handles a/an as amount 1, month = 30 days -- natural language friendly
 - [Phase 10-01]: write_github_file called with keyword args -- matches keywords.py pattern
+- [Phase 10-03]: NL parser uses Claude Haiku 4.5 with structured JSON output, falls back to unknown on any failure
+- [Phase 10-03]: NL catch-all in group 2 (lowest priority) so slash commands and regex patterns always match first
+- [Phase 10-03]: Short messages (<6 chars) silently ignored to prevent API calls on greetings
+- [Phase 10-03]: schedule_command_inner extracted as reusable core for /schedule and NL dispatch
+- [Phase 10-03]: IST to UTC conversion uses simple 330-minute offset with modular day wrapping
+- [Phase 10-03]: Keyword NL dispatch provides guidance text, not auto-execution -- keeps add/remove explicit
 
 ### Pending Todos
 
@@ -190,7 +197,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-08T00:20:00Z
-Stopped at: Completed 10-01-PLAN.md
-Resume file: .planning/phases/10-advanced-bot-controls/10-01-SUMMARY.md
-Next: Phase 10 Plan 03 -- NL Scheduling
+Last session: 2026-03-08T00:28:00Z
+Stopped at: Completed 10-03-PLAN.md
+Resume file: .planning/phases/10-advanced-bot-controls/10-03-SUMMARY.md
+Next: Phase 11 -- Breaking News and Production Hardening

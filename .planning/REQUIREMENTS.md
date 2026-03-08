@@ -44,9 +44,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **BOT-04**: User can send /menu to access interactive inline keyboard settings menu
 - [x] **BOT-05**: User can add/remove keywords via commands ("add keyword: bullet train", "remove celebrity: Salman Khan")
 - [x] **BOT-06**: User can view current keywords organized by category (/keywords)
-- [ ] **BOT-07**: User can send natural language commands parsed by AI ("stop evening alerts for a week", "track Priyanka Chopra")
-- [ ] **BOT-08**: User can create event-based scheduling ("Budget on Feb 1, updates every 30 min from 10 AM to 3 PM")
-- [ ] **BOT-09**: User can modify delivery schedule ("change morning alert to 6:30 AM")
+- [x] **BOT-07**: User can send natural language commands parsed by AI ("stop evening alerts for a week", "track Priyanka Chopra")
+- [x] **BOT-08**: User can create event-based scheduling ("Budget on Feb 1, updates every 30 min from 10 AM to 3 PM")
+- [x] **BOT-09**: User can modify delivery schedule ("change morning alert to 6:30 AM")
 - [x] **BOT-10**: User can view delivery statistics (/stats — last 7 days: article counts, top topics, duplicates prevented)
 - [x] **BOT-11**: Bot restricts commands to authorized Telegram user IDs only
 
@@ -131,9 +131,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BOT-04 | Phase 9 | Complete |
 | BOT-05 | Phase 9 | Complete |
 | BOT-06 | Phase 9 | Complete |
-| BOT-07 | Phase 10 | Pending |
-| BOT-08 | Phase 10 | Pending |
-| BOT-09 | Phase 10 | Pending |
+| BOT-07 | Phase 10 | Complete |
+| BOT-08 | Phase 10 | Complete |
+| BOT-09 | Phase 10 | Complete |
 | BOT-10 | Phase 10 | Complete |
 | BOT-11 | Phase 8 | Complete |
 | INFRA-01 | Phase 2 | Complete |
