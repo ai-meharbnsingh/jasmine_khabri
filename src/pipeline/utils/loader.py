@@ -7,6 +7,7 @@ from pathlib import Path
 import yaml
 
 from pipeline.schemas.ai_cost_schema import AICost
+from pipeline.schemas.bot_state_schema import BotState
 from pipeline.schemas.config_schema import AppConfig
 from pipeline.schemas.keywords_schema import KeywordsConfig
 from pipeline.schemas.pipeline_status_schema import PipelineStatus
@@ -103,3 +104,20 @@ def save_pipeline_status(
     """Save PipelineStatus to JSON file."""
     path = Path(path)
     path.write_text(status.model_dump_json(indent=2) + "\n")
+
+
+def load_bot_state(path: str | Path = "data/bot_state.json") -> BotState:
+    """Load and validate bot state from JSON.
+
+    Returns BotState with defaults if file doesn't exist or is empty.
+    """
+    path = Path(path)
+    if not path.exists():
+        return BotState()
+
+    text = path.read_text().strip()
+    if not text:
+        return BotState()
+
+    raw = json.loads(text)
+    return BotState.model_validate(raw)

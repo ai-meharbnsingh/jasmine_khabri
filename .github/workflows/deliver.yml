@@ -47,7 +47,7 @@ jobs:
         id: commit
         uses: EndBug/add-and-commit@v9
         with:
-          add: '["data/seen.json", "data/history.json", "data/gnews_quota.json", "data/ai_cost.json", "data/pipeline_status.json"]'
+          add: '["data/seen.json", "data/history.json", "data/gnews_quota.json", "data/ai_cost.json", "data/pipeline_status.json", "data/bot_state.json"]'
           message: "chore(state): update seen/history after pipeline run [skip ci]"
           default_author: github_actions
 

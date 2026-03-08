@@ -1,0 +1,11 @@
+{
+  "pause": {
+    "paused_until": "",
+    "paused_slots": []
+  },
+  "events": [],
+  "custom_schedule": {
+    "morning_ist": "",
+    "evening_ist": ""
+  }
+}
