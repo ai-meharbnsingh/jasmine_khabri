@@ -204,12 +204,11 @@ Plans:
   2. The breaking news workflow uses keyword-only fast-path filtering and only calls the AI API when the keyword filter flags the article as HIGH, preventing unnecessary AI cost for every 30-minute check
   3. The system operates for a full calendar month without exceeding Railway $5 credit, GitHub Actions 2000 minutes, or $5 AI API costs — verified by reviewing usage dashboards
   4. The /status command shows current free-tier usage percentages (Actions minutes used, estimated AI spend this month) alongside system health
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 11-01: Breaking news workflow (breaking.yml) with 30-60 min cron and keyword-only fast-path before AI confirmation
-- [ ] 11-02: Free-tier usage tracker in state JSON and /status integration
-- [ ] 11-03: End-to-end production validation (live run, live bot, real articles, real delivery)
+- [ ] 11-01-PLAN.md — Breaking news entrypoint (breaking.py) with keyword fast-path filter, AI confirmation gate, pause/time-window guards, Telegram alert delivery, breaking.yml workflow
+- [ ] 11-02-PLAN.md — Free-tier usage tracking in PipelineStatus schema, monthly reset, run counter increments in main.py and breaking.py, /status usage display
 
 ## Progress
 
@@ -228,4 +227,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 8. Railway Bot Foundation | 2/3 | In Progress|  |
 | 9. Keyword and Menu Management | 1/2 | In Progress|  |
 | 10. Advanced Bot Controls | 3/3 | Complete    | 2026-03-08 |
-| 11. Breaking News and Production Hardening | 0/3 | Not started | - |
+| 11. Breaking News and Production Hardening | 0/2 | Not started | - |
