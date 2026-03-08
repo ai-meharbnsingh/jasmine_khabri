@@ -1,0 +1,47 @@
+# Breaking News — hourly check for critical HIGH-priority stories.
+# For public repos, cron can be changed to */30 for 30-minute checks.
+# Hourly is the safe default for private repos (stays within 2000 min/month free tier).
+
+name: Breaking News
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Every 60 minutes
+  workflow_dispatch: {}   # Manual trigger for testing
+
+permissions:
+  contents: write         # Required for EndBug/add-and-commit to push
+
+concurrency:
+  group: deliver          # Same group as deliver.yml to prevent git conflicts on seen.json
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run breaking news check
+        run: uv run python -m pipeline.breaking
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+
+      - name: Commit state back to repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '["data/seen.json", "data/ai_cost.json", "data/pipeline_status.json"]'
+          message: "chore(state): update after breaking news check [skip ci]"
+          default_author: github_actions
