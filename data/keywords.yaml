@@ -55,17 +55,9 @@ categories:
   regulatory:
     active: true
     keywords:
-      # RERA
-      - RERA
-      - real estate regulatory authority
-      - real estate regulation
-      - MahaRERA
-      - UP-RERA
-      - HRERA
-      - KRERA
-      - RERA compliance
-      - RERA registered
-      - RERA violation
+      # MAHADA
+      - MAHADA
+      - Maharashtra Housing
       # PMAY
       - PMAY
       - Pradhan Mantri Awas Yojana
@@ -86,16 +78,54 @@ categories:
       - BDA
 
   celebrity:
-    active: false
+    active: true
     keywords:
+      # Bollywood — infra/property news only (exclusions filter gossip)
       - Amitabh Bachchan
       - Shah Rukh Khan
       - Akshay Kumar
       - Salman Khan
       - Aamir Khan
+      - Ranveer Singh
+      - Ranbir Kapoor
+      - Deepika Padukone
+      - Alia Bhatt
+      - Hrithik Roshan
+      - Ajay Devgn
+      - Katrina Kaif
+      - Priyanka Chopra
+      - Varun Dhawan
+      - Tiger Shroff
+      # South Indian Stars
+      - Rajinikanth
+      - Allu Arjun
+      - Ram Charan
+      - Jr NTR
+      - Prabhas
+      - Mahesh Babu
+      - Vijay Thalapathy
+      - Yash
+      - Dhanush
+      - Suriya
+      - Kamal Haasan
+      - Nayanthara
+      - Samantha Ruth Prabhu
+      - Rashmika Mandanna
+      - Vijay Deverakonda
+      # Sports Players
       - Virat Kohli
       - MS Dhoni
       - Sachin Tendulkar
+      - Rohit Sharma
+      - Hardik Pandya
+      - Neeraj Chopra
+      - PV Sindhu
+      - Saina Nehwal
+      - Sunil Chhetri
+      - Mary Kom
+      - Rishabh Pant
+      - KL Rahul
+      # Business Leaders
       - Mukesh Ambani
       - Gautam Adani
       - Ratan Tata
@@ -125,3 +155,13 @@ exclusions:
   - gossip
   - horoscope
   - rumor
+  - divorce
+  - affair
+  - breakup
+  - dating
+  - wedding
+  - box office
+  - movie review
+  - film review
+  - trailer launch
+  - song launch
