@@ -139,6 +139,12 @@ def save_pipeline_status(
     path.write_text(status.model_dump_json(indent=2) + "\n")
 
 
+def save_bot_state(state: BotState, path: str | Path = "data/bot_state.json") -> None:
+    """Save BotState to JSON file."""
+    path = Path(path)
+    path.write_text(json.dumps(state.model_dump(), indent=2) + "\n")
+
+
 def load_bot_state(path: str | Path = "data/bot_state.json") -> BotState:
     """Load and validate bot state from JSON.
 

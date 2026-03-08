@@ -19,6 +19,8 @@ class EventSchedule(BaseModel):
     start_time_ist: str = ""
     end_time_ist: str = ""
     active: bool = True
+    keywords: list[str] = Field(default_factory=list)
+    last_delivered_at: str = ""  # ISO 8601 UTC timestamp
 
 
 class CustomSchedule(BaseModel):
