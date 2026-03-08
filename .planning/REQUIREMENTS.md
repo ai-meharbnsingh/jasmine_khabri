@@ -47,7 +47,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **BOT-07**: User can send natural language commands parsed by AI ("stop evening alerts for a week", "track Priyanka Chopra")
 - [ ] **BOT-08**: User can create event-based scheduling ("Budget on Feb 1, updates every 30 min from 10 AM to 3 PM")
 - [ ] **BOT-09**: User can modify delivery schedule ("change morning alert to 6:30 AM")
-- [ ] **BOT-10**: User can view delivery statistics (/stats — last 7 days: article counts, top topics, duplicates prevented)
+- [x] **BOT-10**: User can view delivery statistics (/stats — last 7 days: article counts, top topics, duplicates prevented)
 - [x] **BOT-11**: Bot restricts commands to authorized Telegram user IDs only
 
 ### Infrastructure
@@ -134,7 +134,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BOT-07 | Phase 10 | Pending |
 | BOT-08 | Phase 10 | Pending |
 | BOT-09 | Phase 10 | Pending |
-| BOT-10 | Phase 10 | Pending |
+| BOT-10 | Phase 10 | Complete |
 | BOT-11 | Phase 8 | Complete |
 | INFRA-01 | Phase 2 | Complete |
 | INFRA-02 | Phase 1 | Complete |
