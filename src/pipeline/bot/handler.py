@@ -37,6 +37,12 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "  add <category>: <term> - Add to specific category\n"
         "  remove <category>: <term> - Remove from category\n"
         "\n"
+        "Event tracking:\n"
+        "  Just type naturally to schedule an event, e.g.:\n"
+        '  "Budget on Feb 1, updates every 30 min from 10 AM to 3 PM"\n'
+        '  "IPL match on Mar 22, every 15 min from 7 PM to 11 PM"\n'
+        "  Active events auto-deliver matching news during the window.\n"
+        "\n"
         "Natural language:\n"
         '  Just type naturally! e.g. "stop evening alerts for a week"\n'
     )

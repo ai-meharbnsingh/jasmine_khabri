@@ -192,14 +192,12 @@ class TestRunEventCheck:
     @patch("pipeline.event_runner.fetch_all_rss")
     @patch("pipeline.event_runner.save_bot_state")
     @patch("pipeline.event_runner.load_seen")
-    @patch("pipeline.event_runner.load_keywords")
     @patch("pipeline.event_runner.load_config")
     @patch("pipeline.event_runner.load_bot_state")
     def test_no_active_events_exits_early(
         self,
         mock_load_bot,
         mock_config,
-        mock_kw,
         mock_seen,
         mock_save_bot,
         mock_fetch,
@@ -219,14 +217,12 @@ class TestRunEventCheck:
     @patch("pipeline.event_runner.fetch_all_rss")
     @patch("pipeline.event_runner.save_bot_state")
     @patch("pipeline.event_runner.load_seen")
-    @patch("pipeline.event_runner.load_keywords")
     @patch("pipeline.event_runner.load_config")
     @patch("pipeline.event_runner.load_bot_state")
     def test_inactive_event_skipped(
         self,
         mock_load_bot,
         mock_config,
-        mock_kw,
         mock_seen,
         mock_save_bot,
         mock_fetch,
@@ -246,14 +242,12 @@ class TestRunEventCheck:
     @patch("pipeline.event_runner.fetch_all_rss")
     @patch("pipeline.event_runner.save_bot_state")
     @patch("pipeline.event_runner.load_seen")
-    @patch("pipeline.event_runner.load_keywords")
     @patch("pipeline.event_runner.load_config")
     @patch("pipeline.event_runner.load_bot_state")
     def test_event_past_date_auto_deactivates(
         self,
         mock_load_bot,
         mock_config,
-        mock_kw,
         mock_seen,
         mock_save_bot,
         mock_fetch,
@@ -278,14 +272,12 @@ class TestRunEventCheck:
     @patch("pipeline.event_runner.fetch_all_rss")
     @patch("pipeline.event_runner.save_bot_state")
     @patch("pipeline.event_runner.load_seen")
-    @patch("pipeline.event_runner.load_keywords")
     @patch("pipeline.event_runner.load_config")
     @patch("pipeline.event_runner.load_bot_state")
     def test_event_in_window_delivers(
         self,
         mock_load_bot,
         mock_config,
-        mock_kw,
         mock_seen,
         mock_save_bot,
         mock_fetch,
@@ -311,7 +303,6 @@ class TestRunEventCheck:
         cfg.telegram.bot_token = "tok"
         cfg.telegram.chat_ids = ["123"]
         mock_config.return_value = cfg
-        mock_kw.return_value = MagicMock()
 
         from pipeline.schemas.seen_schema import SeenStore
 
@@ -341,14 +332,12 @@ class TestRunEventCheck:
     @patch("pipeline.event_runner.fetch_all_rss")
     @patch("pipeline.event_runner.save_bot_state")
     @patch("pipeline.event_runner.load_seen")
-    @patch("pipeline.event_runner.load_keywords")
     @patch("pipeline.event_runner.load_config")
     @patch("pipeline.event_runner.load_bot_state")
     def test_interval_not_met_skips_delivery(
         self,
         mock_load_bot,
         mock_config,
-        mock_kw,
         mock_seen,
         mock_save_bot,
         mock_fetch,
