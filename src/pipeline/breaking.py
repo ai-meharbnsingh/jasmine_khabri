@@ -23,8 +23,10 @@ from pipeline.utils.loader import (
     load_bot_state,
     load_config,
     load_keywords,
+    load_pipeline_status,
     load_seen,
     save_ai_cost,
+    save_pipeline_status,
     save_seen,
 )
 
@@ -212,6 +214,24 @@ def _is_paused(bot_state: BotState) -> bool:
         return False
 
 
+def _save_breaking_status(alerts_sent: int = 0) -> None:
+    """Load previous pipeline status and save with incremented breaking counters.
+
+    Args:
+        alerts_sent: Number of breaking alerts sent in this run.
+    """
+    prev_status = load_pipeline_status("data/pipeline_status.json")
+    updated = prev_status.model_copy(
+        update={
+            "monthly_breaking_runs": prev_status.monthly_breaking_runs + 1,
+            "monthly_breaking_alerts": prev_status.monthly_breaking_alerts + alerts_sent,
+            "est_actions_minutes": prev_status.est_actions_minutes + 1.5,
+            "usage_month": datetime.now(UTC).strftime("%Y-%m"),
+        }
+    )
+    save_pipeline_status(updated, "data/pipeline_status.json")
+
+
 def run_breaking() -> None:
     """Run the breaking news alerting pipeline.
 
@@ -253,6 +273,7 @@ def run_breaking() -> None:
 
     if not rss_articles:
         logger.info("No RSS articles fetched -- nothing to check")
+        _save_breaking_status(alerts_sent=0)
         return
 
     # Keyword fast-path: score each article, keep only >= 80
@@ -265,6 +286,7 @@ def run_breaking() -> None:
 
     if not candidates:
         logger.info("No articles scored >= %d -- no breaking alert", _BREAKING_HIGH_THRESHOLD)
+        _save_breaking_status(alerts_sent=0)
         return
 
     logger.info("Breaking: %d candidates scored >= %d", len(candidates), _BREAKING_HIGH_THRESHOLD)
@@ -279,6 +301,7 @@ def run_breaking() -> None:
     if not new_articles:
         logger.info("No new articles after dedup -- saving seen and returning")
         save_seen(seen, "data/seen.json")
+        _save_breaking_status(alerts_sent=0)
         return
 
     logger.info("Breaking: %d new articles after dedup", len(new_articles))
@@ -291,6 +314,7 @@ def run_breaking() -> None:
         logger.info("No HIGH articles after AI gate -- saving state and returning")
         save_seen(seen, "data/seen.json")
         save_ai_cost(ai_cost, "data/ai_cost.json")
+        _save_breaking_status(alerts_sent=0)
         return
 
     logger.info("Breaking: %d HIGH articles to alert", len(high_articles))
@@ -310,6 +334,7 @@ def run_breaking() -> None:
         logger.warning("Telegram credentials missing -- cannot send breaking alert")
         save_seen(seen, "data/seen.json")
         save_ai_cost(ai_cost, "data/ai_cost.json")
+        _save_breaking_status(alerts_sent=0)
         return
 
     # Send to each chat ID
@@ -331,6 +356,7 @@ def run_breaking() -> None:
     # Save state
     save_seen(seen, "data/seen.json")
     save_ai_cost(ai_cost, "data/ai_cost.json")
+    _save_breaking_status(alerts_sent=len(high_articles))
 
     logger.info("=== Breaking news check END ===")
 

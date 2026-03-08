@@ -85,8 +85,11 @@ def load_pipeline_status(path: str | Path = "data/pipeline_status.json") -> Pipe
     """Load and validate pipeline status from JSON.
 
     Returns PipelineStatus with defaults if file doesn't exist or is empty.
+    Auto-resets monthly counters when usage_month differs from current month.
     """
     path = Path(path)
+    current_month = datetime.now(UTC).strftime("%Y-%m")
+
     if not path.exists():
         return PipelineStatus()
 
@@ -95,7 +98,21 @@ def load_pipeline_status(path: str | Path = "data/pipeline_status.json") -> Pipe
         return PipelineStatus()
 
     raw = json.loads(text)
-    return PipelineStatus.model_validate(raw)
+    status = PipelineStatus.model_validate(raw)
+
+    # Monthly reset: if stored month differs from current, reset usage counters
+    if status.usage_month != current_month:
+        return status.model_copy(
+            update={
+                "usage_month": current_month,
+                "monthly_deliver_runs": 0,
+                "monthly_breaking_runs": 0,
+                "monthly_breaking_alerts": 0,
+                "est_actions_minutes": 0.0,
+            }
+        )
+
+    return status
 
 
 def save_pipeline_status(

@@ -23,6 +23,7 @@ from pipeline.utils.loader import (
     load_ai_cost,
     load_config,
     load_keywords,
+    load_pipeline_status,
     load_seen,
     save_ai_cost,
     save_pipeline_status,
@@ -46,6 +47,9 @@ def run() -> None:
     logger.info("=== Khabri pipeline START (%s) ===", iso)
 
     try:
+        # Load previous pipeline status for usage counter increments
+        prev_status = load_pipeline_status("data/pipeline_status.json")
+
         # Load state files
         seen = load_seen("data/seen.json")
         history = load_seen("data/history.json")
@@ -172,6 +176,12 @@ def run() -> None:
             email_success=email_count,
             sources_active=len(config.rss_feeds) + (1 if gnews_api_key else 0),
             run_duration_seconds=round((datetime.now(UTC) - start).total_seconds(), 1),
+            # Phase 11-02: Usage tracking — increment deliver run counter
+            usage_month=datetime.now(UTC).strftime("%Y-%m"),
+            monthly_deliver_runs=prev_status.monthly_deliver_runs + 1,
+            monthly_breaking_runs=prev_status.monthly_breaking_runs,
+            monthly_breaking_alerts=prev_status.monthly_breaking_alerts,
+            est_actions_minutes=prev_status.est_actions_minutes + 3.0,
         )
         save_pipeline_status(status, "data/pipeline_status.json")
         logger.info(

@@ -1,6 +1,7 @@
 """Tests for breaking news pipeline.
 
 Covers filter, dedup, AI gate, format, pause, time window, integration.
+Phase 11-02: breaking run counter and usage tracking.
 """
 
 from datetime import UTC, datetime, timedelta, timezone
@@ -11,6 +12,7 @@ from pipeline.schemas.article_schema import Article
 from pipeline.schemas.bot_state_schema import BotState, PauseState
 from pipeline.schemas.config_schema import AppConfig, RssFeedConfig, TelegramConfig
 from pipeline.schemas.keywords_schema import KeywordCategory, KeywordsConfig
+from pipeline.schemas.pipeline_status_schema import PipelineStatus
 from pipeline.schemas.seen_schema import SeenEntry, SeenStore
 
 # IST timezone for time window tests
@@ -580,3 +582,128 @@ class TestRunBreaking:
 
             run_breaking()
             mock_save_ai_cost.assert_called_once()
+
+
+class TestBreakingRunCounter:
+    """run_breaking increments monthly_breaking_runs, alerts, and est_actions_minutes."""
+
+    def test_breaking_run_counter_increments(self):
+        """After run_breaking sends alerts, counters are incremented."""
+        from pipeline.breaking import run_breaking
+
+        current_month = datetime.now(UTC).strftime("%Y-%m")
+        prev_status = PipelineStatus(
+            usage_month=current_month,
+            monthly_deliver_runs=5,
+            monthly_breaking_runs=10,
+            monthly_breaking_alerts=2,
+            est_actions_minutes=30.0,
+        )
+
+        article = _make_article(
+            title="Metro RERA Highway Infrastructure DDA Project",
+            url="https://example.com/breaking",
+        )
+
+        with (
+            patch("pipeline.breaking.load_config") as mock_config,
+            patch("pipeline.breaking.load_keywords") as mock_keywords,
+            patch("pipeline.breaking.load_seen") as mock_seen,
+            patch("pipeline.breaking.save_seen"),
+            patch("pipeline.breaking.load_ai_cost") as mock_ai_cost,
+            patch("pipeline.breaking.save_ai_cost"),
+            patch("pipeline.breaking.load_bot_state") as mock_bot_state,
+            patch("pipeline.breaking.fetch_all_rss") as mock_rss,
+            patch("pipeline.breaking.score_article") as mock_score,
+            patch("pipeline.breaking.filter_duplicates") as mock_dedup,
+            patch("pipeline.breaking.classify_articles") as mock_classify,
+            patch("pipeline.breaking.send_telegram_message") as mock_send,
+            patch("pipeline.breaking._is_delivery_window", return_value=False),
+            patch("pipeline.breaking._is_paused", return_value=False),
+            patch("pipeline.breaking.load_pipeline_status") as mock_load_status,
+            patch("pipeline.breaking.save_pipeline_status") as mock_save_status,
+            patch.dict(
+                "os.environ",
+                {"TELEGRAM_BOT_TOKEN": "test-token", "TELEGRAM_CHAT_IDS": "123"},
+            ),
+        ):
+            mock_config.return_value = AppConfig(
+                telegram=TelegramConfig(breaking_news_enabled=True),
+                rss_feeds=[RssFeedConfig(name="Test", url="https://test.com/rss")],
+            )
+            mock_keywords.return_value = _make_keywords(
+                active=["metro", "rera", "highway", "infrastructure", "dda", "project"]
+            )
+            mock_seen.return_value = SeenStore(entries=[])
+            mock_ai_cost.return_value = AICost(month="2026-01")
+            mock_bot_state.return_value = BotState()
+            mock_rss.return_value = ([article], [])
+            mock_score.return_value = (True, 100)
+            mock_dedup.return_value = (
+                [article.model_copy(update={"dedup_status": "NEW"})],
+                SeenStore(entries=[]),
+            )
+            mock_classify.return_value = (
+                [article.model_copy(update={"priority": "HIGH"})],
+                AICost(month="2026-01"),
+            )
+            mock_send.return_value = (True, None)
+            mock_load_status.return_value = prev_status
+
+            run_breaking()
+
+            mock_save_status.assert_called_once()
+            saved_status = mock_save_status.call_args[0][0]
+            assert saved_status.monthly_breaking_runs == 11  # 10 + 1
+            assert saved_status.monthly_breaking_alerts == 3  # 2 + 1 alert
+            assert saved_status.est_actions_minutes == 31.5  # 30.0 + 1.5
+            # Deliver runs preserved
+            assert saved_status.monthly_deliver_runs == 5
+
+    def test_breaking_counter_increments_even_without_alerts(self):
+        """Breaking run counter increments even when no alerts are sent."""
+        from pipeline.breaking import run_breaking
+
+        current_month = datetime.now(UTC).strftime("%Y-%m")
+        prev_status = PipelineStatus(
+            usage_month=current_month,
+            monthly_breaking_runs=5,
+            monthly_breaking_alerts=1,
+            est_actions_minutes=10.0,
+        )
+
+        article = _make_article(title="Boring Article")
+
+        with (
+            patch("pipeline.breaking.load_config") as mock_config,
+            patch("pipeline.breaking.load_keywords") as mock_keywords,
+            patch("pipeline.breaking.load_seen") as mock_seen,
+            patch("pipeline.breaking.load_ai_cost") as mock_ai_cost,
+            patch("pipeline.breaking.load_bot_state") as mock_bot_state,
+            patch("pipeline.breaking.fetch_all_rss") as mock_rss,
+            patch("pipeline.breaking.score_article") as mock_score,
+            patch("pipeline.breaking._is_delivery_window", return_value=False),
+            patch("pipeline.breaking._is_paused", return_value=False),
+            patch("pipeline.breaking.load_pipeline_status") as mock_load_status,
+            patch("pipeline.breaking.save_pipeline_status") as mock_save_status,
+        ):
+            mock_config.return_value = AppConfig(
+                telegram=TelegramConfig(breaking_news_enabled=True),
+                rss_feeds=[RssFeedConfig(name="Test", url="https://test.com/rss")],
+            )
+            mock_keywords.return_value = _make_keywords(active=["metro"])
+            mock_seen.return_value = SeenStore(entries=[])
+            mock_ai_cost.return_value = AICost(month="2026-01")
+            mock_bot_state.return_value = BotState()
+            mock_rss.return_value = ([article], [])
+            mock_score.return_value = (True, 30)  # Below threshold, no candidates
+            mock_load_status.return_value = prev_status
+
+            run_breaking()
+
+            # Even though no alerts sent, counter should increment
+            mock_save_status.assert_called_once()
+            saved_status = mock_save_status.call_args[0][0]
+            assert saved_status.monthly_breaking_runs == 6  # 5 + 1
+            assert saved_status.monthly_breaking_alerts == 1  # Unchanged (no alerts)
+            assert saved_status.est_actions_minutes == 11.5  # 10.0 + 1.5

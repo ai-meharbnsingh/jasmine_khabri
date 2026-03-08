@@ -16,3 +16,9 @@ class PipelineStatus(BaseModel):
     email_success: int = 0
     sources_active: int = 0
     run_duration_seconds: float = 0.0
+    # Monthly usage tracking (Phase 11-02)
+    usage_month: str = ""  # "YYYY-MM" for monthly reset
+    monthly_deliver_runs: int = 0  # Full pipeline runs this month
+    monthly_breaking_runs: int = 0  # Breaking news checks this month
+    monthly_breaking_alerts: int = 0  # Breaking alerts sent this month
+    est_actions_minutes: float = 0.0  # Estimated total Actions minutes used
