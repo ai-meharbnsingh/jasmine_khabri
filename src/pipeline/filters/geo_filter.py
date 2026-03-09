@@ -119,8 +119,8 @@ def filter_by_geo_tier(
 
     Inclusion rules:
     - Tier 1: always included (high-impact metro cities + gov national-scope).
-    - Tier 2: included only if relevance_score >= tier2_threshold (default 60, HIGH proxy).
-    - Tier 3: included only if relevance_score >= tier3_threshold (default 85).
+    - Tier 2: included only if relevance_score >= tier2_threshold (default 30).
+    - Tier 3: included only if relevance_score >= tier3_threshold (default 50).
 
     Each passing article has geo_tier set via model_copy (original unchanged).
 
