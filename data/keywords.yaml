@@ -133,7 +133,7 @@ categories:
       - Kumar Mangalam Birla
 
   transaction:
-    active: false
+    active: true
     keywords:
       - property purchase
       - property sale
@@ -148,6 +148,46 @@ categories:
       - beachfront property
       - property deal
       - property transaction
+      - real estate
+      - property market
+      - housing market
+      - property prices
+      - home prices
+      - housing prices
+      - residential
+      - commercial property
+      - property registration
+      - stamp duty
+      - housing project
+      - housing sales
+      - home loan
+      - home buyer
+      - flat
+      - apartment
+      - township
+      - realty
+      - builder
+      - developer
+      - construction
+      - housing demand
+      - housing supply
+      - property tax
+      - rental
+      - rent
+      - lease
+      - mortgage
+      - carpet area
+      - built-up area
+      - possession
+      - under construction
+      - ready to move
+      - plot
+      - land price
+      - land acquisition
+      - sq ft
+      - per sqft
+      - crore
+      - lakh
 
 exclusions:
   - obituary
