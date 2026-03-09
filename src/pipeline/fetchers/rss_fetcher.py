@@ -48,8 +48,16 @@ def fetch_rss_feed(
         (articles, None) on success
         ([], error_string) on any failure
     """
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (compatible; KhabriBot/1.0; "
+            "+https://github.com/ai-meharbnsingh/jasmine_khabri)"
+        ),
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    }
+
     try:
-        with httpx.Client(timeout=timeout) as client:
+        with httpx.Client(timeout=timeout, headers=headers) as client:
             response = client.get(url, follow_redirects=True)
             response.raise_for_status()
 

@@ -253,15 +253,15 @@ class TestFetchGnewsQuery:
         assert error is not None
 
     @respx.mock
-    def test_summary_always_empty(self) -> None:
-        """Article.summary must always be empty string regardless of GNews description."""
+    def test_summary_from_description(self) -> None:
+        """Article.summary is populated from GNews description field."""
         respx.get(_GNEWS_URL).mock(return_value=httpx.Response(200, json=_SAMPLE_RESPONSE))
         quota = GNewsQuota(date=_TODAY_UTC, calls_used=0, daily_limit=25)
 
         articles, _, _ = fetch_gnews_query("metro", "fake-key", quota)
 
-        for article in articles:
-            assert article.summary == ""
+        assert articles[0].summary == "Metro construction resumes in Delhi."
+        assert articles[1].summary == "NHAI approves major highway project."
 
 
 # ---------------------------------------------------------------------------
