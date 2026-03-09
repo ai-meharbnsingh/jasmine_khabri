@@ -106,10 +106,24 @@ class TestClassifyGeoTier:
         article = _make_article("Siliguri real estate prices rise")
         assert classify_geo_tier(article) == 3
 
-    def test_no_city_non_gov_defaults_tier3(self) -> None:
-        """Article with no city and non-government source defaults to Tier 3."""
+    def test_no_city_non_gov_no_national_kw_defaults_tier3(self) -> None:
+        """Article with no city, non-gov source, no national keywords → Tier 3."""
         article = _make_article("Real estate investment trends Q1 2026", source="ET Realty")
         assert classify_geo_tier(article) == 3
+
+    def test_national_keyword_nhai_in_title_tier1(self) -> None:
+        """Article mentioning NHAI (national keyword) without city → Tier 1."""
+        article = _make_article("NHAI approves 4-lane highway project", source="GNews")
+        assert classify_geo_tier(article) == 1
+
+    def test_national_keyword_india_in_summary_tier1(self) -> None:
+        """Article with 'india' in summary (national keyword) → Tier 1."""
+        article = _make_article(
+            "Highway expansion budget doubled",
+            source="GNews",
+            summary="India plans massive infrastructure investment",
+        )
+        assert classify_geo_tier(article) == 1
 
     def test_national_scope_gov_mohua(self) -> None:
         """Article with no city, source 'MOHUA' classified as Tier 1 (national scope)."""

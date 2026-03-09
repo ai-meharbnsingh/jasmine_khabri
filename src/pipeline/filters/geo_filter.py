@@ -71,6 +71,28 @@ GOV_SOURCES: frozenset[str] = frozenset(
     }
 )
 
+# National-scope keywords — articles containing these are treated as Tier 1
+# even without a city mention (e.g. "NHAI approves highway project").
+NATIONAL_KEYWORDS: frozenset[str] = frozenset(
+    {
+        "nhai",
+        "national highway",
+        "pmay",
+        "pradhan mantri",
+        "smart city",
+        "smart cities",
+        "rera",
+        "mohua",
+        "aai",
+        "dgca",
+        "india",
+        "national",
+        "central government",
+        "union budget",
+        "ministry",
+    }
+)
+
 
 # ---------------------------------------------------------------------------
 # Public API
@@ -106,6 +128,11 @@ def classify_geo_tier(article: Article) -> int:
     # No city matched — check if national-scope government source
     if article.source.lower() in GOV_SOURCES:
         return 1
+
+    # No city matched — check for national-scope keywords in text
+    for keyword in NATIONAL_KEYWORDS:
+        if keyword in text:
+            return 1
 
     return 3
 
