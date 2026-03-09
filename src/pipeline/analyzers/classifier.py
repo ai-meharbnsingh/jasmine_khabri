@@ -218,20 +218,50 @@ def _classify_with_gemini(
         return (None, {})
 
 
-def _apply_keyword_fallback(article: Article) -> Article:
+def _apply_keyword_fallback(articles: list[Article]) -> list[Article]:
     """Map relevance_score to priority when AI is unavailable.
 
-    >=80 -> HIGH, >=60 -> MEDIUM, else LOW.
+    Uses dynamic curve grading — divides the batch's score range into
+    3 equal bands so articles always get distributed across priorities
+    regardless of absolute score levels.
+
     No summary or entities populated.
     """
-    if article.relevance_score >= 80:
-        priority: Literal["HIGH", "MEDIUM", "LOW"] = "HIGH"
-    elif article.relevance_score >= 60:
-        priority = "MEDIUM"
-    else:
-        priority = "LOW"
+    if not articles:
+        return []
 
-    return article.model_copy(update={"priority": priority})
+    scores = [a.relevance_score for a in articles]
+    max_score = max(scores)
+    min_score = min(scores)
+    score_range = max_score - min_score
+
+    if score_range == 0:
+        # All identical scores — treat as MEDIUM
+        return [a.model_copy(update={"priority": "MEDIUM"}) for a in articles]
+
+    band = score_range / 3
+    high_threshold = max_score - band  # top 1/3
+    medium_threshold = max_score - 2 * band  # top 2/3
+
+    logger.info(
+        "Keyword fallback dynamic bands: HIGH>=%.1f, MEDIUM>=%.1f (scores %d-%d)",
+        high_threshold,
+        medium_threshold,
+        min_score,
+        max_score,
+    )
+
+    results: list[Article] = []
+    for article in articles:
+        if article.relevance_score >= high_threshold:
+            priority: Literal["HIGH", "MEDIUM", "LOW"] = "HIGH"
+        elif article.relevance_score >= medium_threshold:
+            priority = "MEDIUM"
+        else:
+            priority = "LOW"
+        results.append(article.model_copy(update={"priority": priority}))
+
+    return results
 
 
 def _apply_medium_fallback(article: Article) -> Article:
@@ -271,7 +301,7 @@ def classify_articles(articles: list[Article], ai_cost: AICost) -> tuple[list[Ar
             "AI budget exceeded ($%.2f >= $4.75) -- using keyword-only scoring",
             ai_cost.total_cost_usd,
         )
-        degraded = [_apply_keyword_fallback(a) for a in articles]
+        degraded = _apply_keyword_fallback(articles)
         return (degraded, ai_cost)
 
     if budget_status == "warning":
