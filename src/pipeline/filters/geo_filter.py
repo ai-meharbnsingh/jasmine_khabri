@@ -3,13 +3,13 @@
 Tier assignment rules:
 - Tier 1: Major metro cities (Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Kolkata, Pune,
   Ahmedabad) — always included in delivery pipeline.
-- Tier 2: Large secondary cities — included only if relevance_score >= 60 (HIGH proxy).
-- Tier 3: Everything else — included only if relevance_score >= 85.
+- Tier 2: Large secondary cities — included if score is in the top two-thirds of the batch range.
+- Tier 3: Everything else — included if score is in the top third of the batch range.
 - Special case: Government-source articles with no city match treated as Tier 1
   (national-scope announcements from MOHUA, NHAI, AAI, Smart Cities).
 
-NOTE: relevance_score thresholds are Phase 4 proxies for AI priority.
-Phase 5 AI classification will refine these signals with semantic understanding.
+Thresholds are computed dynamically from each batch's score distribution (curve grading)
+so that articles always appear regardless of absolute score levels.
 """
 
 import logging
@@ -110,31 +110,71 @@ def classify_geo_tier(article: Article) -> int:
     return 3
 
 
-def filter_by_geo_tier(
-    articles: list[Article],
-    tier2_threshold: int = 60,
-    tier3_threshold: int = 85,
-) -> list[Article]:
-    """Filter articles by geographic tier and relevance score thresholds.
+def compute_score_bands(scores: list[int]) -> tuple[float, float]:
+    """Compute dynamic tier thresholds from a batch of relevance scores.
+
+    Divides the score range into 3 equal bands (curve grading):
+    - Top band:    [max - band, max]       → tier 3 must be here
+    - Middle band: [max - 2*band, max - band) → tier 2 threshold
+    - Bottom band: [min, max - 2*band)      → below both thresholds
+
+    When all scores are equal (range=0), both thresholds equal the score
+    so every article passes.
+
+    Returns:
+        (tier2_threshold, tier3_threshold) — float values for comparison.
+    """
+    if not scores:
+        return (0.0, 0.0)
+
+    max_score = max(scores)
+    min_score = min(scores)
+    score_range = max_score - min_score
+
+    if score_range == 0:
+        # All identical scores — everything passes
+        return (float(min_score), float(min_score))
+
+    band = score_range / 3
+    tier2_threshold = max_score - 2 * band  # top 2/3 of range
+    tier3_threshold = max_score - band  # top 1/3 of range
+    return (tier2_threshold, tier3_threshold)
+
+
+def filter_by_geo_tier(articles: list[Article]) -> list[Article]:
+    """Filter articles by geographic tier with dynamic score thresholds.
+
+    Thresholds are computed from the batch's actual score distribution
+    (curve grading), so articles always appear regardless of absolute
+    score levels.
 
     Inclusion rules:
     - Tier 1: always included (high-impact metro cities + gov national-scope).
-    - Tier 2: included only if relevance_score >= tier2_threshold (default 60, HIGH proxy).
-    - Tier 3: included only if relevance_score >= tier3_threshold (default 85).
+    - Tier 2: included if relevance_score >= tier2_threshold (top 2/3 of range).
+    - Tier 3: included if relevance_score >= tier3_threshold (top 1/3 of range).
 
     Each passing article has geo_tier set via model_copy (original unchanged).
 
-    NOTE: Tier 2/3 thresholds are Phase 4 proxies. Phase 5 AI classification
-    will refine these signals with semantic understanding.
-
     Args:
         articles: List of articles to filter.
-        tier2_threshold: Minimum relevance_score for Tier 2 articles. Default 60.
-        tier3_threshold: Minimum relevance_score for Tier 3 articles. Default 85.
 
     Returns:
         Filtered list with geo_tier set on each passing article.
     """
+    if not articles:
+        return []
+
+    scores = [a.relevance_score for a in articles]
+    tier2_threshold, tier3_threshold = compute_score_bands(scores)
+
+    logger.info(
+        "Geo filter dynamic thresholds: tier2=%.1f, tier3=%.1f (score range %d-%d)",
+        tier2_threshold,
+        tier3_threshold,
+        min(scores),
+        max(scores),
+    )
+
     results: list[Article] = []
     tier_counts = {1: 0, 2: 0, 3: 0}
 

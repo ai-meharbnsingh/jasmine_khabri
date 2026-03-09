@@ -6,6 +6,7 @@ Never use feedparser URL mode (bypasses httpx timeout and redirect handling).
 
 import calendar
 import logging
+import re
 import time
 from datetime import UTC, datetime
 
@@ -47,8 +48,16 @@ def fetch_rss_feed(
         (articles, None) on success
         ([], error_string) on any failure
     """
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (compatible; KhabriBot/1.0; "
+            "+https://github.com/ai-meharbnsingh/jasmine_khabri)"
+        ),
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    }
+
     try:
-        with httpx.Client(timeout=timeout) as client:
+        with httpx.Client(timeout=timeout, headers=headers) as client:
             response = client.get(url, follow_redirects=True)
             response.raise_for_status()
 
@@ -74,13 +83,20 @@ def fetch_rss_feed(
             title = entry.get("title", "").strip()
             published_at = _struct_time_to_iso(entry.get("published_parsed")) or now_iso
 
+            # Extract description/summary from RSS entry for relevance scoring.
+            # feedparser exposes the <description> tag as entry.get("summary")
+            # and the <content:encoded> tag as entry.get("content").
+            raw_desc = entry.get("summary") or entry.get("description") or ""
+            # Strip HTML tags for clean text matching
+            clean_desc = re.sub(r"<[^>]+>", " ", raw_desc).strip()
+
             articles.append(
                 Article(
                     title=title,
                     url=link,
                     source=source_name,
                     published_at=published_at,
-                    summary="",  # Phase 5 AI will populate
+                    summary=clean_desc[:500],  # Cap at 500 chars for relevance scoring
                     fetched_at=now_iso,
                 )
             )

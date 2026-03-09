@@ -113,7 +113,7 @@ def _normalise_article(raw: dict) -> Article:
         url=raw.get("url", ""),
         source="GNews",
         published_at=raw.get("publishedAt", _now_iso()),
-        summary="",  # ALWAYS empty in Phase 3 — Phase 5 AI will populate
+        summary=raw.get("description", "") or "",
         fetched_at=_now_iso(),
     )
 

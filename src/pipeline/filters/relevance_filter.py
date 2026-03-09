@@ -47,7 +47,7 @@ def score_article(article: Article, keywords: KeywordsConfig) -> tuple[bool, int
 def filter_by_relevance(
     articles: list[Article],
     keywords: KeywordsConfig,
-    threshold: int = 40,
+    threshold: int = 20,
 ) -> list[Article]:
     """Filter articles by keyword relevance.
 

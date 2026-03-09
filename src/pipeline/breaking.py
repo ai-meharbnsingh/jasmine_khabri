@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 _IST = timezone(timedelta(hours=5, minutes=30))
 
 # Keyword score threshold for breaking news fast-path
-_BREAKING_HIGH_THRESHOLD = 80
+_BREAKING_HIGH_THRESHOLD = 40
 
 # Reserve $2 for scheduled runs — only use AI for breaking if under $3
 _BREAKING_AI_BUDGET_RESERVE = 3.00

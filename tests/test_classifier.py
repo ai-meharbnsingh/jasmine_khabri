@@ -364,7 +364,11 @@ class TestBudgetGate:
 
     @patch("pipeline.analyzers.classifier.anthropic")
     def test_budget_exceeded_skips_ai(self, mock_anthropic):
-        """Cost at $4.75, no API calls made, articles get keyword-based priority."""
+        """Cost at $4.75, no API calls made, articles get dynamic keyword-based priority.
+
+        Scores: 85, 65, 40. Range=45, band=15.
+        HIGH >= 70, MEDIUM >= 55, LOW < 55.
+        """
         from pipeline.analyzers.classifier import classify_articles
 
         articles = [
@@ -382,10 +386,10 @@ class TestBudgetGate:
         # No API call should be made
         mock_client.messages.parse.assert_not_called()
 
-        # Keyword-based priority mapping: >=80 -> HIGH, >=60 -> MEDIUM, else LOW
-        assert result_articles[0].priority == "HIGH"  # relevance_score=85
-        assert result_articles[1].priority == "MEDIUM"  # relevance_score=65
-        assert result_articles[2].priority == "LOW"  # relevance_score=40
+        # Dynamic bands: range=45, band=15. HIGH>=70, MEDIUM>=55.
+        assert result_articles[0].priority == "HIGH"  # 85 >= 70
+        assert result_articles[1].priority == "MEDIUM"  # 65 >= 55
+        assert result_articles[2].priority == "LOW"  # 40 < 55
 
         # Cost unchanged
         assert result_cost == cost
