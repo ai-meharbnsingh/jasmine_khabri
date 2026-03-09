@@ -117,26 +117,26 @@ class TestFilterByGeoTier:
         assert len(results) == 1
 
     def test_tier2_passes_high_score(self) -> None:
-        """Tier 2 article passes when relevance_score >= 60."""
-        article = _make_article("Noida metro extension", relevance_score=60)
+        """Tier 2 article passes when relevance_score >= 30."""
+        article = _make_article("Noida metro extension", relevance_score=30)
         results = filter_by_geo_tier([article])
         assert len(results) == 1
 
     def test_tier2_fails_low_score(self) -> None:
-        """Tier 2 article dropped when relevance_score < 60."""
-        article = _make_article("Noida sector development", relevance_score=40)
+        """Tier 2 article dropped when relevance_score < 30."""
+        article = _make_article("Noida sector development", relevance_score=20)
         results = filter_by_geo_tier([article])
         assert len(results) == 0
 
-    def test_tier3_passes_very_high_score(self) -> None:
-        """Tier 3 article passes when relevance_score >= 85."""
-        article = _make_article("Siliguri real estate boom", relevance_score=85)
+    def test_tier3_passes_high_score(self) -> None:
+        """Tier 3 article passes when relevance_score >= 50."""
+        article = _make_article("Siliguri real estate boom", relevance_score=50)
         results = filter_by_geo_tier([article])
         assert len(results) == 1
 
-    def test_tier3_fails_below_85(self) -> None:
-        """Tier 3 article dropped when relevance_score < 85."""
-        article = _make_article("Siliguri housing project", relevance_score=80)
+    def test_tier3_fails_below_50(self) -> None:
+        """Tier 3 article dropped when relevance_score < 50."""
+        article = _make_article("Siliguri housing project", relevance_score=40)
         results = filter_by_geo_tier([article])
         assert len(results) == 0
 
@@ -148,15 +148,15 @@ class TestFilterByGeoTier:
         assert results[0].geo_tier != 0
 
     def test_mixed_tiers_filtered_correctly(self) -> None:
-        """Mixed tier list: tier1/score20, tier2/score60, tier2/score30, tier3/score90.
+        """Mixed tier list: tier1/score20, tier2/score60, tier2/score20, tier3/score90.
 
-        Only 3 should pass: tier1 always passes, tier2 score60 passes (>=60),
-        tier2 score30 dropped (<60), tier3 score90 passes (>=85).
+        Only 3 should pass: tier1 always passes, tier2 score60 passes (>=30),
+        tier2 score20 dropped (<30), tier3 score90 passes (>=50).
         """
         articles = [
             _make_article("Delhi NCR highway project", relevance_score=20),  # tier1, passes
             _make_article("Noida elevated road", relevance_score=60),  # tier2, passes
-            _make_article("Gurugram sector news", relevance_score=30),  # tier2, dropped
+            _make_article("Gurugram sector news", relevance_score=20),  # tier2, dropped
             _make_article("Siliguri port expansion", relevance_score=90),  # tier3, passes
         ]
         results = filter_by_geo_tier(articles)

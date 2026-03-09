@@ -3,8 +3,8 @@
 Tier assignment rules:
 - Tier 1: Major metro cities (Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Kolkata, Pune,
   Ahmedabad) — always included in delivery pipeline.
-- Tier 2: Large secondary cities — included only if relevance_score >= 60 (HIGH proxy).
-- Tier 3: Everything else — included only if relevance_score >= 85.
+- Tier 2: Large secondary cities — included only if relevance_score >= 30.
+- Tier 3: Everything else — included only if relevance_score >= 50.
 - Special case: Government-source articles with no city match treated as Tier 1
   (national-scope announcements from MOHUA, NHAI, AAI, Smart Cities).
 
@@ -112,8 +112,8 @@ def classify_geo_tier(article: Article) -> int:
 
 def filter_by_geo_tier(
     articles: list[Article],
-    tier2_threshold: int = 60,
-    tier3_threshold: int = 85,
+    tier2_threshold: int = 30,
+    tier3_threshold: int = 50,
 ) -> list[Article]:
     """Filter articles by geographic tier and relevance score thresholds.
 
@@ -129,8 +129,8 @@ def filter_by_geo_tier(
 
     Args:
         articles: List of articles to filter.
-        tier2_threshold: Minimum relevance_score for Tier 2 articles. Default 60.
-        tier3_threshold: Minimum relevance_score for Tier 3 articles. Default 85.
+        tier2_threshold: Minimum relevance_score for Tier 2 articles. Default 30.
+        tier3_threshold: Minimum relevance_score for Tier 3 articles. Default 50.
 
     Returns:
         Filtered list with geo_tier set on each passing article.

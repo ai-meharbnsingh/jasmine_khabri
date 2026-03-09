@@ -6,6 +6,7 @@ Never use feedparser URL mode (bypasses httpx timeout and redirect handling).
 
 import calendar
 import logging
+import re
 import time
 from datetime import UTC, datetime
 
@@ -74,13 +75,20 @@ def fetch_rss_feed(
             title = entry.get("title", "").strip()
             published_at = _struct_time_to_iso(entry.get("published_parsed")) or now_iso
 
+            # Extract description/summary from RSS entry for relevance scoring.
+            # feedparser exposes the <description> tag as entry.get("summary")
+            # and the <content:encoded> tag as entry.get("content").
+            raw_desc = entry.get("summary") or entry.get("description") or ""
+            # Strip HTML tags for clean text matching
+            clean_desc = re.sub(r"<[^>]+>", " ", raw_desc).strip()
+
             articles.append(
                 Article(
                     title=title,
                     url=link,
                     source=source_name,
                     published_at=published_at,
-                    summary="",  # Phase 5 AI will populate
+                    summary=clean_desc[:500],  # Cap at 500 chars for relevance scoring
                     fetched_at=now_iso,
                 )
             )

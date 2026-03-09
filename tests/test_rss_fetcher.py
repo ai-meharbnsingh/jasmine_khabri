@@ -259,8 +259,8 @@ class TestFetchRssFeed:
         assert article.published_at == article.fetched_at
 
     @respx.mock
-    def test_summary_always_empty(self):
-        """summary is always '' regardless of RSS description content."""
+    def test_summary_extracted_from_description(self):
+        """summary is extracted from RSS description for relevance scoring."""
         respx.get(FEED_URL).mock(
             return_value=httpx.Response(200, content=RSS_WITH_DESCRIPTION.encode())
         )
@@ -269,7 +269,7 @@ class TestFetchRssFeed:
 
         assert error is None
         assert len(articles) == 1
-        assert articles[0].summary == ""
+        assert articles[0].summary == "A rich description that AI will summarize in Phase 5."
 
 
 class TestFetchAllRss:
