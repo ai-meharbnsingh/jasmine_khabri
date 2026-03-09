@@ -27,6 +27,34 @@
       "seen_at": "2026-03-08T09:18:51.132952+00:00",
       "source": "Hindu BL Economy",
       "title": "PM Modi inaugurates two new Delhi Metro corridors"
+    },
+    {
+      "url_hash": "2a3c659da330dbfba4cd49a42e672fb0e38ecbac4a25e63c6c13b57e64c34da6",
+      "title_hash": "b8c2c90941f88e8c70b0124abbe2b00f3e01b5b11984c3d724be8e97fdd136fd",
+      "seen_at": "2026-03-09T06:43:41.756592+00:00",
+      "source": "ET Realty",
+      "title": "Centre launches development projects worth ₹33,500 crore in Delhi"
+    },
+    {
+      "url_hash": "edbf9c2ed39238dd24dd1bc4239e40e49092223361d0bb1a2c9c35101e694a9b",
+      "title_hash": "9f1862c254cdee409b524eef1774de3b2efeaf9c2119364b14fa073c2599885b",
+      "seen_at": "2026-03-09T06:43:41.757588+00:00",
+      "source": "ET Infra",
+      "title": "India’s first Ring Metro goes operational as PM Modi inaugurates two new corridors"
+    },
+    {
+      "url_hash": "ced30d1ff80bcda4cd553df52b5f4b4a24416e63b240130f539822535288ae6e",
+      "title_hash": "f09e359a5156aa35f13d1fe35bcd4b9eac1b27249cddeaf05a018366455c6bc3",
+      "seen_at": "2026-03-09T06:43:41.758559+00:00",
+      "source": "Hindu BL Economy",
+      "title": "19 flights cancelled from Bengaluru Airport amid West Asia conflict"
+    },
+    {
+      "url_hash": "a4e71c6f1c5cba9340f8fc73d044bbfce91536616eb99b054a09bb8061244a38",
+      "title_hash": "6ece62db32d7783f80e56b1bb48049e8f52772c2c2e096d86e8c3a9b16c75aa6",
+      "seen_at": "2026-03-09T06:43:41.759603+00:00",
+      "source": "Hindu BL Economy",
+      "title": "Pune's new double-decker flyover opens, promises smoother commute"
     }
   ]
 }
