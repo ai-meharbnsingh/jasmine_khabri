@@ -9,7 +9,7 @@
   "run_duration_seconds": 8.6,
   "usage_month": "2026-03",
   "monthly_deliver_runs": 54,
-  "monthly_breaking_runs": 93,
+  "monthly_breaking_runs": 94,
   "monthly_breaking_alerts": 19,
-  "est_actions_minutes": 301.5
+  "est_actions_minutes": 303.0
 }
