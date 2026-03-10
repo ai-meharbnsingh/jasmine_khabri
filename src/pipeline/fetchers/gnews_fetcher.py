@@ -30,7 +30,8 @@ GNEWS_MAX_PER_REQUEST = 10  # Free tier hard limit
 _INFRA_QUERY = 'metro OR highway OR expressway OR NHAI OR airport OR AAI OR "smart city" OR DMRC'
 _REGULATORY_QUERY = 'RERA OR PMAY OR "affordable housing" OR MahaRERA OR MoHUA OR CIDCO OR MMRDA'
 _MARKET_QUERY = (
-    '"real estate" OR "property market" OR "housing project" OR DDA OR "land acquisition"'
+    '"real estate" India OR "property market" India OR "housing project" India'
+    ' OR "property prices" India OR "home buyer" India OR "realty" India'
 )
 
 _CATEGORY_QUERIES: dict[str, str] = {
