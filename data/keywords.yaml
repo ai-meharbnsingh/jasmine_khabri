@@ -135,6 +135,7 @@ categories:
   transaction:
     active: true
     keywords:
+      # Property transactions
       - property purchase
       - property sale
       - property buy
@@ -142,54 +143,48 @@ categories:
       - luxury property
       - luxury apartment
       - penthouse
-      - villa
-      - farmhouse
-      - sea-facing
-      - beachfront property
       - property deal
       - property transaction
+      # Real estate market
       - real estate
       - property market
       - housing market
       - property prices
       - home prices
       - housing prices
-      - residential
-      - commercial property
       - property registration
       - stamp duty
       - housing project
       - housing sales
       - home loan
       - home buyer
-      - flat
-      - apartment
-      - township
       - realty
-      - builder
-      - developer
-      - construction
       - housing demand
       - housing supply
       - property tax
-      - rental
-      - rent
-      - lease
-      - mortgage
       - carpet area
       - built-up area
-      - possession
       - under construction
       - ready to move
-      - plot
       - land price
       - land acquisition
-      - sq ft
       - per sqft
-      - crore
-      - lakh
+      - sq ft
+      # Builders and developers
+      - DLF
+      - Godrej Properties
+      - Prestige Group
+      - Sobha
+      - Lodha
+      - Oberoi Realty
+      - Brigade Group
+      - Mahindra Lifespace
+      - Tata Housing
+      - Shapoorji Pallonji
+      - L&T Realty
 
 exclusions:
+  # Entertainment & gossip
   - obituary
   - scandal
   - gossip
@@ -205,3 +200,89 @@ exclusions:
   - film review
   - trailer launch
   - song launch
+  - bigg boss
+  - reality show
+  - OTT release
+  - Netflix
+  - web series
+  # War, military & geopolitics
+  - war
+  - airstrike
+  - air strike
+  - ceasefire
+  - missile
+  - bombing
+  - troops
+  - army
+  - navy
+  - military
+  - terrorist
+  - terrorism
+  - insurgent
+  - battlefield
+  - casualties
+  - killed in action
+  - defense deal
+  - weapons
+  - warship
+  - fighter jet
+  - nuclear
+  - sanctions
+  - Gaza
+  - Ukraine
+  - Russia
+  - Hamas
+  - Hezbollah
+  - Taliban
+  - NATO
+  - Pentagon
+  # Crime
+  - murder
+  - kidnapping
+  - arrested
+  - robbery
+  - scam
+  - fraud
+  - ponzi
+  - money laundering
+  # Sports (non-property)
+  - cricket
+  - IPL
+  - World Cup
+  - T20
+  - ODI
+  - Test match
+  - wicket
+  - innings
+  - batsman
+  - bowler
+  - football
+  - FIFA
+  - Premier League
+  - Olympics
+  - Asian Games
+  - medal tally
+  - semifinal
+  - quarter final
+  # Politics (non-policy)
+  - election
+  - BJP
+  - Congress
+  - AAP
+  - rally
+  - manifesto
+  - vote count
+  - ballot
+  - campaign trail
+  # Health & pharma
+  - vaccine
+  - COVID
+  - pandemic
+  - outbreak
+  - WHO
+  # Auto & tech (not infra)
+  - electric vehicle
+  - smartphone
+  - iPhone
+  - Samsung Galaxy
+  - laptop
