@@ -27,8 +27,8 @@ rss_feeds:
   - name: "Housing.com"
     url: "https://housing.com/news/feed/"
     enabled: true
-  - name: "Magicbricks"
-    url: "https://www.magicbricks.com/blog/feed/"
+  - name: "99acres"
+    url: "https://www.99acres.com/articles/feed"
     enabled: true
   - name: "Square Yards"
     url: "https://www.squareyards.com/blog/feed"
@@ -38,7 +38,7 @@ rss_feeds:
     enabled: true
   - name: "Livemint Industry"
     url: "https://www.livemint.com/rss/industry"
-    enabled: true
+    enabled: false
   - name: "Hindu BL Economy"
     url: "https://www.thehindubusinessline.com/economy/feeder/default.rss"
-    enabled: true
+    enabled: false
