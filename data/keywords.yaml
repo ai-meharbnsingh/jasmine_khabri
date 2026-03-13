@@ -280,9 +280,30 @@ exclusions:
   - pandemic
   - outbreak
   - WHO
+  # General transport operations (not infra projects)
+  - train delayed
+  - train cancelled
+  - train started
+  - train rescheduled
+  - rail traffic
+  - derailment
+  - train accident
+  - passenger train
+  - rail fare
+  - ticket booking
+  - IRCTC
+  - Vande Bharat
+  - Rajdhani
+  - Shatabdi
+  - train route
+  - platform number
+  - railway station
+  - fog delay
   # Auto & tech (not infra)
   - electric vehicle
   - smartphone
   - iPhone
   - Samsung Galaxy
   - laptop
+  # Competitor (Jasmine works at Magicbricks)
+  - Magicbricks
