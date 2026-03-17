@@ -1,34 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "286fd243b60c42ec4e5ef0b55b18f5a799e036f9b151af732082e4e800194598",
-      "title_hash": "2a7c3a470c9f586923002fd07af6a35ae092dd8e6ee86156178d39c4d3acbb5c",
-      "seen_at": "2026-03-10T06:55:12.430413+00:00",
-      "source": "Magicbricks",
-      "title": "Indore Metro: Route, Map, Opening, &amp; Real Estate Impact"
-    },
-    {
-      "url_hash": "c60ad576134a70ff58f47d6b064117ff2cc31e41b1853a48e66bde16f884fc0f",
-      "title_hash": "ab3f035b240b2ee36bee0f5f097d9ebc2710fda8a5a07a0fa1109a491fcb4588",
-      "seen_at": "2026-03-10T08:49:26.581846+00:00",
-      "source": "Magicbricks",
-      "title": "Pune Metro Line 3 | Pune Metro Red Line Route, Stations, Facts, &amp; Completion"
-    },
-    {
-      "url_hash": "a97f3684ae6415a9cf7f29d44c09948842f71357a6ad3f9c86c89733522824d3",
-      "title_hash": "220e4508bf9a89ffb0845707eac31b02b091c8a56c6ec32192c0ce6afa540ef2",
-      "seen_at": "2026-03-10T10:27:51.135508+00:00",
-      "source": "Magicbricks",
-      "title": "Kashmere Gate Metro Station Delhi: Platforms, Gates, and Nearby Localities"
-    },
-    {
-      "url_hash": "04598a2caa831cf59e1dcdc380b1fd4c8d164572b0cf4a647d841126057b5e37",
-      "title_hash": "5b0d42aa672a47c96e013ae92e160dd3b603b2b37f6a593d4127224b02add336",
-      "seen_at": "2026-03-10T10:27:51.141627+00:00",
-      "source": "Hindu BL Economy",
-      "title": "Air India, AI Express to operate 60 flights connecting West Asia cities on Tuesday"
-    },
-    {
       "url_hash": "3b007126d303e5dad566d3ec23401fc9ff3b765a9b10a9f9561217aacbd7877f",
       "title_hash": "a78b145a35fe11bb13277d7066949135fae186757a51971064c4f425f0978e53",
       "seen_at": "2026-03-11T03:36:31.413859+00:00",
@@ -153,6 +125,13 @@
       "seen_at": "2026-03-17T03:45:11.219872+00:00",
       "source": "ET Realty",
       "title": "RSVM Hospitality buys 18.6-acre land parcel in Thane for ₹498 crore"
+    },
+    {
+      "url_hash": "a29140fc0b61efafeac2802597e91c13a05640cde8846f87211ead907a27028c",
+      "title_hash": "7105266b756b5216452f8828d62c38a6ef2330b7bc351e0714ac372a4a81b83f",
+      "seen_at": "2026-03-17T11:13:22.605742+00:00",
+      "source": "ET Infra",
+      "title": "Kalpataru Projects secures ₹2,471 crore in new orders across segments"
     }
   ]
 }
