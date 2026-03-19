@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "a0e8bda0973f3b960456d3ad6baca07e8d251432b23128b9139a505afbcb61fd",
-      "title_hash": "9e1a43eceb053a521e769ebe22bbf102473459940d6b5be3838667cedf6f9ad5",
-      "seen_at": "2026-03-11T15:24:58.805010+00:00",
-      "source": "Hindu BL Economy",
-      "title": "Toll burden on national highways in Gujarat surge 56.5% in 5 years; state collects ₹20,383 crore over last five years"
-    },
-    {
-      "url_hash": "a0e8bda0973f3b960456d3ad6baca07e8d251432b23128b9139a505afbcb61fd",
-      "title_hash": "36fb6976a0b1737fb07319a45ccb15e91eb348caaddb342fcbc6f2132ad99318",
-      "seen_at": "2026-03-11T16:12:14.178799+00:00",
-      "source": "Hindu BL Economy",
-      "title": "Toll burden on national highways in Gujarat surge 56.5% in 5 years to FY25; toll collection grows to ₹20,383 crore in this period"
-    },
-    {
-      "url_hash": "9c6d8c33e08631a3aadc90f803929975277b4b5b4b382d0a943ee97e47da6644",
-      "title_hash": "b6fc92cb9b0c6c21c2dcaa2fcee9f0ea660cb1df44faf4058da8c2dbe29c7af5",
-      "seen_at": "2026-03-12T03:42:28.209420+00:00",
-      "source": "Livemint Industry",
-      "title": "Promoters sell apartment at Raheja Artesia in Worli for  ₹121 crore"
-    },
-    {
       "url_hash": "e06305094a45a563cdde8d7fb7556102d6abfc15ff178a64219c66a3b2b0dc19",
       "title_hash": "a22b9574312fc571b419f792ff345ad077a83cf9d856b13cad4a73e86a19d20f",
       "seen_at": "2026-03-12T11:06:26.756477+00:00",
@@ -76,6 +55,13 @@
       "seen_at": "2026-03-18T04:00:08.009723+00:00",
       "source": "ET Realty",
       "title": "NCLT approves Adani Group ₹14,535 crore bid to acquire bankrupt Jaiprakash Associates"
+    },
+    {
+      "url_hash": "5ef5232cc3af6861e951ba474d28fdc28f1b98d49a81ac8cc55db54e2958714f",
+      "title_hash": "b001c86782a9f366a0efefe749c4229365e46ebd94a504a673966fdbfa6c5fc3",
+      "seen_at": "2026-03-19T03:59:27.430827+00:00",
+      "source": "ET Realty",
+      "title": "Karnataka seeks relaxation in building height norms around Bengaluru airports: Deputy CM"
     }
   ]
 }
