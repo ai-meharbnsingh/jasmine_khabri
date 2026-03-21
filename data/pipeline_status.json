@@ -1,15 +1,15 @@
 {
-  "last_run_utc": "2026-03-21T03:32:49Z",
-  "articles_fetched": 10,
-  "articles_delivered": 3,
-  "telegram_success": 2,
+  "last_run_utc": "2026-03-21T10:52:21Z",
+  "articles_fetched": 7,
+  "articles_delivered": 0,
+  "telegram_success": 0,
   "telegram_failures": 0,
-  "email_success": 1,
+  "email_success": 0,
   "sources_active": 8,
-  "run_duration_seconds": 12.1,
+  "run_duration_seconds": 6.3,
   "usage_month": "2026-03",
-  "monthly_deliver_runs": 75,
+  "monthly_deliver_runs": 76,
   "monthly_breaking_runs": 297,
   "monthly_breaking_alerts": 23,
-  "est_actions_minutes": 670.5
+  "est_actions_minutes": 673.5
 }
