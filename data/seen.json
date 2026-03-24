@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "dd0398a71adaed2651ba3acea6e0037eaf7ce5651b8406379156d65ad22a8024",
-      "title_hash": "b9c1a8be5fe1ecf92f15b7c1a75dcd759c4b72a5c21b3ee39ade48a884d2bae7",
-      "seen_at": "2026-03-17T03:45:11.219872+00:00",
-      "source": "ET Realty",
-      "title": "RSVM Hospitality buys 18.6-acre land parcel in Thane for ₹498 crore"
-    },
-    {
       "url_hash": "a29140fc0b61efafeac2802597e91c13a05640cde8846f87211ead907a27028c",
       "title_hash": "7105266b756b5216452f8828d62c38a6ef2330b7bc351e0714ac372a4a81b83f",
       "seen_at": "2026-03-17T11:13:22.605742+00:00",
@@ -69,6 +62,27 @@
       "seen_at": "2026-03-23T09:37:18.829785+00:00",
       "source": "ET Infra",
       "title": "NHAI’s bid to develop 912 km of highways worth ₹18,885 crore on BOT model draws blank"
+    },
+    {
+      "url_hash": "4ceb36c6f416e53cf0737077238bd5c2121180bafa7603f3059c283ad28b12aa",
+      "title_hash": "fbf4365cac69dde299fb34e698a7e42bcfe63d0923fa33e5d37ff101a9632514",
+      "seen_at": "2026-03-24T03:45:39.883898+00:00",
+      "source": "ET Realty",
+      "title": "Construction cost, home prices may rise if West Asia conflict continues for long: CREDAI-NAREDCO"
+    },
+    {
+      "url_hash": "d270fe62b6ae25e2efbaec22c2e3b3c7f2fee201ccdde8494392f9d5318bad8a",
+      "title_hash": "83532d1b78a50e19e35ed67906e48169236b7f3b4b0ff219825c9f311ac07865",
+      "seen_at": "2026-03-24T03:45:39.886037+00:00",
+      "source": "ET Realty",
+      "title": "SWAMIH Investment Fund II in process of being formally launched: Finance minister"
+    },
+    {
+      "url_hash": "e0a8ae6151ef098c0b9a81ea4feedae9078348f7f308029e66d10ac869b61b1d",
+      "title_hash": "abb297b081b41cf69a76a96a9e7efe6996c486076f7aca080802712ef98ce093",
+      "seen_at": "2026-03-24T03:45:39.888572+00:00",
+      "source": "ET Infra",
+      "title": "Govt says 11 airlines exited in 10 years due to financial stress, other internal issues"
     }
   ]
 }
