@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "d563c27ef3a996f9d80968e8b6640e4d46a0d7fe9442c2695d361859595b304f",
-      "title_hash": "21b3f9389323989e826f260cd6109da949d0cffce1513638f017b106b6929e84",
-      "seen_at": "2026-03-20T03:41:27.292888+00:00",
-      "source": "ET Realty",
-      "title": "WeWork India signs ₹475 crore managed office deal with TMUS India in Hyderabad"
-    },
-    {
-      "url_hash": "3011a91184a0f07637aacfb11f31794f059488789b898b778c3cb80921091223",
-      "title_hash": "af2d61d5ad8d13ee6e06be5dcbc61668136464e58e481d94496ca629a684dd01",
-      "seen_at": "2026-03-20T03:41:27.294535+00:00",
-      "source": "ET Realty",
-      "title": "UP-RERA penalises three projects ₹5 lakh each for promoting unregistered developments"
-    },
-    {
       "url_hash": "e2eb61ad395e416195839c9736cdef7367ae7c9b8aa4d193c95a4b31b06f7147",
       "title_hash": "4cf376027a83760edc4f52e49192e11cfb4baadd0f49dc25cf6a7e214d420c3f",
       "seen_at": "2026-03-21T03:32:53.825925+00:00",
@@ -90,6 +76,20 @@
       "seen_at": "2026-03-26T11:27:07.853148+00:00",
       "source": "99acres",
       "title": "DDA Nagrik Awaas Yojana 2026: New phase adds 1944 LIG flats"
+    },
+    {
+      "url_hash": "ac73eb6e96e6c7df6e8ac9b9830ff31e78f05d8f80d4a46fd0b626ebb985224a",
+      "title_hash": "a78e5ccf7fc72ad4a67b68e04fa71c149f0e39552ec669cb4d6b827e4c2e5db3",
+      "seen_at": "2026-03-27T04:09:10.637841+00:00",
+      "source": "ET Realty",
+      "title": "Prestige Group and Arihant Group jointly acquire land in Padi, Chennai"
+    },
+    {
+      "url_hash": "4519c5f7c3e6ee71b7199003198b2ba0bb420c7087857c2a5a4fd890911587b0",
+      "title_hash": "420a1a760af5befc6303efba7209e1f7c07777d51c2fb4205e11f94161d361e4",
+      "seen_at": "2026-03-27T04:09:10.641420+00:00",
+      "source": "ET Infra",
+      "title": "VINCI to acquire Macquarie&#039;s India road assets for ₹15,000 cr"
     }
   ]
 }
