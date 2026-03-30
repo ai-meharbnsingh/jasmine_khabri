@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "a009e8efd17cf8312d86430df92306d06d2420c633fc826ae58776ca441dbdcb",
-      "title_hash": "8bc4db797a3951740eb0d3f7880387d13ef84de5de87478df7c5870c1d0e2eda",
-      "seen_at": "2026-03-23T09:37:18.829785+00:00",
-      "source": "ET Infra",
-      "title": "NHAI’s bid to develop 912 km of highways worth ₹18,885 crore on BOT model draws blank"
-    },
-    {
       "url_hash": "4ceb36c6f416e53cf0737077238bd5c2121180bafa7603f3059c283ad28b12aa",
       "title_hash": "fbf4365cac69dde299fb34e698a7e42bcfe63d0923fa33e5d37ff101a9632514",
       "seen_at": "2026-03-24T03:45:39.883898+00:00",
@@ -97,6 +90,13 @@
       "seen_at": "2026-03-29T11:00:07.519809+00:00",
       "source": "ET Infra",
       "title": "Commercial flights from Noida airport to start in 45-60 days: Naidu"
+    },
+    {
+      "url_hash": "9d5b2a55e70bf28dd342430fb94cafe4997d64f2352b21b925fd2d3cbf8da10f",
+      "title_hash": "1357364d18ee00e8ac7d2cdc254b01ee7cfde9ddb15a1929da4bce0d6c1c5bdf",
+      "seen_at": "2026-03-30T11:32:29.890189+00:00",
+      "source": "ET Realty",
+      "title": "Lulu Group arm buys Delhi&#039;s Sunder Nagar bungalow for ₹89.5 crore"
     }
   ]
 }
