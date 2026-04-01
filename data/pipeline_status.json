@@ -7,9 +7,9 @@
   "email_success": 0,
   "sources_active": 8,
   "run_duration_seconds": 5.6,
-  "usage_month": "2026-03",
-  "monthly_deliver_runs": 96,
-  "monthly_breaking_runs": 498,
-  "monthly_breaking_alerts": 25,
-  "est_actions_minutes": 1035.0
+  "usage_month": "2026-04",
+  "monthly_deliver_runs": 0,
+  "monthly_breaking_runs": 1,
+  "monthly_breaking_alerts": 0,
+  "est_actions_minutes": 1.5
 }
