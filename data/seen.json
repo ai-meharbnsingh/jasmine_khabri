@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "7f9dec1f0e7e251b15fab0ab7d36804803a004585622f7be552ed51bbaf91438",
-      "title_hash": "a44ba0198c8fa57c7c0d75a91d58ceade344d21d699774beb43d0bb8b07b4f0d",
-      "seen_at": "2026-03-24T16:37:22.300274+00:00",
-      "source": "ET Infra",
-      "title": "JICA inks ₹6,100 crore loan pact for Bengaluru Metro Phase 3"
-    },
-    {
-      "url_hash": "819f1432e331c3829ffc5a631e8cbfed2defe18ecdda1253adbb96ae0e923a14",
-      "title_hash": "37e185e6aa5aa004f8e88d67d617cc026252e3737d83b4556e9151b10f157cd4",
-      "seen_at": "2026-03-25T03:56:27.851189+00:00",
-      "source": "ET Infra",
-      "title": "Indian Railways greenlights ₹647.58 cr projects in Gujarat, Bihar"
-    },
-    {
       "url_hash": "cf1fc7b9524250769da357054b0ad608b7f9df52f7386fa10e779dc91f046e8f",
       "title_hash": "7007b18e59b5d9d92ef91a74ffa128a8c0259f7ac868b61871604d37f5e58aae",
       "seen_at": "2026-03-26T11:27:07.851246+00:00",
@@ -83,6 +69,20 @@
       "seen_at": "2026-03-31T04:12:04.691553+00:00",
       "source": "ET Infra",
       "title": "NHAI set to achieve monetisation target of ₹30,000 crore for FY26"
+    },
+    {
+      "url_hash": "69f5b6c9ff974a0634ba4a537b135ed549f34d6b9421b630fb848cff03ad0c70",
+      "title_hash": "9614dc44bff1a23226d9f908827337a0b930fbe5352b0d6cdab92f8185eabf8c",
+      "seen_at": "2026-04-01T04:25:26.771260+00:00",
+      "source": "ET Realty",
+      "title": "Haryana revises collector rates using data-driven framework"
+    },
+    {
+      "url_hash": "44c3ea7d94e96be07a4b462dab35f77d38cb79390f0dc82037597325eb990015",
+      "title_hash": "26649382c18be88863f8b48f12fb643ca9c6695082f8a7a52d83920f854e20c8",
+      "seen_at": "2026-04-01T04:25:26.773782+00:00",
+      "source": "ET Infra",
+      "title": "APSEZ becomes first port operator outside state control to handle 500 mt of cargo in a year"
     }
   ]
 }
