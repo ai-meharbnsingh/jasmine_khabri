@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "69f5b6c9ff974a0634ba4a537b135ed549f34d6b9421b630fb848cff03ad0c70",
-      "title_hash": "9614dc44bff1a23226d9f908827337a0b930fbe5352b0d6cdab92f8185eabf8c",
-      "seen_at": "2026-04-01T04:25:26.771260+00:00",
-      "source": "ET Realty",
-      "title": "Haryana revises collector rates using data-driven framework"
-    },
-    {
-      "url_hash": "44c3ea7d94e96be07a4b462dab35f77d38cb79390f0dc82037597325eb990015",
-      "title_hash": "26649382c18be88863f8b48f12fb643ca9c6695082f8a7a52d83920f854e20c8",
-      "seen_at": "2026-04-01T04:25:26.773782+00:00",
-      "source": "ET Infra",
-      "title": "APSEZ becomes first port operator outside state control to handle 500 mt of cargo in a year"
-    },
-    {
-      "url_hash": "30911170b353f40380ad92d58450d6c263acc5dd4c0fe7cd68f299bdda9d2979",
-      "title_hash": "753cc213a440b8675224829315efbae2093f09756ab359f7573274ea4d5e2a2b",
-      "seen_at": "2026-04-01T11:29:15.999553+00:00",
-      "source": "ET Realty",
-      "title": "Tata Realty ink pact to buy Bengaluru land from Hinduja Group for ₹2,300 crore"
-    },
-    {
       "url_hash": "eab7c8ab8e6670e0ed8405f55b2ff8fad36429892e90fc6f03f4abcad02ebc7f",
       "title_hash": "f799720f2396804cd80cbaf43e71248bee6328b0e59137ab044c04582a9ca44e",
       "seen_at": "2026-04-02T04:04:24.194898+00:00",
@@ -153,6 +132,27 @@
       "seen_at": "2026-04-08T04:12:27.572980+00:00",
       "source": "ET Infra",
       "title": "Centre orders 25% cut in airport charges to ease airline costs"
+    },
+    {
+      "url_hash": "97c70bd56032f170f0f3bbe6fe13d7ffb57fd848fe9e7b5b26c19b558e4b2ad0",
+      "title_hash": "f9120c1925d0f386cd8d995d542f9fca2914a90287d03ea8b85b9ca8c7c3e018",
+      "seen_at": "2026-04-08T11:29:36.441830+00:00",
+      "source": "ET Realty",
+      "title": "Centre notifies revised TOD rules for Delhi, opens 207 sq km along metro corridors for high-density housing"
+    },
+    {
+      "url_hash": "6ed20f316d4d504c984b1651ca9e4c83469b72b7ca3893542f63311d3292bc83",
+      "title_hash": "5e6b2bc54b9442e24f1a709eb39a3b4299bd43195b62cfb6ea3cedd4d0dfd3ea",
+      "seen_at": "2026-04-08T11:29:36.444651+00:00",
+      "source": "Square Yards",
+      "title": "Home loans to stay stable as RBI leaves repo rate unchanged at 5.25%"
+    },
+    {
+      "url_hash": "2cd1360190c060da2caf5ab84edfc3f81f04454c8fdb13ac1f6b1274ec20bbc5",
+      "title_hash": "928f8877afc4159bc32fdfc0c4ae5ca40afb1200a33d960bdf5d6faaa3deaa0d",
+      "seen_at": "2026-04-08T11:29:36.446709+00:00",
+      "source": "Square Yards",
+      "title": "Top 10 Ready to Move Projects in Kolkata"
     }
   ]
 }
