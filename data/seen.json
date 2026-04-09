@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "78db657d5efd52f24e64cb3e99f3f11e47846987b4cd43bb15423580dcae22f6",
-      "title_hash": "11b535cf796848300b3d0d1cefbe4685d8580c7f069de42f1455b45f810269df",
-      "seen_at": "2026-04-02T06:48:58.122485+00:00",
-      "source": "99acres",
-      "title": "Affordable housing in Haryana gets costlier as property prices rise"
-    },
-    {
-      "url_hash": "df7b8eafa9ae4add4e77ee51f3de5be86452e026e03e1b21212890bad2292361",
-      "title_hash": "522e5b81db14fcfc068f5887a452485962859cb0084e3659d90ec3481334fefe",
-      "seen_at": "2026-04-02T11:23:50.654103+00:00",
-      "source": "ET Realty",
-      "title": "Committee of creditors can invite land authorities in realty insolvency cases: FM"
-    },
-    {
       "url_hash": "5dda9f646b43a4994bfbc48bc79da980226ce75abdd96610aba1a86122449eaf",
       "title_hash": "9d76d524c9bdd3929d4b2099ce9a44e322cf79c2e52e6777871ed8f34e926894",
       "seen_at": "2026-04-03T02:36:42.684843+00:00",
@@ -146,6 +132,20 @@
       "seen_at": "2026-04-09T04:07:28.941577+00:00",
       "source": "ET Infra",
       "title": "BEML and DMRC to jointly bid for West Asia metro projects"
+    },
+    {
+      "url_hash": "4df5efb25ae0c543f248148e5da625355ac66974c4b1ee7232f42f4abf16c167",
+      "title_hash": "c97f5244e87e11435a2f9c8f9c1c3ba43631a7857a7829a07b79824ddab456fb",
+      "seen_at": "2026-04-09T11:30:59.578174+00:00",
+      "source": "Square Yards",
+      "title": "Dosti West County Construction And Possession"
+    },
+    {
+      "url_hash": "9abed1544505309877fa05cf36fcbcdfe9d6997e555db086511fcd1f3327789b",
+      "title_hash": "fcd3ec0ee3aa1044e40b2e19cc30eeaef6a19a0579c7e94c1af4a9c1e8dfd6c1",
+      "seen_at": "2026-04-09T11:30:59.580317+00:00",
+      "source": "Square Yards",
+      "title": "Prestige Raintree Park Price List And Charges"
     }
   ]
 }
