@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "eab7c8ab8e6670e0ed8405f55b2ff8fad36429892e90fc6f03f4abcad02ebc7f",
-      "title_hash": "f799720f2396804cd80cbaf43e71248bee6328b0e59137ab044c04582a9ca44e",
-      "seen_at": "2026-04-02T04:04:24.194898+00:00",
-      "source": "ET Infra",
-      "title": "NHAI surpasses target; constructs 5313 km in 2025-26"
-    },
-    {
-      "url_hash": "709083f26ca245c059945f112339da783a4ad5cd32dad79d5ae1dbdaa7f5d97b",
-      "title_hash": "9c33d079bca4df43b0f4cef5b46fb6379ce30adf05c86852b47a2594302a11fe",
-      "seen_at": "2026-04-02T04:04:24.196666+00:00",
-      "source": "Square Yards",
-      "title": "Puravankara Northern Lights Location & Nearby Landmarks"
-    },
-    {
-      "url_hash": "624a1f820c6e5cced6d5cc96a3a613d20ef370617a056c1ff49106028626bc93",
-      "title_hash": "a3eddce05a1219309bf522025864b337339dcb012f005fe7f090404d4ab77e4d",
-      "seen_at": "2026-04-02T04:04:24.198412+00:00",
-      "source": "Square Yards",
-      "title": "Puravankara Northern Lights Floor Plan Guide"
-    },
-    {
       "url_hash": "78db657d5efd52f24e64cb3e99f3f11e47846987b4cd43bb15423580dcae22f6",
       "title_hash": "11b535cf796848300b3d0d1cefbe4685d8580c7f069de42f1455b45f810269df",
       "seen_at": "2026-04-02T06:48:58.122485+00:00",
@@ -153,6 +132,20 @@
       "seen_at": "2026-04-08T11:29:36.446709+00:00",
       "source": "Square Yards",
       "title": "Top 10 Ready to Move Projects in Kolkata"
+    },
+    {
+      "url_hash": "dddd0665040a92bb98db889d4c3853de9f72568300d2a1236f9b0e3b9346545f",
+      "title_hash": "1582bd722d9c1980a7f84ca3cd346fe254d0a6727b5b89018cbf9fab4dd234af",
+      "seen_at": "2026-04-09T04:07:28.938985+00:00",
+      "source": "ET Realty",
+      "title": "IBBI panel suggests project-wise insolvency resolution for real estate sector"
+    },
+    {
+      "url_hash": "09952fdebe4df268981d54ec6c7bebbe3a01460dc13ab489cab0a81babacacc7",
+      "title_hash": "122ae519282b0f2458e821bbbaf9aa4b04912b0e8cb1096c9401b65095bad377",
+      "seen_at": "2026-04-09T04:07:28.941577+00:00",
+      "source": "ET Infra",
+      "title": "BEML and DMRC to jointly bid for West Asia metro projects"
     }
   ]
 }
