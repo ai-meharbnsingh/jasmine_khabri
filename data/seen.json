@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "ac98e7cd5e8bcc718c5fb0ae2c3afb55ef711adff2c376fe7078ea7453314f8c",
-      "title_hash": "c60f715e1ce38e8fe5288affb65394c857c448e9a416f76692950141c5bd79bb",
-      "seen_at": "2026-04-04T03:45:18.198414+00:00",
-      "source": "Square Yards",
-      "title": "M3M Soulitude Investment & Rental Potential"
-    },
-    {
-      "url_hash": "603a40506b40ec2c27551b7567b6f912883cb50c90f16ef044bb4179c83923d8",
-      "title_hash": "9cf278b73ec649c8b4646001c132dbae47ed300d7c08805903f9c009e43704b7",
-      "seen_at": "2026-04-04T03:45:18.199970+00:00",
-      "source": "Square Yards",
-      "title": "M3M Soulitude RERA Details Explained"
-    },
-    {
       "url_hash": "c3f40ed849b1fb2edd4b316e183f2842b2c3d02b0697d49521d078f16fd5e7f4",
       "title_hash": "090f04dba66b9c60d87cab1c608b7988cf5822befd8071e33de9343021a96ecd",
       "seen_at": "2026-04-06T02:45:43.196291+00:00",
@@ -153,6 +139,13 @@
       "seen_at": "2026-04-10T11:25:45.650466+00:00",
       "source": "Square Yards",
       "title": "Prestige Raintree Park Amenities And Features"
+    },
+    {
+      "url_hash": "3054cf59c1c40527db63a0f0f1b6342b6ce59df6a729af3b4e4b4b6b7f55f947",
+      "title_hash": "b50ebe03db0e12832e1dc641b33ee7613b8285e1e960b2b022746b1a2182b998",
+      "seen_at": "2026-04-11T03:58:11.535064+00:00",
+      "source": "99acres",
+      "title": "Top 5 developers in Navi Mumbai"
     }
   ]
 }
