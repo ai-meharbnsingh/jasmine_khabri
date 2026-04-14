@@ -1,48 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "d6de2c5e1e30bd5fdee4318cfe92e1d7f86781bf51162be8f291eea0e0881b17",
-      "title_hash": "8fa8b71d9c7a616a3d62aa9d3ecfc7d478fe279df11df977b83180ca286f887c",
-      "seen_at": "2026-04-06T12:07:32.438656+00:00",
-      "source": "ET Infra",
-      "title": "NHAI signs MoU with Cube Highways Technologies to strengthen technical training of officials"
-    },
-    {
-      "url_hash": "cdfd400e0347333b9f78fd5e1020bd2fad305a18582501819405f3b0a1efb3ba",
-      "title_hash": "d7765bdf1264ff0793cdb135cabc40b7487f575ceab068c2580bf6d45e7cb64b",
-      "seen_at": "2026-04-07T04:09:30.878321+00:00",
-      "source": "ET Realty",
-      "title": "Aristo Pharma buys office space for ₹111 crore in Mumbai&#039;s Andheri West"
-    },
-    {
-      "url_hash": "5de67d4bde96139294c837a434b3d3c1d99dcff0ac4e513f2761001a8083df6e",
-      "title_hash": "8ef2ab8e3f18522233ffdd83d537bfc8e2aa442c7e18a55bae453a6e32618453",
-      "seen_at": "2026-04-07T04:09:30.883805+00:00",
-      "source": "Square Yards",
-      "title": "Sobha Neopolis Location in Panathur"
-    },
-    {
-      "url_hash": "90abfb2ed6305269d66717e66361ddaa0d6902a8b33b7711956c5b46e1eb38c5",
-      "title_hash": "b5837050ef60a1f3fba9bebe9f6627d6b3667d5e5886233f090d71665e81ff8b",
-      "seen_at": "2026-04-07T04:09:30.885402+00:00",
-      "source": "Square Yards",
-      "title": "Sobha Neopolis Floor Plan Guide"
-    },
-    {
-      "url_hash": "0b5bf7ad57dde024004eb7b5f938750c7234d4f60fa70a56058ddb2b91e43042",
-      "title_hash": "0a919c711bc93039de6e0aa63747cab9b4eca5b8fc1658f71ee1146230a7a3e9",
-      "seen_at": "2026-04-07T04:09:30.887279+00:00",
-      "source": "Square Yards",
-      "title": "Sobha Neopolis Price List – All Charges"
-    },
-    {
-      "url_hash": "60c1fd05ecc354975ab80b2dbba6c5db0e5a117c71660bc4d27219df57926494",
-      "title_hash": "f07f6694183e899748affab731a505209a0aec2987a9e767096f26c9c9d88a4e",
-      "seen_at": "2026-04-07T04:09:30.889663+00:00",
-      "source": "Square Yards",
-      "title": "Sobha Neopolis Specifications and Interior Guide"
-    },
-    {
       "url_hash": "bdf83afcf1bf5766018ef7500d19355ee9c0090fb64d1b7c0d94b0e74e28626e",
       "title_hash": "7db9edee1840871b26a8ead5915f72240b6adc07dfac2e5d931867422919cc03",
       "seen_at": "2026-04-08T04:12:27.572980+00:00",
@@ -153,6 +111,13 @@
       "seen_at": "2026-04-13T04:36:06.598565+00:00",
       "source": "ET Realty",
       "title": "NCLAT reaffirms project-specific insolvency proceedings against realty firms"
+    },
+    {
+      "url_hash": "6b608d366ea67b8b71c707c87efb5ed4804407b14260f74e09064300ae3bf063",
+      "title_hash": "ea793dd0b18067b5a542dddf7c3f91d5aa00a0d77569d1fb960ff613d3a553c5",
+      "seen_at": "2026-04-14T04:22:55.911256+00:00",
+      "source": "ET Infra",
+      "title": "Tax exemption on land taken for national highway projects"
     }
   ]
 }
