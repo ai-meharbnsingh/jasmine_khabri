@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "af29bfd39638ad44f7a4b7ce4d63fde5ab18dddb8a0e893777b60b6298244581",
-      "title_hash": "b267c6b86c90db8ea2caffdc93740ba550cd27207044cea4b754af14e8da99d4",
-      "seen_at": "2026-04-12T11:05:40.544357+00:00",
-      "source": "ET Realty",
-      "title": "Portal to offer digitally signed realistic property valuation report soon in Maharashtra"
-    },
-    {
       "url_hash": "3d599499b316839df5fd216845a8bdd017207781d2b9717d4313b792f2b8b1f9",
       "title_hash": "8136c6b6bb517323910acd5d9382b44ad21c8d41f3e5e51270421fd4c7441c1c",
       "seen_at": "2026-04-13T04:36:06.598565+00:00",
@@ -20,6 +13,20 @@
       "seen_at": "2026-04-14T04:22:55.911256+00:00",
       "source": "ET Infra",
       "title": "Tax exemption on land taken for national highway projects"
+    },
+    {
+      "url_hash": "e6682efab3b52ff5939704a2e6cca62cb809dee3a3a49757c1eca62ca47c1d5f",
+      "title_hash": "1403cbb58e93ce64c112e69532f7706c2b4ea78a18a9bcf8e81b13f6d7dc1e91",
+      "seen_at": "2026-04-19T11:06:27.424541+00:00",
+      "source": "ET Realty",
+      "title": "Maharashtra to roll out 60 private-run property registration centres from July"
+    },
+    {
+      "url_hash": "dc466ab2d459f13c651039c4149258fbe5962cc0e7c923db65d768c3c9be529d",
+      "title_hash": "b5237596953648cbf40ef5e9e43bd7a8cc8e4d0d8a825fd6a4f9fa4028968d00",
+      "seen_at": "2026-04-19T11:06:27.425254+00:00",
+      "source": "ET Realty",
+      "title": "Missing papers put 2.5 lakh property deals in Gurugram on radar"
     }
   ]
 }
