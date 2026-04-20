@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "3d599499b316839df5fd216845a8bdd017207781d2b9717d4313b792f2b8b1f9",
-      "title_hash": "8136c6b6bb517323910acd5d9382b44ad21c8d41f3e5e51270421fd4c7441c1c",
-      "seen_at": "2026-04-13T04:36:06.598565+00:00",
-      "source": "ET Realty",
-      "title": "NCLAT reaffirms project-specific insolvency proceedings against realty firms"
-    },
-    {
       "url_hash": "6b608d366ea67b8b71c707c87efb5ed4804407b14260f74e09064300ae3bf063",
       "title_hash": "ea793dd0b18067b5a542dddf7c3f91d5aa00a0d77569d1fb960ff613d3a553c5",
       "seen_at": "2026-04-14T04:22:55.911256+00:00",
@@ -27,6 +20,20 @@
       "seen_at": "2026-04-19T11:06:27.425254+00:00",
       "source": "ET Realty",
       "title": "Missing papers put 2.5 lakh property deals in Gurugram on radar"
+    },
+    {
+      "url_hash": "6920b65614d1b150455797e45fe0121be8cb7af76932e251ebd25a7a09e23a76",
+      "title_hash": "6a86838a2b28756b1b3d4c46ccada3d0a620fde5b40d34f4dc450c201e737cd4",
+      "seen_at": "2026-04-20T04:36:15.140637+00:00",
+      "source": "ET Realty",
+      "title": "IFC, domestic funds back Brookfield India REIT’s ₹2,600-crore QIP"
+    },
+    {
+      "url_hash": "ad7904f964bc45938c5d0834fe23111b00c5ebb38d3fd8a2f8e23f2bebd852d4",
+      "title_hash": "307383162fa231ca3851cd6d82554d6e9bc62fc3c86ee0759228da6c3e3bf55e",
+      "seen_at": "2026-04-20T04:36:15.141626+00:00",
+      "source": "ET Infra",
+      "title": "Air India rolls out premium makeover: New cabins, lounges, and aircraft to boost revenue"
     }
   ]
 }
