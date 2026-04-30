@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "dd6d62b7e9a1bb93016046472c9a4515a4e23248165315a22b727915738c8eb2",
-      "title_hash": "c9528480d8497dbb14af6b68c3a53e0b0d1e962e981ebed359f7357059043b5f",
-      "seen_at": "2026-04-23T11:38:46.768882+00:00",
-      "source": "ET Infra",
-      "title": "L&amp;T bags up to ₹2,500 crore orders across real estate, testing infrastructure"
-    },
-    {
       "url_hash": "d7b5c1a9cc443b491a373ebe286a70c9739cc5ca928135ae512769de1e28e8a3",
       "title_hash": "3fd80b849b2b060009b34de129b95269ebbac4b6496d24a50f902b5b3c8c3cf2",
       "seen_at": "2026-04-24T04:30:50.768130+00:00",
@@ -97,6 +90,20 @@
       "seen_at": "2026-04-29T14:38:24.746255+00:00",
       "source": "ET Infra",
       "title": "L&amp;T to sell entire stake in L&amp;T Metro Rail (Hyderabad) for ₹1,461.47 crore"
+    },
+    {
+      "url_hash": "556ec7de98cf77129ff18980ae05806880c0a56e6abb0561e8262ff4894bcac1",
+      "title_hash": "2bae05868f68334bea0b76764141a641740043eb97b2d9ba37601e3eccb0996a",
+      "seen_at": "2026-04-30T11:58:09.173836+00:00",
+      "source": "99acres",
+      "title": "Thane-Navi Mumbai link road: All you need to know"
+    },
+    {
+      "url_hash": "178938fabc6562ebb94d749c3a796a35552ea02abd02c89ffba0db5c8ba9745f",
+      "title_hash": "00207c67f07e57649fcc1925a74967182ead2a2c5fa59d8fdabb28a8f296ce93",
+      "seen_at": "2026-04-30T11:58:09.176313+00:00",
+      "source": "99acres",
+      "title": "Connectivity, commerce, and community: The future of Chennai’s Outer Ring Road"
     }
   ]
 }
