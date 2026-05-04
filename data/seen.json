@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "44ec9e14805c2007b691c8459841ab527cbac13cc14a88fca037c75fb06ef833",
-      "title_hash": "929fe1672244014cbea41043f77a680e2feb00b892ddfe16c329e69afdb673a2",
-      "seen_at": "2026-04-27T12:06:13.138086+00:00",
-      "source": "ET Infra",
-      "title": "DP World buys 49% stake in MMLP developed by Reliance at Mappedu near Chennai"
-    },
-    {
-      "url_hash": "a801a798d9d4c3a17b15bc04814e4bd0069ccf68874c1aa776a07e6e9c0f6209",
-      "title_hash": "68d6c70a4c4d4f553ce145de44efd1cfd046acd57d501547965b672b352ac73e",
-      "seen_at": "2026-04-27T12:06:13.141415+00:00",
-      "source": "99acres",
-      "title": "Looking for residential plots along Ajmer Road, Jaipur? Consider Bagru-Mahlan stretch: The next big investment hub"
-    },
-    {
-      "url_hash": "87df1840f98fc9a54359fe4de4baa9a141801486bd6c71d7bb64d9e5d5b0ea57",
-      "title_hash": "5fa9552976b3da0c23187e9dda4b1050eba0c191294399d05adbd7e274bbc7a0",
-      "seen_at": "2026-04-27T12:06:13.143898+00:00",
-      "source": "99acres",
-      "title": "Ahead of the curve: How Nani’s Buildcon redefines luxury living in Nagpur"
-    },
-    {
       "url_hash": "688febcdc00326eac857932ed4b4501bf3b646d1765c502f484247125c106f62",
       "title_hash": "3f1889350e569926611dab52e4139b83b2ca8c3cbf4aef6bb3e200ac8cedf5a1",
       "seen_at": "2026-04-28T09:24:04.614435+00:00",
@@ -104,6 +83,20 @@
       "seen_at": "2026-05-03T11:10:48.113799+00:00",
       "source": "ET Infra",
       "title": "Indian Railways approves ₹895 crore projects for Kolkata Metro upgrade, Adra bridge redevelopment"
+    },
+    {
+      "url_hash": "9e7ff6782634e1aaad00c60cb0c3ab65c09101711220ce06895fa7abc8633f0a",
+      "title_hash": "e8f5651291c6cd6f4e09df929f936cd9a2b137bb187c65b981eee1603c597c38",
+      "seen_at": "2026-05-04T12:09:48.112647+00:00",
+      "source": "ET Realty",
+      "title": "Godrej Properties&#039; net profit rises 32.49% in FY26"
+    },
+    {
+      "url_hash": "7cb153c271c0caa4a2df292002ec1cf08c88f23a9f87f812be68dfbd430f0ff8",
+      "title_hash": "f0116ec4ceede4e4969ee5efd4624758408946b7f3598f3cd2991657b8c8f315",
+      "seen_at": "2026-05-04T12:09:48.115620+00:00",
+      "source": "ET Infra",
+      "title": "Delhi Metro expansion: CM Rekha Gupta to unveil 97 km plan worth ₹48,204.56 crore under Phase V(b)"
     }
   ]
 }
