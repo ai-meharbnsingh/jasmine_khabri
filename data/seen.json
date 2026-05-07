@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "9b98e04799cb819833b850163df37d74108c7cda9ce66da61060dfe4e41cfc85",
-      "title_hash": "86a4c31a1021dfe6c459e7774924a97eeb54c86c15d828f6f6ab352beb11e9ff",
-      "seen_at": "2026-04-29T14:38:24.746255+00:00",
-      "source": "ET Infra",
-      "title": "L&amp;T to sell entire stake in L&amp;T Metro Rail (Hyderabad) for ₹1,461.47 crore"
-    },
-    {
       "url_hash": "556ec7de98cf77129ff18980ae05806880c0a56e6abb0561e8262ff4894bcac1",
       "title_hash": "2bae05868f68334bea0b76764141a641740043eb97b2d9ba37601e3eccb0996a",
       "seen_at": "2026-04-30T11:58:09.173836+00:00",
@@ -104,6 +97,13 @@
       "seen_at": "2026-05-06T11:25:11.700460+00:00",
       "source": "Square Yards",
       "title": "Agra-Bareilly Expressway to link Western UP and Rohilkhand, boost realty"
+    },
+    {
+      "url_hash": "3694653390450ca5ef469d4b548c23793073a6c2c8e8ca863a36da91dc92e158",
+      "title_hash": "593a6c8a8baa3290d9acdbdd7e3739e94bafb00cf62b325fa23ee6abd9f581dc",
+      "seen_at": "2026-05-07T04:49:29.150977+00:00",
+      "source": "ET Infra",
+      "title": "Telangana govt seeks Centre’s approval for ₹38,595 cr Hyderabad Metro Phase-II project"
     }
   ]
 }
