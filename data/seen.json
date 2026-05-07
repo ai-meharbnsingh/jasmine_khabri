@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "556ec7de98cf77129ff18980ae05806880c0a56e6abb0561e8262ff4894bcac1",
-      "title_hash": "2bae05868f68334bea0b76764141a641740043eb97b2d9ba37601e3eccb0996a",
-      "seen_at": "2026-04-30T11:58:09.173836+00:00",
-      "source": "99acres",
-      "title": "Thane-Navi Mumbai link road: All you need to know"
-    },
-    {
-      "url_hash": "178938fabc6562ebb94d749c3a796a35552ea02abd02c89ffba0db5c8ba9745f",
-      "title_hash": "00207c67f07e57649fcc1925a74967182ead2a2c5fa59d8fdabb28a8f296ce93",
-      "seen_at": "2026-04-30T11:58:09.176313+00:00",
-      "source": "99acres",
-      "title": "Connectivity, commerce, and community: The future of Chennai’s Outer Ring Road"
-    },
-    {
       "url_hash": "e8c91a78e5cd05785a3a2e02a6783971c1ca65094b02fb0ed8eee236a02cb0f8",
       "title_hash": "b1b9ad3f4e8b949845501e7054aa05b2249a5ab47ab72935e10954fddd045188",
       "seen_at": "2026-04-30T14:34:21.098449+00:00",
@@ -104,6 +90,13 @@
       "seen_at": "2026-05-07T04:49:29.150977+00:00",
       "source": "ET Infra",
       "title": "Telangana govt seeks Centre’s approval for ₹38,595 cr Hyderabad Metro Phase-II project"
+    },
+    {
+      "url_hash": "90c150bef10d1ae617066544c0121b22f8374d9f7dca2164e8475436f6e3be9e",
+      "title_hash": "ddf0169988df2d62c9cbc6ca17985ef8a12a148c9caadc55cc3e5685551b5cdb",
+      "seen_at": "2026-05-07T12:16:20.015796+00:00",
+      "source": "ET Realty",
+      "title": "Be realistic in your advertisements: RERA officials to real estate builders"
     }
   ]
 }
