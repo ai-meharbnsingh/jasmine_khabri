@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "e8c91a78e5cd05785a3a2e02a6783971c1ca65094b02fb0ed8eee236a02cb0f8",
-      "title_hash": "b1b9ad3f4e8b949845501e7054aa05b2249a5ab47ab72935e10954fddd045188",
-      "seen_at": "2026-04-30T14:34:21.098449+00:00",
-      "source": "ET Realty",
-      "title": "Dubai eases visa rule for single property buyers"
-    },
-    {
       "url_hash": "93e0010b744ef2ec21dfc68a55790f30069f4f89a105615a704bc2523b010a74",
       "title_hash": "3d5d3fac77a2a23e21e30b58fbb0f10f401873c3dae8eef4b3f17e5df6506c06",
       "seen_at": "2026-05-01T13:59:46.276334+00:00",
@@ -97,6 +90,13 @@
       "seen_at": "2026-05-07T12:16:20.015796+00:00",
       "source": "ET Realty",
       "title": "Be realistic in your advertisements: RERA officials to real estate builders"
+    },
+    {
+      "url_hash": "44d59e57e568ce834f5961710dd0219cd44d7cfbc5c9701956da2184b98052bf",
+      "title_hash": "35fb9439ff46fc41cc5befafaf2449623763049993c9697ade24fbc0025a5ab2",
+      "seen_at": "2026-05-08T04:28:42.997667+00:00",
+      "source": "ET Infra",
+      "title": "IndiGo to be launch carrier of Noida International Airport, operations from June 15"
     }
   ]
 }
