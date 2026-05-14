@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "3694653390450ca5ef469d4b548c23793073a6c2c8e8ca863a36da91dc92e158",
-      "title_hash": "593a6c8a8baa3290d9acdbdd7e3739e94bafb00cf62b325fa23ee6abd9f581dc",
-      "seen_at": "2026-05-07T04:49:29.150977+00:00",
-      "source": "ET Infra",
-      "title": "Telangana govt seeks Centre’s approval for ₹38,595 cr Hyderabad Metro Phase-II project"
-    },
-    {
       "url_hash": "90c150bef10d1ae617066544c0121b22f8374d9f7dca2164e8475436f6e3be9e",
       "title_hash": "ddf0169988df2d62c9cbc6ca17985ef8a12a148c9caadc55cc3e5685551b5cdb",
       "seen_at": "2026-05-07T12:16:20.015796+00:00",
@@ -69,6 +62,20 @@
       "seen_at": "2026-05-13T12:27:33.204489+00:00",
       "source": "ET Infra",
       "title": "Cabinet clears ₹20,667 crore Ahmedabad-Dholera semi high-speed rail corridor"
+    },
+    {
+      "url_hash": "100bd342a267b319a6aa067031d5b99f506787e5f807a0cb7fc24399e21457f5",
+      "title_hash": "0fc11cd497f83e2a39892aa10f833e368b70f9236dffcff2725c0b626de27612",
+      "seen_at": "2026-05-14T05:01:22.560570+00:00",
+      "source": "ET Realty",
+      "title": "Karnataka deputy CM launches &#039;&#039;Bhoo Guarantee&#039;&#039; scheme for 23 lakh Bengaluru properties"
+    },
+    {
+      "url_hash": "917890c365733150cd44b9a4e637ac059d4ee4f8e3facaa3e2fc4b5630753468",
+      "title_hash": "0922683192a530c6ab4f6c6ba7b5a7e5cc4b81481b9aeea91f792a1f991884c7",
+      "seen_at": "2026-05-14T05:01:22.562165+00:00",
+      "source": "ET Realty",
+      "title": "Concorde targets ₹650 crore sales in FY27, to deploy ₹200 crore for new projects"
     }
   ]
 }
