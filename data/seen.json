@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "90c150bef10d1ae617066544c0121b22f8374d9f7dca2164e8475436f6e3be9e",
-      "title_hash": "ddf0169988df2d62c9cbc6ca17985ef8a12a148c9caadc55cc3e5685551b5cdb",
-      "seen_at": "2026-05-07T12:16:20.015796+00:00",
-      "source": "ET Realty",
-      "title": "Be realistic in your advertisements: RERA officials to real estate builders"
-    },
-    {
-      "url_hash": "44d59e57e568ce834f5961710dd0219cd44d7cfbc5c9701956da2184b98052bf",
-      "title_hash": "35fb9439ff46fc41cc5befafaf2449623763049993c9697ade24fbc0025a5ab2",
-      "seen_at": "2026-05-08T04:28:42.997667+00:00",
-      "source": "ET Infra",
-      "title": "IndiGo to be launch carrier of Noida International Airport, operations from June 15"
-    },
-    {
       "url_hash": "22a0728f7ff838c1eb58b32f736d61dd5be43beefde46bf813fa889c7d8d2db1",
       "title_hash": "f2c72d63a8faa83fabdb9b30303caeb6147708be5e415ada57cfff71bbbe9e63",
       "seen_at": "2026-05-08T11:52:54.080744+00:00",
@@ -76,6 +62,41 @@
       "seen_at": "2026-05-14T05:01:22.562165+00:00",
       "source": "ET Realty",
       "title": "Concorde targets ₹650 crore sales in FY27, to deploy ₹200 crore for new projects"
+    },
+    {
+      "url_hash": "321f0078679ed54a177db2184aee078f5fceee409ae7ff0c35b545c5997338ea",
+      "title_hash": "d0b14f2a7b4f70ff352b836ca1299d7d64fec43ad97c577d374f25e75ce7f134",
+      "seen_at": "2026-05-15T05:05:17.827429+00:00",
+      "source": "ET Realty",
+      "title": "Uber leases over nine lakh sq ft Hyderabad office through 10-year lease for GCC"
+    },
+    {
+      "url_hash": "01769e035d21a8dbb21348b5d28f2f97dae6fdf6b7a8f695bcb7d3de63564927",
+      "title_hash": "52779d3d2f6acb88ddf09a922f3cc0eb9109e3bddec828ef8d57724f36bf88c9",
+      "seen_at": "2026-05-15T05:05:17.829521+00:00",
+      "source": "ET Infra",
+      "title": "IRB Infra Trust offers to sell two BOT highway assets worth ₹4,663 crore to IRB InvIT Fund"
+    },
+    {
+      "url_hash": "432b67413a969a97f1d55a0a70fe6c698b6b73a5639f125f269a7a1bb98492bd",
+      "title_hash": "0944b4f6c3848c2a9c844ad21b473992ad8d08fc150d4244d65ce01f6f5078dd",
+      "seen_at": "2026-05-15T05:05:17.831664+00:00",
+      "source": "ET Infra",
+      "title": "Global investors Temasek, Alpha Wave Global eye $1.3 billion investment in Adani Airports"
+    },
+    {
+      "url_hash": "a70080c39c36bc6a2ba60ca48ac747783f8e74cdcb4fb836c9c2ce96dd65aa70",
+      "title_hash": "a0ea88949cf4ec71ec591d1aa894ed2a418bb9720274d6e3a90899ec9222d7eb",
+      "seen_at": "2026-05-15T05:05:17.833507+00:00",
+      "source": "Square Yards",
+      "title": "Using Tax Deductions on Home Loans to Maximize Returns"
+    },
+    {
+      "url_hash": "c61fe10b27f0c43c6593f18fa05dc1d0c3fb25e33bfb56f3778d56effd50a4dc",
+      "title_hash": "2e5124a0cb9d9d169165ac10c1078528377cc9c4e124482a55e2c9a7e13b4399",
+      "seen_at": "2026-05-15T05:05:17.835585+00:00",
+      "source": "Square Yards",
+      "title": "Vizag’s proposed semi-ring road could reshape connectivity, real estate"
     }
   ]
 }
