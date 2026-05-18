@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "1ae73a7699e1b1beeb1c0064c6ce558b91be26c88c3259c004fbd8fe01d556ae",
-      "title_hash": "b4c8a54fb3c42a91b9af7eff38909c40f40ad1d39f00bb5e0616a26f589bebff",
-      "seen_at": "2026-05-11T08:00:42.806439+00:00",
-      "source": "99acres",
-      "title": "Inside Samanvay The Autograph: Jaipur’s ultra-luxury residence in Vaishali Nagar Extension"
-    },
-    {
       "url_hash": "696e43f1908e0cf5b175002b0f722f3bc59db5806f91dc23c8213665d4ee9c9f",
       "title_hash": "96aa880ba50e5454c4e61ba7e51556fbfbfd9233814a80d0987f7fe129029ff3",
       "seen_at": "2026-05-12T04:54:06.265570+00:00",
@@ -111,6 +104,20 @@
       "seen_at": "2026-05-18T05:36:56.887521+00:00",
       "source": "ET Realty",
       "title": "Commercial plot price hits ₹758 crore in heart of Noida"
+    },
+    {
+      "url_hash": "a83b182473dc8c39bda72fde4892fb2212639b7475c8942e6db5b2133ccd53ab",
+      "title_hash": "e21a079d6ab6974467fc52adc8854cfaa3e41cc3cc7254c99a16b70053a65a5b",
+      "seen_at": "2026-05-18T14:05:00.013474+00:00",
+      "source": "ET Infra",
+      "title": "India plans ₹35,000 crore highway asset monetisation in FY27"
+    },
+    {
+      "url_hash": "79217d9df90bb78ef041b70e0ed21a1bdfd5fc568c41d91126b83661de8dd4a4",
+      "title_hash": "fd13b8a519e72f2ab01c0b1be3ab91534fd8308b5460714ee2750aa191941406",
+      "seen_at": "2026-05-18T14:05:00.016754+00:00",
+      "source": "ET Infra",
+      "title": "Govt plans separate FASTags for toll-exempt vehicles under MLFF tolling system: Report"
     }
   ]
 }
