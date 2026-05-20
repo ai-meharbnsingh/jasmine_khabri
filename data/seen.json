@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "48ef89a9837a62911aba81a3dd767b9bd114f4734ba89661f0063bdd51cb19bf",
-      "title_hash": "9d74843a7d63a59e0fbcf00ca709b0c4a52d562e33a6ea4ed4ed2af8953b5e58",
-      "seen_at": "2026-05-13T05:01:43.716827+00:00",
-      "source": "ET Infra",
-      "title": "Noida airport: Regulator AERA fixes ₹490 UDF for departing domestic passengers"
-    },
-    {
       "url_hash": "ddbb0ea61e4a397aa1abdc1db7b6c202dfc34d31c8e582618e2d596fc25a3731",
       "title_hash": "68afd78a433bd5c3c772616bdc8a9f0ce679154d1e139be855a5dc67dc782d89",
       "seen_at": "2026-05-13T12:27:33.201694+00:00",
@@ -146,6 +139,20 @@
       "seen_at": "2026-05-19T13:39:37.180960+00:00",
       "source": "ET Infra",
       "title": "Govt plans water metro systems in 18 cities under draft national policy"
+    },
+    {
+      "url_hash": "8e41999b6aea37319ce674c801f69be77f7ff77001ab3b3efcd1ca907a04f2cd",
+      "title_hash": "c9ee031846a05609f1b070318c73a244118eee09a1d4856bd2d36c2201b5bd69",
+      "seen_at": "2026-05-20T05:34:51.655921+00:00",
+      "source": "ET Realty",
+      "title": "UP-RERA approves 13 projects worth ₹3,052 crore, issues advisories for homebuyers"
+    },
+    {
+      "url_hash": "d816706e592201453b05efc3f560615dee57cc621e2bdc6fa291ee7f36e46a2a",
+      "title_hash": "cff54e4f8cb93af19df78d7d4341d6499de94e0beb47b152ae670deffdd5ee24",
+      "seen_at": "2026-05-20T05:34:51.660447+00:00",
+      "source": "99acres",
+      "title": "M1 Terra Alegria: Why homebuyers are drawn to this villa project in Hoskote, Bangalore?"
     }
   ]
 }
