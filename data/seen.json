@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "100bd342a267b319a6aa067031d5b99f506787e5f807a0cb7fc24399e21457f5",
-      "title_hash": "0fc11cd497f83e2a39892aa10f833e368b70f9236dffcff2725c0b626de27612",
-      "seen_at": "2026-05-14T05:01:22.560570+00:00",
-      "source": "ET Realty",
-      "title": "Karnataka deputy CM launches &#039;&#039;Bhoo Guarantee&#039;&#039; scheme for 23 lakh Bengaluru properties"
-    },
-    {
-      "url_hash": "917890c365733150cd44b9a4e637ac059d4ee4f8e3facaa3e2fc4b5630753468",
-      "title_hash": "0922683192a530c6ab4f6c6ba7b5a7e5cc4b81481b9aeea91f792a1f991884c7",
-      "seen_at": "2026-05-14T05:01:22.562165+00:00",
-      "source": "ET Realty",
-      "title": "Concorde targets ₹650 crore sales in FY27, to deploy ₹200 crore for new projects"
-    },
-    {
       "url_hash": "321f0078679ed54a177db2184aee078f5fceee409ae7ff0c35b545c5997338ea",
       "title_hash": "d0b14f2a7b4f70ff352b836ca1299d7d64fec43ad97c577d374f25e75ce7f134",
       "seen_at": "2026-05-15T05:05:17.827429+00:00",
@@ -139,6 +125,20 @@
       "seen_at": "2026-05-20T05:34:51.660447+00:00",
       "source": "99acres",
       "title": "M1 Terra Alegria: Why homebuyers are drawn to this villa project in Hoskote, Bangalore?"
+    },
+    {
+      "url_hash": "af0627175996602b6d46124fefbcbd1ca39378504c630e1a717f2c1cab59b6d5",
+      "title_hash": "53b69e5f7d17eb77f28d942a3aad6f8ae76cd81fcf0e270c8cddd2d1f5b3b8ca",
+      "seen_at": "2026-05-21T05:39:40.293368+00:00",
+      "source": "ET Realty",
+      "title": "Adani, Reliance, Lodha, JSW bid for 206-acre Mumbai redevelopment projects"
+    },
+    {
+      "url_hash": "b5ad7e2e5ae15800fa0505f4632db80b06be9131aa1a3473c5bf35ff2ab88240",
+      "title_hash": "77bed9d1a29de2c64e82cfd9c243fcec0ffef610ab199447b90e00dcca604a02",
+      "seen_at": "2026-05-21T05:39:40.296799+00:00",
+      "source": "ET Infra",
+      "title": "AERA fixes ₹620 user development fee for Navi Mumbai airport for departing domestic passengers"
     }
   ]
 }
