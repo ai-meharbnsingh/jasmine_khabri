@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "00bfc92e1cac7d6b4a7bcdeb9b70a2dfec0d8cc9b53d089dea70f153938764ee",
-      "title_hash": "c8eba7b0b9f7ea23d51f6897749cd5657a684571273f918c01a3761668221031",
-      "seen_at": "2026-05-16T04:45:32.747848+00:00",
-      "source": "ET Realty",
-      "title": "Godrej family buys two apartments in Mumbai&#039;s Worli for ₹294 crore"
-    },
-    {
-      "url_hash": "48dd6f095e77ec199ff0cda3b7389be2e78cabfc440e65c43a83d15b3e7e9c5b",
-      "title_hash": "2aded0a32c37721b97722613a7b5f0feff513dc1246e019d65d2aee3523ddd99",
-      "seen_at": "2026-05-16T04:45:32.750801+00:00",
-      "source": "Square Yards",
-      "title": "New Agra to unlock UP’s next growth phase; YEIDA targets 14 lakh homes, 10 lakh jobs"
-    },
-    {
       "url_hash": "59b86d9a5563232994c7708eafb7cbaf03bb8f58981939d1c09dfde633ba0e02",
       "title_hash": "12ab755763f0d0ebdb36a19a856c0cd982070b707a1c69a5a8177e7a21994d6f",
       "seen_at": "2026-05-17T05:04:03.687744+00:00",
@@ -160,6 +146,20 @@
       "seen_at": "2026-05-23T04:25:20.738200+00:00",
       "source": "ET Infra",
       "title": "PNC Infratech wins ₹3,483 crore NHAI highway projects in Uttar Pradesh"
+    },
+    {
+      "url_hash": "74a94ceef0ea2881c594a6e14e7783ab49dddc888b6e84c876c9c3c92c6f9929",
+      "title_hash": "a49c672f0b44967c5f06e48b4904013fb63a5d157c11af3e3379da89924aef3b",
+      "seen_at": "2026-05-23T04:55:11.520652+00:00",
+      "source": "ET Realty",
+      "title": "HDFC Bank backs Hyderabad luxury housing project with ₹300 crore"
+    },
+    {
+      "url_hash": "15fb19983a09ba005ff54e215b243074e01b03e63f0df0aa6c85ad849ab24ced",
+      "title_hash": "91bd288d02ea5cccc115e57e856478ba0bde497b553cd5d53e085122a128c57a",
+      "seen_at": "2026-05-23T04:55:11.523462+00:00",
+      "source": "Square Yards",
+      "title": "How Currency Fluctuations Affect NRI Property ROI"
     }
   ]
 }
