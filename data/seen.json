@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "a83b182473dc8c39bda72fde4892fb2212639b7475c8942e6db5b2133ccd53ab",
-      "title_hash": "e21a079d6ab6974467fc52adc8854cfaa3e41cc3cc7254c99a16b70053a65a5b",
-      "seen_at": "2026-05-18T14:05:00.013474+00:00",
-      "source": "ET Infra",
-      "title": "India plans ₹35,000 crore highway asset monetisation in FY27"
-    },
-    {
-      "url_hash": "79217d9df90bb78ef041b70e0ed21a1bdfd5fc568c41d91126b83661de8dd4a4",
-      "title_hash": "fd13b8a519e72f2ab01c0b1be3ab91534fd8308b5460714ee2750aa191941406",
-      "seen_at": "2026-05-18T14:05:00.016754+00:00",
-      "source": "ET Infra",
-      "title": "Govt plans separate FASTags for toll-exempt vehicles under MLFF tolling system: Report"
-    },
-    {
       "url_hash": "151f49dd0822852bc2137bd679cebe4a4919d2c40f86d1070d884252a5a9b509",
       "title_hash": "87475d1750b4f64dcf9796368419077b94009ae949adc316df1d8cefe51770e6",
       "seen_at": "2026-05-19T05:32:58.695642+00:00",
@@ -167,6 +153,13 @@
       "seen_at": "2026-05-25T13:44:58.145437+00:00",
       "source": "ET Infra",
       "title": "IRFC signs ₹13,527 crore loan pact to refinance Hyderabad Metro debt"
+    },
+    {
+      "url_hash": "8d9b140fa28780b22cfdea2dba5719c54ece1f5c4920a7bf67c7a85d7ce71b20",
+      "title_hash": "b9c592b6bc9166b2ee3e837158880b959ec6726813cdcbd53575a262af009cb2",
+      "seen_at": "2026-05-26T05:32:22.641463+00:00",
+      "source": "ET Infra",
+      "title": "Bengaluru airport operator BIAL hands over ₹16 crore dividend to Karnataka govt arm"
     }
   ]
 }
