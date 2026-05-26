@@ -1,34 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "151f49dd0822852bc2137bd679cebe4a4919d2c40f86d1070d884252a5a9b509",
-      "title_hash": "87475d1750b4f64dcf9796368419077b94009ae949adc316df1d8cefe51770e6",
-      "seen_at": "2026-05-19T05:32:58.695642+00:00",
-      "source": "ET Realty",
-      "title": "Hyderabad: Plot in Thorrur fetches ₹45,000 per sq yard in auction"
-    },
-    {
-      "url_hash": "65b5a890a5402bf5c71799e6bfd11ec3113c429f98e9d62670e0214a00341f02",
-      "title_hash": "816b18b7e5a3db8e0ccbd9c26e99d9865f5dbf10637ced4107d870c9bfc5b20e",
-      "seen_at": "2026-05-19T05:32:58.699414+00:00",
-      "source": "ET Infra",
-      "title": "Centre plans Guwahati Water Metro in Phase I of nationwide rollout: Union minister Sarbananda Sonowal"
-    },
-    {
-      "url_hash": "e648fa1d6ed64f8c76d124eb399c7312044d5100a4556e312f7d50fd88a61634",
-      "title_hash": "a3f8dfc7dc228e0991893eb923eed871e86fb247dfe08efbf663fac9f7b12631",
-      "seen_at": "2026-05-19T07:49:45.774867+00:00",
-      "source": "Square Yards",
-      "title": "Identifying High-Growth Corridors for Real Estate Investment"
-    },
-    {
-      "url_hash": "448585e15bad4e9bf581b2165236e31ce94f0d4fa43d93418a87067396f6d7ab",
-      "title_hash": "e330787fb34556726c515866544e88c16d96d42def0073263aee806b0c445993",
-      "seen_at": "2026-05-19T07:49:45.779567+00:00",
-      "source": "Square Yards",
-      "title": "Pune Metro Line 3 likely to begin operations from June-end; Prime localities to receive real estate push"
-    },
-    {
       "url_hash": "f0b342a6f433a425a73ef737e785e2081b40d843ab0ebcded456dca1600fa0f0",
       "title_hash": "a3fc4d31c02659f2a17f3bad0a5b65825af8f05277874f35c62144fd5c237a9a",
       "seen_at": "2026-05-19T13:39:37.180960+00:00",
@@ -160,6 +132,48 @@
       "seen_at": "2026-05-26T05:32:22.641463+00:00",
       "source": "ET Infra",
       "title": "Bengaluru airport operator BIAL hands over ₹16 crore dividend to Karnataka govt arm"
+    },
+    {
+      "url_hash": "6d35e27c52b24f04493db83487162e9989d012748907f4eecf360115a11fec13",
+      "title_hash": "b891f1a8552fb70467b063f5566dacb18205691bf0696cde0d93be602355019c",
+      "seen_at": "2026-05-26T13:26:27.661501+00:00",
+      "source": "Square Yards",
+      "title": "Complying with LRS and Repatriation Limits for Property Sale Proceeds"
+    },
+    {
+      "url_hash": "48b5a02f732ca5bbc6a222b01a3e4e80dd20bfd40647d5f18f824ca6b96628bd",
+      "title_hash": "018a5a5e2b43f921e6a3e828645076ee3510256ab7ed88dc3bc6c1c0d317915a",
+      "seen_at": "2026-05-26T13:26:27.665296+00:00",
+      "source": "Square Yards",
+      "title": "How the Mumbai–Pune Missing Link is transforming the Lonavala–Khopoli corridor"
+    },
+    {
+      "url_hash": "c65749d39814662b41b90384a05934ed14625fa4f8be43fedc62d13bd1dcf842",
+      "title_hash": "91f2d30cdf499dc590b9cf7f34330c8b888ec1a945afe1e5423f46baee3bd714",
+      "seen_at": "2026-05-26T13:26:27.668728+00:00",
+      "source": "Square Yards",
+      "title": "Versova-Bandra Sea Link: Growth driver for real estate in the region"
+    },
+    {
+      "url_hash": "7a817749fe1d5dc4ba7cc7b49b0622ed454ff0a6a8739d13f71ffccc65793f12",
+      "title_hash": "b23bb12c3a866774b72b1cd4099aa0fb58e5699cd0950606302e528ce53bb96b",
+      "seen_at": "2026-05-26T13:26:27.672429+00:00",
+      "source": "Square Yards",
+      "title": "Second Mumbai-Pune Expressway on cards; commute likely to reduce to 90 minutes"
+    },
+    {
+      "url_hash": "606c3758eca76bbb4a2d056a434ce7a035abdc59849863fa3faf9ff771ee5f4b",
+      "title_hash": "205a54f87da9a74e37107619bfca1844be1d4b4c2da6f266cf895b65d0e0887c",
+      "seen_at": "2026-05-26T13:26:27.675742+00:00",
+      "source": "Square Yards",
+      "title": "How to Balance Home Country Investments with Indian Real Estate"
+    },
+    {
+      "url_hash": "18f54d89675e42f026744246669b98c285594bd776101db4086424b63ef4d84b",
+      "title_hash": "c77180ec08f464b51d0b062d7e820d6427eb63c042fc70fdb5d245919c3c98f4",
+      "seen_at": "2026-05-26T13:26:27.678862+00:00",
+      "source": "Square Yards",
+      "title": "Comparing Metro vs Non-Metro Investments for NRIs"
     }
   ]
 }
