@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "af0627175996602b6d46124fefbcbd1ca39378504c630e1a717f2c1cab59b6d5",
-      "title_hash": "53b69e5f7d17eb77f28d942a3aad6f8ae76cd81fcf0e270c8cddd2d1f5b3b8ca",
-      "seen_at": "2026-05-21T05:39:40.293368+00:00",
-      "source": "ET Realty",
-      "title": "Adani, Reliance, Lodha, JSW bid for 206-acre Mumbai redevelopment projects"
-    },
-    {
-      "url_hash": "b5ad7e2e5ae15800fa0505f4632db80b06be9131aa1a3473c5bf35ff2ab88240",
-      "title_hash": "77bed9d1a29de2c64e82cfd9c243fcec0ffef610ab199447b90e00dcca604a02",
-      "seen_at": "2026-05-21T05:39:40.296799+00:00",
-      "source": "ET Infra",
-      "title": "AERA fixes ₹620 user development fee for Navi Mumbai airport for departing domestic passengers"
-    },
-    {
       "url_hash": "a297979433475b20b4aadf04ed6aaf8cb84b251a8d5a05e86b06957c387af604",
       "title_hash": "16fcf8ceeb47e13c9e35e2c8352d08de4ecc0ff26e76510cc4fda9c9c99a6ddc",
       "seen_at": "2026-05-21T13:43:42.143152+00:00",
@@ -174,6 +160,13 @@
       "seen_at": "2026-05-27T13:57:43.563486+00:00",
       "source": "Square Yards",
       "title": "Tax Exemptions Available for NRIs Investing in India"
+    },
+    {
+      "url_hash": "8629d5a8904507560b44476282059bdcbe8680808248c9e8fe8e05bb75afb552",
+      "title_hash": "514915621b7e90b882bdcdcf727fc4d73ad495e0c0050727506bb685a5534852",
+      "seen_at": "2026-05-28T05:40:05.750538+00:00",
+      "source": "ET Realty",
+      "title": "Small residential buildings in Delhi seeking regularisation will no longer need physical inspection"
     }
   ]
 }
