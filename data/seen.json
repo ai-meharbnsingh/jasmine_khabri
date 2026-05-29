@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "f39c527a69b101d40fd6f158a6bc7a9ce78757ba86b723288d80507ec57bc34a",
-      "title_hash": "122b236cdd63aeb6080e419dabb92f42f7fcc16ea6b6a7240df43476b1c974c7",
-      "seen_at": "2026-05-22T12:21:56.771098+00:00",
-      "source": "ET Realty",
-      "title": "Wipro founder Azim Premji’s son buys Rs 45.7 crore Bengaluru home"
-    },
-    {
-      "url_hash": "f2ef1741aea0dc16af3eb57156a88073599dbd2ae5f36d50be637316637091e2",
-      "title_hash": "d6d86a2fcdc707b1c2326de2d6c539a2504b4d7f499f479d94fefbcf240d2e13",
-      "seen_at": "2026-05-22T12:38:14.386300+00:00",
-      "source": "ET Realty",
-      "title": "ICICI Prudential AMC buys Mumbai’s VIOS Tower office for ₹525 crore"
-    },
-    {
-      "url_hash": "e6173b62b9f39af92622ec63416e2e80f1716dbc508fdaaec0f6ce5844637913",
-      "title_hash": "1c4fb913f479890d64a2df2239aa902dabbe81b7ebd23f1c2d6ccacca337fef9",
-      "seen_at": "2026-05-22T12:38:14.389731+00:00",
-      "source": "ET Infra",
-      "title": "Air India opens Maharaja Lounge at San Francisco airport"
-    },
-    {
       "url_hash": "1455bec171552708c6b35f5955870ef6db38318ebbc53cb0c27d833f2b92c14d",
       "title_hash": "b7d05b447bf435588a921c360c4d6826d93c7c3a29e1883a3c5aac147cfe04e7",
       "seen_at": "2026-05-23T04:25:20.738200+00:00",
@@ -160,6 +139,20 @@
       "seen_at": "2026-05-29T05:42:32.591180+00:00",
       "source": "ET Infra",
       "title": "NHAI identifies 1,693 km of highway assets for monetisation in FY27 under TOT, InvIT models"
+    },
+    {
+      "url_hash": "adb52f9d42f4e3b853a03d7087837bf6c3c0143d9196a43ec2e7a73dc46a84bf",
+      "title_hash": "ab465458900d858f9e87d376d0dd836492a7d7fb8e69011190fc883d6da3d26a",
+      "seen_at": "2026-05-29T13:42:07.450979+00:00",
+      "source": "ET Realty",
+      "title": "Hyderabad&#039;s Raidurg area witnesses a record-breaking land auction as one acre fetches ₹237 crore"
+    },
+    {
+      "url_hash": "5ca55e9319d2331fa5cdc6e3c562ca101f03ea26854c6538a881c753c9534620",
+      "title_hash": "e2b66724b671be18f795ecc291cff0980bfff8a4575c2123449c5cff4c1dc27f",
+      "seen_at": "2026-05-29T13:42:07.455313+00:00",
+      "source": "99acres",
+      "title": "Buying a home in Bangalore? Discover why Amrutha Lake Vista in Whitefield could be your best bet"
     }
   ]
 }
