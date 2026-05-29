@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "06a4a09e4ac0a862d7fdc339ac246916706b82e5ee8e98a3a0079fa172b40b89",
-      "title_hash": "28b6fa9ac93a85c1dad134c46f5270dc3b5251552b4a6cb69636e28c6fd483ac",
-      "seen_at": "2026-05-22T05:33:10.739152+00:00",
-      "source": "ET Realty",
-      "title": "UP-RERA asks banks to enforce revised norms for real estate project accounts"
-    },
-    {
-      "url_hash": "760bf4133400e87b5a5153aa05a38a79d7ee6db35ed77353e03a2c44180be45e",
-      "title_hash": "83a695b3016b97905e39122fe59a47a59978d1a879e60fb9f5e42365f1eec5b9",
-      "seen_at": "2026-05-22T05:33:10.741274+00:00",
-      "source": "Square Yards",
-      "title": "Compliance Requirements for NRIs Investing in Indian Real Estate"
-    },
-    {
       "url_hash": "f39c527a69b101d40fd6f158a6bc7a9ce78757ba86b723288d80507ec57bc34a",
       "title_hash": "122b236cdd63aeb6080e419dabb92f42f7fcc16ea6b6a7240df43476b1c974c7",
       "seen_at": "2026-05-22T12:21:56.771098+00:00",
@@ -160,6 +146,20 @@
       "seen_at": "2026-05-28T14:08:45.606765+00:00",
       "source": "ET Realty",
       "title": "SC seeks responses of Centre, ED, RBI on plea alleging siphoning of homebuyers&#039; funds"
+    },
+    {
+      "url_hash": "79ac069dd570e67cfd00375135f1fff66b022f783aff4636937b244f93769198",
+      "title_hash": "ab1b5eb43e1a5ce2f7022a38a5061d6e35bfdc756f65006bff230a7640e608ef",
+      "seen_at": "2026-05-29T05:42:32.587025+00:00",
+      "source": "ET Infra",
+      "title": "India’s aviation fuel growth must be built on sustainability, transparency and technology: BPCL’s Sanjeev Kumar"
+    },
+    {
+      "url_hash": "b640d61b9d90f0637a2aa03fd6695a9baf8659e58dc6c7efbd006d19eb08b7f2",
+      "title_hash": "b2ac1ecc53701d5dbb9a324a7d50ea125ec757c89ef3e0dd13f4c0031d755a5b",
+      "seen_at": "2026-05-29T05:42:32.591180+00:00",
+      "source": "ET Infra",
+      "title": "NHAI identifies 1,693 km of highway assets for monetisation in FY27 under TOT, InvIT models"
     }
   ]
 }
