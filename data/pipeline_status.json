@@ -1,15 +1,15 @@
 {
-  "last_run_utc": "2026-06-02T14:35:56Z",
+  "last_run_utc": "2026-06-03T06:19:44Z",
   "articles_fetched": 7,
   "articles_delivered": 3,
   "telegram_success": 2,
   "telegram_failures": 0,
   "email_success": 1,
   "sources_active": 8,
-  "run_duration_seconds": 13.8,
+  "run_duration_seconds": 8.8,
   "usage_month": "2026-06",
-  "monthly_deliver_runs": 4,
+  "monthly_deliver_runs": 5,
   "monthly_breaking_runs": 11,
   "monthly_breaking_alerts": 0,
-  "est_actions_minutes": 28.5
+  "est_actions_minutes": 31.5
 }
