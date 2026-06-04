@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "8629d5a8904507560b44476282059bdcbe8680808248c9e8fe8e05bb75afb552",
-      "title_hash": "514915621b7e90b882bdcdcf727fc4d73ad495e0c0050727506bb685a5534852",
-      "seen_at": "2026-05-28T05:40:05.750538+00:00",
-      "source": "ET Realty",
-      "title": "Small residential buildings in Delhi seeking regularisation will no longer need physical inspection"
-    },
-    {
       "url_hash": "bcc35002713ffb990a209f58c4c55269c0201932d42ff2dc6689f69a50aa7a0a",
       "title_hash": "e03e48c02cb09de068c6a84d3fd267eca400ab46432c93c77b0541b01b6d4174",
       "seen_at": "2026-05-28T14:08:45.606765+00:00",
@@ -90,6 +83,13 @@
       "seen_at": "2026-06-03T15:13:18.586838+00:00",
       "source": "Square Yards",
       "title": "Bengaluru’s Tunnel Road Moment: Will the Hebbal-Silk Board Corridor Reprice Real Estate?"
+    },
+    {
+      "url_hash": "3835e23a1010ac831433df7be94930c9db24f52875845972aa995f32d4530586",
+      "title_hash": "ffab1507d14b22089e379ddeaf3f811e9c244703c0cf63794a4c2729fe825fd3",
+      "seen_at": "2026-06-04T06:11:52.858089+00:00",
+      "source": "ET Realty",
+      "title": "Kotak Alts closes fourteenth real estate fund at nearly $1 billion"
     }
   ]
 }
