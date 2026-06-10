@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "4f9642c4f62e923a5a628e566dbfe0ff19b3f4cf3b43a3410c0445ac201b099c",
-      "title_hash": "4bc3dce24e058bc74f1b7606dfb74776f63a919e04c5f09a4ac1772a6799a951",
-      "seen_at": "2026-06-02T14:36:01.840423+00:00",
-      "source": "ET Realty",
-      "title": "Adani Properties highest bidder for MHADA’s Worli, Bandra redevelopment projects"
-    },
-    {
-      "url_hash": "f3215bd50ddd2c5b55132cbd29c45985dd4172c6cc9ba43431cbc95faa8fb240",
-      "title_hash": "192b13fdc17028ba2ab3a6735292b06020afcd690984ce2d4c3f6807f6a67f89",
-      "seen_at": "2026-06-02T14:36:01.845346+00:00",
-      "source": "99acres",
-      "title": "Bilva 2 by Bhavisha Homes, Sarjapur Road: Top reasons why homebuyers are looking at this premium project in Bangalore"
-    },
-    {
       "url_hash": "426368b7a33fd602b72bfe5615d0497899699d0a6cb17a994aa62b728ce898f6",
       "title_hash": "31c92ec10877173cc357c701ddd36c10c0fa68d202af3219d691a6fd0e9cf182",
       "seen_at": "2026-06-03T06:19:47.529991+00:00",
@@ -111,6 +97,13 @@
       "seen_at": "2026-06-10T03:57:35.224670+00:00",
       "source": "ET Infra",
       "title": "NHAI flags off asset monetisation for FY27"
+    },
+    {
+      "url_hash": "a54ca7fa2074edf9de22a94e9fd63432e90800ce11cbe95dc51df1cea9c6e35f",
+      "title_hash": "dabe091ee2e7d003859378c62ebd15b0b51bab2f0c59a976b3bc4756e099a564",
+      "seen_at": "2026-06-10T05:51:57.524508+00:00",
+      "source": "Square Yards",
+      "title": "Cost of Living in Jaipur 2026: A Complete Monthly Expense Guide"
     }
   ]
 }
