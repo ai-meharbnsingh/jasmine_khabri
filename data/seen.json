@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "3835e23a1010ac831433df7be94930c9db24f52875845972aa995f32d4530586",
-      "title_hash": "ffab1507d14b22089e379ddeaf3f811e9c244703c0cf63794a4c2729fe825fd3",
-      "seen_at": "2026-06-04T06:11:52.858089+00:00",
-      "source": "ET Realty",
-      "title": "Kotak Alts closes fourteenth real estate fund at nearly $1 billion"
-    },
-    {
-      "url_hash": "c4db1f437672234e77a8d31a4a97f35d840731a792eb0ca6c333950cdc3c9585",
-      "title_hash": "583607ec72e634720060089dae0bece64d33658e52ba34c4109abbe51611e2da",
-      "seen_at": "2026-06-04T13:38:48.251584+00:00",
-      "source": "ET Realty",
-      "title": "UP-RERA says over 1.15 lakh units available across Uttar Pradesh"
-    },
-    {
-      "url_hash": "9621ac1bd42167df0b8bde0df305b1c2403b0773d5f50ca4ce34c8d194cb3ab1",
-      "title_hash": "fbb6197bcbb9a6068b5bce5ab530897b45ab1803422252a2f4c9cd167f19306b",
-      "seen_at": "2026-06-04T13:38:48.255489+00:00",
-      "source": "Square Yards",
-      "title": "Why YEIDA’s Sector 10  Electronics Hub Project Could Redraw the Yamuna Expressway Real Estate Map"
-    },
-    {
       "url_hash": "c88be33c1477c4c9be059a97c372a877af434b24d235e76eca38fc33e6b719a3",
       "title_hash": "95d83b95cd56d0a20eac48a039667e2de0516aa4958936e3ae31e1f48d2fd422",
       "seen_at": "2026-06-05T13:35:27.503108+00:00",
@@ -76,6 +55,13 @@
       "seen_at": "2026-06-10T05:51:57.524508+00:00",
       "source": "Square Yards",
       "title": "Cost of Living in Jaipur 2026: A Complete Monthly Expense Guide"
+    },
+    {
+      "url_hash": "c7ece20a50a04a102239ae0ca491a21a23661afc8548da43ed14c517eb6e0102",
+      "title_hash": "1d3981a883609e87caf40915f74dfbd3e22bb0281f98152c3447e2270bb5224e",
+      "seen_at": "2026-06-11T14:22:45.719703+00:00",
+      "source": "ET Infra",
+      "title": "India’s loss is China’s gain as Kenya picks China Communications Construction Co to upgrade its biggest airport"
     }
   ]
 }
