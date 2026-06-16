@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "9ababb21b7d894d638521ccb3f550c89b05f3a7274bb2f1af235017b4be91780",
-      "title_hash": "af531ca25a519f489497733620b76799f4b59cc99025df859b5c1886c75dbc61",
-      "seen_at": "2026-06-09T05:36:52.711836+00:00",
-      "source": "ET Realty",
-      "title": "Uttar Pradesh government to simplify laws governing RERA"
-    },
-    {
-      "url_hash": "54f8ce01fce2dfa4f5b2f7075768e7e2ed5b06b2d169b4038f4e21f9dde2743c",
-      "title_hash": "d4f0f81f2bac122532ed6f1d544e52788408b8dfebcdfa44a06a835dae965c38",
-      "seen_at": "2026-06-09T05:36:52.713766+00:00",
-      "source": "Square Yards",
-      "title": "Integrated Township Living in 2026: What Every Buyer Must Know Before Deciding"
-    },
-    {
-      "url_hash": "6f84845c4b832f9f7a4a73e640cc61b9681ae1e38ee50909361fa7899c2c6c17",
-      "title_hash": "8d9079c9fa591b299ac4f10bc7f8c7a9dfae8618dc9b50f51ea46045040a589f",
-      "seen_at": "2026-06-09T05:36:52.715778+00:00",
-      "source": "Square Yards",
-      "title": "Navigating Property Registration and Documentation for Investors"
-    },
-    {
       "url_hash": "20713f309e8ce1e48fbc242b823061c168b92f7df4165901ed53d7bd3e3e4feb",
       "title_hash": "e7f6cd2e6b33886822dbb3ced069e695ccb9fbbc38c5f3db65b7151784efcbb7",
       "seen_at": "2026-06-09T23:51:40.264294+00:00",
@@ -97,6 +76,20 @@
       "seen_at": "2026-06-15T06:40:09.314599+00:00",
       "source": "ET Infra",
       "title": "On the fast track: Why urban mobility will power India&#039;s growth"
+    },
+    {
+      "url_hash": "39e87c2e9278151c271d5e1a9e352635d8324d235012c386fa82616f938c5331",
+      "title_hash": "a03e40b21ad6c45d1532045354f3fabc8f793aa25db1b84800e5d57e5fa2a09e",
+      "seen_at": "2026-06-16T06:53:26.617293+00:00",
+      "source": "Square Yards",
+      "title": "How Bengaluru’s Suburban Rail Corridor Could Reshape the City’s Next Real Estate Growth Cycle"
+    },
+    {
+      "url_hash": "173a59b016ea53dfbcb49b335035d776cf1d14099d29395bb77bfeacf1584bea",
+      "title_hash": "1a7b96d3fd3fe84b5ee9c741c4007363ad5e4d3a9835f8cd6468ae91275f9fbf",
+      "seen_at": "2026-06-16T06:53:26.619348+00:00",
+      "source": "Square Yards",
+      "title": "How Pune Ring Road Is Reshaping West Pune’s Real Estate Growth Map"
     }
   ]
 }
