@@ -1,7 +1,7 @@
 {
   "month": "2026-06",
-  "total_input_tokens": 12513,
-  "total_output_tokens": 2096,
-  "total_cost_usd": 0.008993900000000003,
-  "call_count": 16
+  "total_input_tokens": 13484,
+  "total_output_tokens": 2388,
+  "total_cost_usd": 0.010015200000000002,
+  "call_count": 17
 }

@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "20713f309e8ce1e48fbc242b823061c168b92f7df4165901ed53d7bd3e3e4feb",
-      "title_hash": "e7f6cd2e6b33886822dbb3ced069e695ccb9fbbc38c5f3db65b7151784efcbb7",
-      "seen_at": "2026-06-09T23:51:40.264294+00:00",
-      "source": "Square Yards",
-      "title": "Housing premium emerges along the metro phase 2B corridor even before launch"
-    },
-    {
-      "url_hash": "2fe1683beb74fdbd4c428d3a597b7a7330b286a3559d9f5ec21cc21afdd5aeda",
-      "title_hash": "8499aaf991617a5655560f41beb430a91e8733658e8e4ae45b837f1e17f6e5e6",
-      "seen_at": "2026-06-10T03:57:35.224670+00:00",
-      "source": "ET Infra",
-      "title": "NHAI flags off asset monetisation for FY27"
-    },
-    {
-      "url_hash": "a54ca7fa2074edf9de22a94e9fd63432e90800ce11cbe95dc51df1cea9c6e35f",
-      "title_hash": "dabe091ee2e7d003859378c62ebd15b0b51bab2f0c59a976b3bc4756e099a564",
-      "seen_at": "2026-06-10T05:51:57.524508+00:00",
-      "source": "Square Yards",
-      "title": "Cost of Living in Jaipur 2026: A Complete Monthly Expense Guide"
-    },
-    {
       "url_hash": "c7ece20a50a04a102239ae0ca491a21a23661afc8548da43ed14c517eb6e0102",
       "title_hash": "1d3981a883609e87caf40915f74dfbd3e22bb0281f98152c3447e2270bb5224e",
       "seen_at": "2026-06-11T14:22:45.719703+00:00",
@@ -90,6 +69,27 @@
       "seen_at": "2026-06-16T06:53:26.619348+00:00",
       "source": "Square Yards",
       "title": "How Pune Ring Road Is Reshaping West Pune’s Real Estate Growth Map"
+    },
+    {
+      "url_hash": "21dd3135ccf1d41911eb422f6ec9ffed5932925ed4fe774045ac22443378d5ae",
+      "title_hash": "a8dfd9599213f25d7542a9fe2485d6a433ca3d10c172e8521abe92b8bdb41338",
+      "seen_at": "2026-06-17T06:30:18.079444+00:00",
+      "source": "ET Infra",
+      "title": "Akasa Air starts flight services to Noida airport from Navi Mumbai"
+    },
+    {
+      "url_hash": "c7a0f2084afaa79c9d3f635c6f35e66198b88d4107a250d028bbd7eca0b1266d",
+      "title_hash": "cd4ce0bf6df15adadeee2e0f99280725e8e38ed40eac183792a46c15fb5fd489",
+      "seen_at": "2026-06-17T06:30:18.080773+00:00",
+      "source": "Square Yards",
+      "title": "Is Devanahalli the next Gurugram of Bengaluru?"
+    },
+    {
+      "url_hash": "467ca583bd038aba8f8a5196c6a55a59d848ddf2a4b292b7eeb50a37239af475",
+      "title_hash": "57a6150d6dab75b85258d64320f3959bbe7b672901ad4991178383a96038108e",
+      "seen_at": "2026-06-17T06:30:18.082849+00:00",
+      "source": "Square Yards",
+      "title": "Bengaluru’s upcoming iBLUR Flyover may be the next value trigger for ORR"
     }
   ]
 }
