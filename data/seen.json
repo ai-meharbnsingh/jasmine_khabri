@@ -1,27 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "c7ece20a50a04a102239ae0ca491a21a23661afc8548da43ed14c517eb6e0102",
-      "title_hash": "1d3981a883609e87caf40915f74dfbd3e22bb0281f98152c3447e2270bb5224e",
-      "seen_at": "2026-06-11T14:22:45.719703+00:00",
-      "source": "ET Infra",
-      "title": "India’s loss is China’s gain as Kenya picks China Communications Construction Co to upgrade its biggest airport"
-    },
-    {
-      "url_hash": "30d29f9cf6c3cc80f62c3976a66374555e9a1fdf90dd56db7f457e54f2e17cfe",
-      "title_hash": "b53d8340d425f8e9a9f039c2b9ce3318d97d5635b7f1a6804cde0086ce7d66f5",
-      "seen_at": "2026-06-11T19:18:33.690196+00:00",
-      "source": "Square Yards",
-      "title": "Ahmedabad Metro Phase 2A: The transit link that could reshape the city’s northern growth"
-    },
-    {
-      "url_hash": "03c9465a6d8353bf9ff35c949f2eed32c12aa50ec032326f930958c586465efa",
-      "title_hash": "ae9f026f0daa0b9959bae03052a2af112a20d734b2f63c67a0bc7705ec1e5907",
-      "seen_at": "2026-06-12T06:05:29.525543+00:00",
-      "source": "ET Realty",
-      "title": "Opendoor shuts India operations, lays off 250 employees; embraces AI"
-    },
-    {
       "url_hash": "6c74241462fd586d3c647d9d90a69c9157ee1e634f9a1731db4a6ff6987d9ece",
       "title_hash": "44dccfb70f7dd021d0eda8dc8d5242f19057b04f7a4c5f96f73d68f28c29d77e",
       "seen_at": "2026-06-13T05:49:35.357719+00:00",
@@ -118,6 +97,20 @@
       "seen_at": "2026-06-18T13:46:04.271236+00:00",
       "source": "ET Realty",
       "title": "Target Corp leases 8.3 lakh sq ft office space in Bengaluru for 10 years"
+    },
+    {
+      "url_hash": "be33ebc24bf0c78a370c045d3318aa411afeb97b00f3d336f0814526d61db225",
+      "title_hash": "95db1a8fc8309619247a483c13d4718b75f1e41fd132dc8bb7bcefb2b1988851",
+      "seen_at": "2026-06-19T06:33:21.652879+00:00",
+      "source": "ET Realty",
+      "title": "Tamil Nadu government halts ₹2,000 crore Brigade&#039;s housing project near Pallikaranai Ramsar site"
+    },
+    {
+      "url_hash": "98170fd102929f9e58fa895fd22188910f927909330aff841c4326680bcd8612",
+      "title_hash": "d8809f57ac6c2e8024e369744f0bc93d369d3a4f1dd8c53ed5e8b9fed9a11fe8",
+      "seen_at": "2026-06-19T06:33:21.656070+00:00",
+      "source": "ET Realty",
+      "title": "Homebuyers bear the brunt as property registration stuck over deed workers’ strike in NCR"
     }
   ]
 }
