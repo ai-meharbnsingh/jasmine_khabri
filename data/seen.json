@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "39e87c2e9278151c271d5e1a9e352635d8324d235012c386fa82616f938c5331",
-      "title_hash": "a03e40b21ad6c45d1532045354f3fabc8f793aa25db1b84800e5d57e5fa2a09e",
-      "seen_at": "2026-06-16T06:53:26.617293+00:00",
-      "source": "Square Yards",
-      "title": "How Bengaluru’s Suburban Rail Corridor Could Reshape the City’s Next Real Estate Growth Cycle"
-    },
-    {
-      "url_hash": "173a59b016ea53dfbcb49b335035d776cf1d14099d29395bb77bfeacf1584bea",
-      "title_hash": "1a7b96d3fd3fe84b5ee9c741c4007363ad5e4d3a9835f8cd6468ae91275f9fbf",
-      "seen_at": "2026-06-16T06:53:26.619348+00:00",
-      "source": "Square Yards",
-      "title": "How Pune Ring Road Is Reshaping West Pune’s Real Estate Growth Map"
-    },
-    {
       "url_hash": "21dd3135ccf1d41911eb422f6ec9ffed5932925ed4fe774045ac22443378d5ae",
       "title_hash": "a8dfd9599213f25d7542a9fe2485d6a433ca3d10c172e8521abe92b8bdb41338",
       "seen_at": "2026-06-17T06:30:18.079444+00:00",
@@ -132,6 +118,34 @@
       "seen_at": "2026-06-23T05:33:33.459913+00:00",
       "source": "99acres",
       "title": "Gamut SaRaa City: Why aspirational homebuyers are considering this luxury project in Attapur, Hyderabad"
+    },
+    {
+      "url_hash": "29fd2194d4adffd65bf385006e267357a6c221a40115aece904f33da29319fd7",
+      "title_hash": "cad024b6fc60cdd19fe0ffb62534d0dc34d85a797db22c5c3eee732b2c7192eb",
+      "seen_at": "2026-06-23T13:20:35.997441+00:00",
+      "source": "ET Realty",
+      "title": "SRA identifies 18 more clusters across Mumbai region for redevelopment"
+    },
+    {
+      "url_hash": "47a35b0ad9bed7d335c3e33916357642cee3ae060337e5124b134ab76ce7c41f",
+      "title_hash": "a62830ea1bf14caf95f989148dc387c362bb34f78d90c434d82457a7f81babef",
+      "seen_at": "2026-06-23T13:20:36.000486+00:00",
+      "source": "ET Infra",
+      "title": "Adani Mundra Airport launches its first flight, connects Kutch"
+    },
+    {
+      "url_hash": "0e90035569db9afb225d7ff89277819ee3ba079dee3810361b1470728d13ffd5",
+      "title_hash": "3752c55a79d302c93f435802d11428a4e23200ea53eca76cc32c00f5b507dbd8",
+      "seen_at": "2026-06-23T13:20:36.003560+00:00",
+      "source": "Square Yards",
+      "title": "The Role of Fractional Ownership Platforms for Investors in 2026"
+    },
+    {
+      "url_hash": "4186c4cd1376e95c662d6d34270517d49d333fad5b19bed589343c179bbd5d89",
+      "title_hash": "f4ef538252e8e5d22aa1e765432142345565518c30d2f2a77de46534eab29b76",
+      "seen_at": "2026-06-23T13:20:36.006784+00:00",
+      "source": "Square Yards",
+      "title": "How to Integrate REITs Into Your Real Estate Portfolio (2026 Guide)"
     }
   ]
 }
