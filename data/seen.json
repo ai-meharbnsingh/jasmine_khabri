@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "8a02b24b068de614c3f24609d53ed0f0465a993fce594556f2f66f0c65b8a4fb",
-      "title_hash": "8262fc5eac235c5c43f82010f06c8ed4d54221c11d4c0a59cff19a680c73201a",
-      "seen_at": "2026-06-18T13:46:04.271236+00:00",
-      "source": "ET Realty",
-      "title": "Target Corp leases 8.3 lakh sq ft office space in Bengaluru for 10 years"
-    },
-    {
       "url_hash": "be33ebc24bf0c78a370c045d3318aa411afeb97b00f3d336f0814526d61db225",
       "title_hash": "95db1a8fc8309619247a483c13d4718b75f1e41fd132dc8bb7bcefb2b1988851",
       "seen_at": "2026-06-19T06:33:21.652879+00:00",
@@ -139,6 +132,27 @@
       "seen_at": "2026-06-24T12:33:02.328949+00:00",
       "source": "Square Yards",
       "title": "Pune’s next growth corridor takes shape as Purandar Airport gains ground"
+    },
+    {
+      "url_hash": "110923f7bf32627d7edf12bd94f2c12285b7a0003acb9b61ddcff63a00c6fc76",
+      "title_hash": "06fa75ed6485296850d57cae21f950fe2b1a273efa45da6545e7ce8815a1d919",
+      "seen_at": "2026-06-26T05:40:51.841417+00:00",
+      "source": "ET Infra",
+      "title": "Adani Airports to invest ₹20,000 crore in airport cities spanning 655 acres"
+    },
+    {
+      "url_hash": "8b4426a767f83d233215a99157c93db525d646840c5e0016dc5496915d38dc83",
+      "title_hash": "05325b6f55a6e8111c2e1cf22a0387771b47669c10abdb286bf7b16985bac9b2",
+      "seen_at": "2026-06-26T05:40:51.845789+00:00",
+      "source": "Square Yards",
+      "title": "Thane’s infrastructure stack: Metro, tunnels and road links turning it into MMR’s mobility hub"
+    },
+    {
+      "url_hash": "a39fad2b3cdee393acd829b0b6235fba7cc48c7efeef37b8b44314fc732e9c4e",
+      "title_hash": "065dfde216f2e55a289b04e5be21addb249a9251c21e69bf9d5d382c4caee1a7",
+      "seen_at": "2026-06-26T05:40:51.849238+00:00",
+      "source": "Square Yards",
+      "title": "Documents Required for Property Registration in India: The 2026 Checklist"
     }
   ]
 }
