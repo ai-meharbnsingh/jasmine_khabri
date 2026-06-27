@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "9a68ba720aed71c8f61895dad72bff1aa81d6d35b653dbf391fc00151ecabe90",
-      "title_hash": "3c2406fe77f7b607dde0e607023209618baf29e340b22e6c302edb031791a5c1",
-      "seen_at": "2026-06-19T22:05:19.410587+00:00",
-      "source": "Square Yards",
-      "title": "Sewri-Worli elevated corridor set to redraw Mumbai’s real estate map"
-    },
-    {
       "url_hash": "4b1d61c179e3343cab7ece6450d2bc96c7266c6acdedaa0fffc3003b4171444b",
       "title_hash": "f28e3e3799442477a652c1f86169f9c2a63762ef57d98c9bb2b7b61ec1587b18",
       "seen_at": "2026-06-20T05:47:48.018362+00:00",
@@ -139,6 +132,13 @@
       "seen_at": "2026-06-26T05:40:51.849238+00:00",
       "source": "Square Yards",
       "title": "Documents Required for Property Registration in India: The 2026 Checklist"
+    },
+    {
+      "url_hash": "467af2c860ae63cc0860463e289d7477a35fe5eabed323bfd897a66ffb82ea46",
+      "title_hash": "7347be5c00d7682f2303d922fa72a1dcaf816a53b351f4e86bd5d16a037b459e",
+      "seen_at": "2026-06-27T05:06:55.986924+00:00",
+      "source": "ET Realty",
+      "title": "Hero MotoCorp, WeWork lease 3.45 lakh sq ft office space at Worldmark 6 in Delhi"
     }
   ]
 }
