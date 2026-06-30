@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "1430b07301b8da592f4129ebb8c4b3e2ebe079942923ca6106763c0a8655249f",
-      "title_hash": "ccd177b357f0b83fcb8ed91c1b57469caea1c2419380496e71d4c974055d5cc7",
-      "seen_at": "2026-06-22T15:34:44.371307+00:00",
-      "source": "Square Yards",
-      "title": "Yamuna Expressway gets ₹2.2 lakh crore AI hub; Major infrastructure push for the corridor"
-    },
-    {
-      "url_hash": "1453385e4fd957e71af89ae1fe39bfa6a02162fccd35a741d46131d68d869ce7",
-      "title_hash": "b320360aca75cd5532d4ad8387f782825e45369e402b701bc8eacfadf51be7c4",
-      "seen_at": "2026-06-23T05:33:33.459913+00:00",
-      "source": "99acres",
-      "title": "Gamut SaRaa City: Why aspirational homebuyers are considering this luxury project in Attapur, Hyderabad"
-    },
-    {
       "url_hash": "29fd2194d4adffd65bf385006e267357a6c221a40115aece904f33da29319fd7",
       "title_hash": "cad024b6fc60cdd19fe0ffb62534d0dc34d85a797db22c5c3eee732b2c7192eb",
       "seen_at": "2026-06-23T13:20:35.997441+00:00",
@@ -125,6 +111,13 @@
       "seen_at": "2026-06-29T21:54:27.960507+00:00",
       "source": "Square Yards",
       "title": "Bengaluru’s Second Airport buzz and what it means for South Bengaluru real estate"
+    },
+    {
+      "url_hash": "d4921a79451c54ec36b20281900baea019f42cf21506e6620618f836454ef040",
+      "title_hash": "10b9ac3e09dfb6ec411ae03d233edabb432f92550c34b4cf62325bfd6a5b3e4d",
+      "seen_at": "2026-06-30T05:36:50.544385+00:00",
+      "source": "ET Realty",
+      "title": "Maharashtra deputy CM sets three-year deadline for housing projects"
     }
   ]
 }
