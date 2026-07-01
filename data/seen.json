@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "url_hash": "44b69671916d79123665837b35d93a669aa302324aeb3ad1a1ecb856e45cf14e",
-      "title_hash": "62ff007f40a2283ec7ce7e4f72cb0dc2b2c7fe9c7bab84dc9591b754c0d570ae",
-      "seen_at": "2026-06-24T12:33:02.324929+00:00",
-      "source": "99acres",
-      "title": "Tridasa Rise, Nallagandla: A closer look at this premium low-density project in Hyderabad"
-    },
-    {
-      "url_hash": "bb91d5d34dfa8a3fe723efa581d06ebc8803d179b1509a12694463a444fa228f",
-      "title_hash": "b579d02b02272b50cbf54c76ece475cbefb147c57463296bd124c6b26fbc9f7f",
-      "seen_at": "2026-06-24T12:33:02.328949+00:00",
-      "source": "Square Yards",
-      "title": "Pune’s next growth corridor takes shape as Purandar Airport gains ground"
-    },
-    {
       "url_hash": "110923f7bf32627d7edf12bd94f2c12285b7a0003acb9b61ddcff63a00c6fc76",
       "title_hash": "06fa75ed6485296850d57cae21f950fe2b1a273efa45da6545e7ce8815a1d919",
       "seen_at": "2026-06-26T05:40:51.841417+00:00",
@@ -90,6 +76,13 @@
       "seen_at": "2026-06-30T17:23:29.657805+00:00",
       "source": "Square Yards",
       "title": "Sarai Rohilla Nearest Metro Station: Route, Distance, Fare & Timings"
+    },
+    {
+      "url_hash": "d38f71c76c3aa338b5ccdbf1ff26eef7f6a6bda6a79e3c6b7c5d19bc0002ef0a",
+      "title_hash": "b094dcc2a9b8f37eeb65280084a6a4d77cf041b64d0e228d66278d6660000828",
+      "seen_at": "2026-07-01T13:16:28.018550+00:00",
+      "source": "ET Realty",
+      "title": "Godrej Properties acquires 4.95-acre land parcel in Noida for ₹331.75 crore"
     }
   ]
 }
